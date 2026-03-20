@@ -25,6 +25,23 @@ namespace Game.UI
             }
         }
 
+        public PlayerView SpawnPlayer(PlayerView prefab)
+        {
+            if (prefab == null)
+                return PlayerView;
+
+            Transform currentTransform = PlayerView != null ? PlayerView.transform : null;
+            Vector3 position = currentTransform != null ? currentTransform.position : Vector3.zero;
+            Quaternion rotation = currentTransform != null ? currentTransform.rotation : Quaternion.identity;
+            Transform parent = currentTransform != null ? currentTransform.parent : null;
+
+            if (PlayerView != null)
+                Destroy(PlayerView.gameObject);
+
+            PlayerView = Instantiate(prefab, position, rotation, parent);
+            return PlayerView;
+        }
+
         private void Awake()
         {
             SetHudBG();

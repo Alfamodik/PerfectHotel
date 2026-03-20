@@ -16,7 +16,7 @@ MonoBehaviour:
   Sex: 0
   LabelKey: PATRICK
   Icon: {fileID: 21300000, guid: fd620c15ee61a41df87a0cbaf94c7394, type: 3}
-  Body: {fileID: 4490045820041650077, guid: fd831f06dc38f4210a36f43a075fc3cb, type: 3}
+  Prefab: {fileID: 1898297588147257356, guid: 92a005f4a3274a5488a69784c16db325, type: 3}
   Infos:
   - Type: 0
     AddValue: 1

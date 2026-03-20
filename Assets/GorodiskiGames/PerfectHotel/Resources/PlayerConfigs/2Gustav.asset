@@ -16,7 +16,7 @@ MonoBehaviour:
   Sex: 0
   LabelKey: GUSTAV
   Icon: {fileID: 21300000, guid: 318a36bda6dbb4af1a0cc287249efb32, type: 3}
-  Body: {fileID: -7885224157226008695, guid: a169bdcf3aeb9432e82fa0a00c1c51f7, type: 3}
+  Prefab: {fileID: 1898297588147257356, guid: 92a005f4a3274a5488a69784c16db325, type: 3}
   Infos:
   - Type: 0
     AddValue: 2

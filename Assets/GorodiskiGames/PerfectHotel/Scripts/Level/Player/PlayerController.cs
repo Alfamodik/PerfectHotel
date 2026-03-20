@@ -157,7 +157,7 @@ namespace Game.Level.Player
 
     public class PlayerModel : Observable
     {
-        public Mesh BodyMesh;
+        public PlayerView Prefab;
         public UnitSexType Sex;
         public string Label;
         public int Index;
@@ -174,7 +174,7 @@ namespace Game.Level.Player
         public PlayerModel(PlayerConfig config, GameConfig gameConfig, GameManager gameManager)
         {
             Index = (int)config.Index;
-            BodyMesh = config.Body;
+            Prefab = config.Prefab;
             Label = config.LabelKey;
             Icon = config.Icon;
             Sex = config.Sex;
@@ -236,7 +236,7 @@ namespace Game.Level.Player
 
         private PlayerModel _model;
 
-        private readonly PlayerView _view;
+        private PlayerView _view;
         private readonly StateManager<PlayerState> _stateManager;
 
         public PlayerView View => _view;
@@ -323,6 +323,12 @@ namespace Game.Level.Player
         {
             _model = model;
             _view.Model = model;
+        }
+
+        public void SetView(PlayerView view)
+        {
+            _view = view;
+            _view.Model = _model;
         }
     }
 }

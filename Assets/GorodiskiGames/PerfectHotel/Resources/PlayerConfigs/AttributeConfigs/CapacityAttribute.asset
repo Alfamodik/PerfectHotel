@@ -15,4 +15,4 @@ MonoBehaviour:
   LabelKey: CAPACITY
   Type: 0
   Icon: {fileID: 21300000, guid: 896da16f8337c44e4856b2d798aa14fd, type: 3}
-  NominalValue: 1
+  NominalValue: 99

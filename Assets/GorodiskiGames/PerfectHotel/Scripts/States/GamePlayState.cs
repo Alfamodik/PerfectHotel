@@ -48,8 +48,9 @@ namespace Game.States
 
             var playerConfig = _config.PlayersMap[player];
             var model = new PlayerModel(playerConfig, _config, _gameManager);
+            var playerView = _gameView.SpawnPlayer(model.Prefab);
 
-            _gameManager.Player = new PlayerController(_gameView.PlayerView, model, _context);
+            _gameManager.Player = new PlayerController(playerView, model, _context);
             _gameManager.Player.View.Euler = new Vector3(0f, 180f, 0f);
             _gameManager.Player.View.Position = Vector3.zero;
 

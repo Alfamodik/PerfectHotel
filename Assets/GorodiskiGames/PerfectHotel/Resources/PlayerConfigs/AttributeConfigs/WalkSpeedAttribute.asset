@@ -15,4 +15,4 @@ MonoBehaviour:
   LabelKey: SPEED
   Type: 1
   Icon: {fileID: 21300000, guid: df841445df61f421c95b26f13ea23431, type: 3}
-  NominalValue: 5
+  NominalValue: 4.5

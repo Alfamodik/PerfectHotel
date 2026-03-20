@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Game.Level.Player;
 using UnityEngine;
 
 namespace Game.Config
@@ -27,7 +28,7 @@ namespace Game.Config
         public UnitSexType Sex;
         public string LabelKey;
         public Sprite Icon;
-        public Mesh Body;
+        public PlayerView Prefab;
         public AttributeInfo[] Infos;
         public UnlockConditionConfig UnlockConditionConfig;
 

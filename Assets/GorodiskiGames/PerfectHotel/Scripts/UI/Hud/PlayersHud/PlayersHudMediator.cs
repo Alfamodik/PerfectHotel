@@ -125,6 +125,9 @@ namespace Game.UI.Hud
 
             if (current != clicked)
             {
+                var playerView = _gameView.SpawnPlayer(model.Prefab);
+                _gameManager.Player.SetView(playerView);
+                _gameView.CameraController.SetPlayer(playerView.transform);
                 _view.Model = model;
                 _gameManager.Player.SetModel(model);
                 _gameManager.Player.View.Idle(_gameManager.Player.Model.Sex, 0);
@@ -167,6 +170,9 @@ namespace Game.UI.Hud
             if (current != saved)
             {
                 var model = _models[saved];
+                var playerView = _gameView.SpawnPlayer(model.Prefab);
+                _gameManager.Player.SetView(playerView);
+                _gameView.CameraController.SetPlayer(playerView.transform);
                 _gameManager.Player.SetModel(model);
             }
 
