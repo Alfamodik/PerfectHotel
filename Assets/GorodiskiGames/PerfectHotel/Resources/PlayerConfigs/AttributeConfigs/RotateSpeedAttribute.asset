@@ -15,4 +15,4 @@ MonoBehaviour:
   LabelKey: MANEUVER
   Type: 2
   Icon: {fileID: 21300000, guid: 847cad38fc2d141c2aa5cef6babd3e3a, type: 3}
-  NominalValue: 8
+  NominalValue: 100

@@ -6,7 +6,8 @@ namespace Game
 {
     public sealed class CameraController : MonoBehaviour
     {
-        private const float _angleY = 35f;
+        //private const float _angleY = 35f;
+        private const float _angleY = 0;
         private const float _speedPosition = 5f;
         private const float _speedRotation = 3f;
         private const float _zPositionDelta = 5f;

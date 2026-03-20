@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace Game.Config
 {
-    [SerializeField]
     [CreateAssetMenu(menuName = "config/areaconfig")]
     public sealed class AreaConfig : ScriptableObject
     {

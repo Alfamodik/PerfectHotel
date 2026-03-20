@@ -1,8 +1,8 @@
+using System;
 using UnityEngine;
 
 namespace Game.Config
 {
-    [SerializeField]
     [CreateAssetMenu(menuName = "config/elevatorconfig")]
     public sealed class ElevatorConfig : ScriptableObject
     {
