@@ -163,7 +163,7 @@ MonoBehaviour:
       type: {class: UniversalRenderPipelineEditorAssets, ns: UnityEngine.Rendering.Universal,
         asm: Unity.RenderPipelines.Universal.Runtime}
       data:
-        m_DefaultSettingsVolumeProfile: {fileID: 11400000, guid: eda47df5b85f4f249abf7abd73db2cb2,
+        m_DefaultSettingsVolumeProfile: {fileID: 11400000, guid: b475013049630fa418ec8ae5d41f5ec2,
           type: 2}
     - rid: 1422496930083373389
       type: {class: UniversalRenderPipelineRuntimeTerrainShaders, ns: UnityEngine.Rendering.Universal,
