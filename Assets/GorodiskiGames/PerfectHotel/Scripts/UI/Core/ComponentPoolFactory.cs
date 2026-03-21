@@ -1,13 +1,16 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Game.UI.Pool
 {
     public class ComponentPoolFactory : MonoBehaviour, IComponentPoolFactory
     {
         [SerializeField]
-        private GameObject _prefab;
+        private List<GameObject> _prefabs = new List<GameObject>();
+        [SerializeField, HideInInspector, FormerlySerializedAs("_prefab")]
+        private GameObject _legacyPrefab;
         [SerializeField]
         private int _count;
         [SerializeField]
@@ -16,14 +19,16 @@ namespace Game.UI.Pool
         private Transform _poolStorage;
 
         private readonly HashSet<GameObject> _instances;
-        private Queue<GameObject> _pool;
+        private readonly Dictionary<GameObject, GameObject> _instancePrefabs;
+        private List<GameObject> _pool;
 
         public Transform Content { get { return _content; } }
 
         public ComponentPoolFactory()
         {
             _instances = new HashSet<GameObject>();
-            _pool = new Queue<GameObject>();
+            _instancePrefabs = new Dictionary<GameObject, GameObject>();
+            _pool = new List<GameObject>();
         }
 
         public int CountInstances
@@ -33,6 +38,8 @@ namespace Game.UI.Pool
 
         private void Awake()
         {
+            MigrateLegacyPrefabIfNeeded();
+
             if (_instances.Count > 0)
                 return;
 
@@ -43,6 +50,13 @@ namespace Game.UI.Pool
             ReleaseAllInstances();
         }
 
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            MigrateLegacyPrefabIfNeeded();
+        }
+#endif
+
         public T Get<T>() where T : Component
         {
             return Get<T>(_instances.Count);
@@ -51,18 +65,23 @@ namespace Game.UI.Pool
         public T Get<T>(int sublingIndex) where T : Component
         {
             bool isNewInstance = false;
-            if (_pool.Count == 0)
+            GameObject selectedPrefab = GetRandomPrefab<T>();
+            if (selectedPrefab == null)
             {
-                GameObject result = Instantiate(_prefab);
+                Debug.LogWarningFormat(this,
+                    "{0} on {1} has no prefabs configured for component {2}.",
+                    nameof(ComponentPoolFactory), name, typeof(T).Name);
+                return null;
+            }
 
-                if (null == result)
-                    return null;
-
-                _pool.Enqueue(result);
+            GameObject pooledObject;
+            if (!TryTakePooledObject(selectedPrefab, out pooledObject))
+            {
+                pooledObject = CreateInstance(selectedPrefab);
                 isNewInstance = true;
             }
 
-            T resultComponent = _pool.Dequeue().GetComponent<T>();
+            T resultComponent = pooledObject.GetComponent<T>();
             if (null == resultComponent)
             {
                 return resultComponent;
@@ -100,7 +119,7 @@ namespace Game.UI.Pool
                 {
                     go.transform.SetParent(_poolStorage, false);
                 }
-                _pool.Enqueue(go);
+                _pool.Add(go);
                 _instances.Remove(go);
             }
         }
@@ -114,14 +133,14 @@ namespace Game.UI.Pool
                 {
                     instance.transform.SetParent(_poolStorage, false);
                 }
-                _pool.Enqueue(instance);
+                _pool.Add(instance);
             }
             _instances.Clear();
         }
 
         public void PutInstancesToPool()
         {
-            _pool = new Queue<GameObject>(_instances.Union(_pool));
+            _pool = new List<GameObject>(_instances.Union(_pool));
             _instances.Clear();
         }
 
@@ -142,6 +161,103 @@ namespace Game.UI.Pool
                 GameObject.Destroy(gameObject);
             }
             _pool.Clear();
+        }
+
+        private GameObject CreateInstance(GameObject prefab)
+        {
+            GameObject instance = Instantiate(prefab);
+            _instancePrefabs[instance] = prefab;
+            return instance;
+        }
+
+        private GameObject GetRandomPrefab<T>() where T : Component
+        {
+            MigrateLegacyPrefabIfNeeded();
+
+            if (_prefabs == null || _prefabs.Count == 0)
+            {
+                return null;
+            }
+
+            int compatiblePrefabsCount = 0;
+            for (int i = 0; i < _prefabs.Count; i++)
+            {
+                GameObject prefab = _prefabs[i];
+                if (prefab != null && prefab.GetComponent<T>() != null)
+                {
+                    compatiblePrefabsCount++;
+                }
+            }
+
+            if (compatiblePrefabsCount == 0)
+            {
+                return null;
+            }
+
+            int randomIndex = Random.Range(0, compatiblePrefabsCount);
+
+            for (int i = 0; i < _prefabs.Count; i++)
+            {
+                GameObject prefab = _prefabs[i];
+                if (prefab == null || prefab.GetComponent<T>() == null)
+                {
+                    continue;
+                }
+
+                if (randomIndex == 0)
+                {
+                    return prefab;
+                }
+
+                randomIndex--;
+            }
+
+            return null;
+        }
+
+        private bool TryTakePooledObject(GameObject selectedPrefab, out GameObject pooledObject)
+        {
+            for (int i = 0; i < _pool.Count; i++)
+            {
+                GameObject current = _pool[i];
+                if (current == null)
+                {
+                    continue;
+                }
+
+                GameObject prefab;
+                if (!_instancePrefabs.TryGetValue(current, out prefab) || prefab != selectedPrefab)
+                {
+                    continue;
+                }
+
+                pooledObject = current;
+                _pool.RemoveAt(i);
+                return true;
+            }
+
+            pooledObject = null;
+            return false;
+        }
+
+        private void MigrateLegacyPrefabIfNeeded()
+        {
+            if (_legacyPrefab == null)
+            {
+                return;
+            }
+
+            if (_prefabs == null)
+            {
+                _prefabs = new List<GameObject>();
+            }
+
+            if (_prefabs.Contains(_legacyPrefab))
+            {
+                return;
+            }
+
+            _prefabs.Add(_legacyPrefab);
         }
     }
 }
