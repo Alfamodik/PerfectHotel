@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef1e27509f9c24e478028391969048a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 5489368978027399354, guid: 2a1fff648af664f9190d0ec44bfa73d3, type: 3}
+  _prefabs:
+  - {fileID: 5489368978027399354, guid: 2a1fff648af664f9190d0ec44bfa73d3, type: 3}
   _count: 0
   _content: {fileID: 7407489929671715120}
   _poolStorage: {fileID: 7407489929671715120}
@@ -156,7 +157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef1e27509f9c24e478028391969048a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 6833073072059080203, guid: 609a7f247f7b94f0783e1459561a8016, type: 3}
+  _prefabs:
+  - {fileID: 6833073072059080203, guid: 609a7f247f7b94f0783e1459561a8016, type: 3}
   _count: 0
   _content: {fileID: 8878474876557565600}
   _poolStorage: {fileID: 8878474876557565600}
@@ -204,7 +206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef1e27509f9c24e478028391969048a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 1242625416026599637, guid: 2414a305494624231ba23fc094fe7265, type: 3}
+  _prefabs:
+  - {fileID: 1242625416026599637, guid: 2414a305494624231ba23fc094fe7265, type: 3}
   _count: 0
   _content: {fileID: 9000197544567910475}
   _poolStorage: {fileID: 9000197544567910475}
@@ -252,7 +255,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef1e27509f9c24e478028391969048a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 5489368978027399354, guid: ccadbc44de5e4470692eceb0a1dbd2d5, type: 3}
+  _prefabs:
+  - {fileID: 5489368978027399354, guid: ccadbc44de5e4470692eceb0a1dbd2d5, type: 3}
   _count: 0
   _content: {fileID: 6901670419524166692}
   _poolStorage: {fileID: 6901670419524166692}
