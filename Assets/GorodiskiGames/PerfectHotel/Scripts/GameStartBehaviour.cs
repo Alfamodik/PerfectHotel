@@ -15,9 +15,9 @@ namespace Game
         {
             _timer = new Timer();
 
-            Application.targetFrameRate = 60;
-            QualitySettings.vSyncCount = 0;
-            Application.runInBackground = true;
+            //Application.targetFrameRate = 60;
+            //QualitySettings.vSyncCount = 0;
+            //Application.runInBackground = true;
 
             var context = new Context();
 
