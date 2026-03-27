@@ -23,7 +23,7 @@ namespace Game.UI.Hud
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            if (!_rectTransform || !_button.interactable)
+            if (!CanAnimate())
                 return;
 
             PlayScaleIn();
@@ -36,10 +36,18 @@ namespace Game.UI.Hud
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            if (!_rectTransform || !_button.interactable)
+            if (!CanAnimate())
                 return;
 
             PlayScaleOut();
+        }
+
+        private bool CanAnimate()
+        {
+            if (!_rectTransform)
+                return false;
+
+            return _button == null || _button.interactable;
         }
 
         public void PlayScaleIn()
