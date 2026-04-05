@@ -32,6 +32,7 @@ MonoBehaviour:
   _playerConfigs:
   - {fileID: 11400000, guid: 2baebe73fc38046f6bde8fb3bde109f4, type: 2}
   - {fileID: 11400000, guid: 9e359d74d40e0694b936f4caf70b5fc3, type: 2}
+  - {fileID: 11400000, guid: 2b1f18707f62e3941b3dbbf18aa0d144, type: 2}
   _attributeConfigs:
   - {fileID: 11400000, guid: ea74a7df73e2c4b27872f14abb376d9a, type: 2}
   - {fileID: 11400000, guid: 06c3da1f8aa0744f79042b45691f713e, type: 2}

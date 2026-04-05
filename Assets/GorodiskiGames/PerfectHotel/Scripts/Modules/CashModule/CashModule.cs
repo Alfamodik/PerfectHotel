@@ -171,9 +171,7 @@ namespace Game.Modules.CashModule
             _gameManager.Model.SavePlaceCash(cashPile.Model.ID, cashPile.Model.Cash);
             cashPile.Model.SetChanged();
 
-            _gameManager.Model.Cash += amount;
-            _gameManager.Model.Save();
-            _gameManager.Model.SetChanged();
+            _gameManager.Model.AddCash(amount);
         }
     }
 }

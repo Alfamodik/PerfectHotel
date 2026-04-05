@@ -9,6 +9,8 @@ public sealed class RealTime : MonoBehaviour
     private const string LastSessionUniversalDateTime = nameof(LastSessionUniversalDateTime);
     private const string LogPrefix = "<b><color=#00D1FF>[RealTime]</color></b>";
 
+    public event Action<TimeSpan> AbsenceTimeCalculated;
+
     private DateTime serverUniversalDateTimeAtSync;
     private float realtimeSinceStartupAtSync;
     private bool isTimeSynchronized;
@@ -18,6 +20,11 @@ public sealed class RealTime : MonoBehaviour
         Debug.Log($"{LogPrefix} Start synchronization");
         StartCoroutine(SynchronizeTime());
         StartCoroutine(SaveTimePeriodically());
+    }
+
+    public void SaveAfterImportantEvent()
+    {
+        SaveCurrentUniversalDateTime("Important event");
     }
 
     private IEnumerator SynchronizeTime()
@@ -54,7 +61,9 @@ public sealed class RealTime : MonoBehaviour
             if (isParsed)
             {
                 TimeSpan absenceTime = currentUniversalDateTime - lastSessionUniversalDateTime;
+
                 Debug.Log($"{LogPrefix} <color=#9BE564>Time of absence:</color> <b>{absenceTime}</b>");
+                AbsenceTimeCalculated?.Invoke(absenceTime);
             }
         }
 
@@ -73,11 +82,6 @@ public sealed class RealTime : MonoBehaviour
             yield return new WaitForSeconds(10f);
             SaveCurrentUniversalDateTime("Periodic save");
         }
-    }
-
-    public void SaveAfterImportantEvent()
-    {
-        SaveCurrentUniversalDateTime("Important event");
     }
 
     private DateTime GetCurrentUniversalDateTime()

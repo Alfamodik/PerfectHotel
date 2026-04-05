@@ -37,6 +37,7 @@ namespace Game.Domain
 
         public int Player;
         public long Cash;
+        public long TotalEarnedCash;
         public int Hotel;
         public bool IsNoAds;
         public List<InventoryType> InventoryTypes;
@@ -50,9 +51,22 @@ namespace Game.Domain
         private void Prepare(GameConfig config)
         {
             Cash = config.DefaultCash;
+            TotalEarnedCash = 0;
             Hotel = config.DefaultHotel;
             IsNoAds = false;
             JoystickVisibility = false;
+        }
+
+        public void AddCash(long amount)
+        {
+            if (amount <= 0)
+                return;
+
+            Cash += amount;
+            TotalEarnedCash += amount;
+
+            Save();
+            SetChanged();
         }
 
         public void Save()

@@ -1192,8 +1192,9 @@ GameObject:
   m_Component:
   - component: {fileID: 608625561}
   - component: {fileID: 608625560}
+  - component: {fileID: 608625562}
   m_Layer: 0
-  m_Name: RewardForOffline
+  m_Name: OfflineReward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1226,6 +1227,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &608625562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608625559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91e1aa532efe8d14184a153c609cfb0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RewardForOffline
+  _realTime: {fileID: 608625560}
 --- !u!1001 &706225597
 PrefabInstance:
   m_ObjectHideFlags: 0
