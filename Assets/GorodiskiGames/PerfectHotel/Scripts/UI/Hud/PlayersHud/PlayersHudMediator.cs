@@ -25,11 +25,13 @@ namespace Game.UI.Hud
         private Vector3 _positionCached;
 
         private readonly List<PlayerSlotView> _slots;
+        private readonly Dictionary<int, PlayerSlotView> _slotMap;
         private readonly Dictionary<int, PlayerModel> _models;
 
         public PlayersHudMediator()
         {
             _slots = new List<PlayerSlotView>();
+            _slotMap = new Dictionary<int, PlayerSlotView>();
             _models = new Dictionary<int, PlayerModel>();
         }
 
@@ -83,6 +85,7 @@ namespace Game.UI.Hud
                 slot.Model = model;
 
                 _slots.Add(slot);
+                _slotMap[index] = slot;
                 _models.Add(index, model);
 
                 slot.ON_CLICK += OnSlotClick;
@@ -109,6 +112,8 @@ namespace Game.UI.Hud
 
             _view.CloseButton.onClick.RemoveListener(OnCloseButtonClick);
             _view.SelectButton.onClick.RemoveListener(OnSelectButtonClick);
+            _view.WatchAdvButton.onClick.RemoveListener(OnWatchAdvButton);
+            _adsManager.ON_REWARDED_WATCHED -= OnRewardedWatched;
 
             foreach (var slot in _slots.ToList())
             {
@@ -117,6 +122,7 @@ namespace Game.UI.Hud
                 GameObject.Destroy(slot.gameObject);
             }
             _slots.Clear();
+            _slotMap.Clear();
             _models.Clear();
         }
 
@@ -174,10 +180,24 @@ namespace Game.UI.Hud
         private void OnRewardedWatched()
         {
             _adsManager.ON_REWARDED_WATCHED -= OnRewardedWatched;
-            
-            
-            
-            OnSelectButtonClick();
+
+            var current = _gameManager.Player.Model.Index;
+            var config = _config.PlayersMap[current];
+            var newModel = new PlayerModel(config, _config, _gameManager);
+
+            _models[current] = newModel;
+
+            var slot = _slotMap.ContainsKey(current) ? _slotMap[current] : null;
+            if (slot != null)
+                slot.Model = newModel;
+
+            _view.Model = newModel;
+            _gameManager.Player.SetModel(newModel);
+
+            OnSlotClick(newModel);
+
+            if (newModel.UnlockModel.IsUnlocked)
+                OnSelectButtonClick();
         }
 
         private void OnCloseButtonClick()

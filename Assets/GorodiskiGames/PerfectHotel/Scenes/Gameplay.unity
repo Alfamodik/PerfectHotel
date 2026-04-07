@@ -1784,6 +1784,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab2b36d103a64acb82c714f78064130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &807458742 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 64477551646863883, guid: 9744e6c84669647fe9889ece783a651b,
+    type: 3}
+  m_PrefabInstance: {fileID: 178699776}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &867723826
 GameObject:
   m_ObjectHideFlags: 0
@@ -1861,6 +1873,11 @@ PrefabInstance:
       propertyPath: m_Spacing.y
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 1301980051326212633, guid: 24892083b3f044edf981387b2adf27cf,
+        type: 3}
+      propertyPath: _watchAdvButton
+      value: 
+      objectReference: {fileID: 807458742}
     - target: {fileID: 1303625524783353603, guid: 24892083b3f044edf981387b2adf27cf,
         type: 3}
       propertyPath: m_IsActive
@@ -1999,7 +2016,7 @@ PrefabInstance:
     - target: {fileID: 5972397847853837732, guid: 24892083b3f044edf981387b2adf27cf,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7540901554568352072, guid: 24892083b3f044edf981387b2adf27cf,
         type: 3}
