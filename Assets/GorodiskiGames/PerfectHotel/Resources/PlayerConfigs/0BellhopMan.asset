@@ -15,7 +15,7 @@ MonoBehaviour:
   Index: 0
   Sex: 0
   LabelKey: TED
-  Icon: {fileID: 21300000, guid: db76424a56b454b35ab1d1bb95aec231, type: 3}
+  Icon: {fileID: 21300000, guid: 5270feb89e091224096488c9a0af7356, type: 3}
   Prefab: {fileID: 1898297588147257356, guid: 92a005f4a3274a5488a69784c16db325, type: 3}
   Infos: []
   UnlockConditionConfig: {fileID: 11400000, guid: 0f48b33c6dfbf442b83368e729cb8ffd,
