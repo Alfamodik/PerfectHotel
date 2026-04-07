@@ -3,6 +3,7 @@ using Game.Config;
 using Game.Core;
 using Injection;
 using Utilities;
+using YG;
 
 
 
@@ -56,6 +57,11 @@ namespace Game.Managers
             else
                 _adsProxy = new FakeAdsProxy(_timer);
 
+            YG2.onOpenInterAdv += OnInterstitialShow;
+            YG2.onCloseInterAdv += OnInterstitialWatched;
+
+            YG2.onCloseRewardedAdv += OnRewardedWatched;
+
             _adsProxy.ON_REWARDED_WATCHED += OnRewardedWatched;
 
             _adsProxy.ON_INTERSTITIAL_WATCHED += OnInterstitialWatched;
@@ -92,30 +98,36 @@ namespace Game.Managers
             if (_isNoAds)
                 return;
 
-            try
+            if (YG2.isTimerAdvCompleted)
+                YG2.InterstitialAdvShow();
+
+            /*try
             {
                 _adsProxy.ShowInterstitial();
             }
             catch (Exception exception)
             {
                 Log.Exception(exception);
-            }
+            }*/
         }
 
         public void ShowRewarded()
         {
-            try
+            YG2.RewardedAdvShow("");
+            /*try
             {
                 _adsProxy.ShowRewarded();
             }
             catch (Exception exception)
             {
                 Log.Exception(exception);
-            }
+            }*/
         }
 
         public void ShowBanner()
         {
+            return;
+
             if (_isNoAds)
                 return;
 
@@ -131,6 +143,8 @@ namespace Game.Managers
 
         public void HideBanner()
         {
+            return;
+
             try
             {
                 _adsProxy.HideBanner();
