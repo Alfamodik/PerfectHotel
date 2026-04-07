@@ -12,6 +12,7 @@ namespace Game.UI.Hud
         [SerializeField] private ScrollView _playersScroll;
         [SerializeField] private ScrollView _attributesScroll;
         [SerializeField] private Button _selectButton;
+        [SerializeField] private Button _watchAdvButton;
         [SerializeField] private GameObject _messageHolder;
         [SerializeField] private TMP_Text _messageText;
 
@@ -20,6 +21,7 @@ namespace Game.UI.Hud
         public ScrollView PlayersScroll => _playersScroll;
         public ScrollView AttributesScroll => _attributesScroll;
         public Button SelectButton => _selectButton;
+        public Button WatchAdvButton => _watchAdvButton;
 
         protected override void OnEnable()
         {

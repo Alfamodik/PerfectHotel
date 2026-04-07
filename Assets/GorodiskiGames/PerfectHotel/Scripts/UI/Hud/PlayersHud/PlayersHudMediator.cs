@@ -19,6 +19,7 @@ namespace Game.UI.Hud
         [Inject] private GameConfig _config;
         [Inject] private ResourcesManager _resourcesManager;
         [Inject] private HudManager _hudManager;
+        [Inject] private AdsManager _adsManager;
 
         private RawCameraView _rawCameraView;
         private Vector3 _positionCached;
@@ -92,6 +93,7 @@ namespace Game.UI.Hud
 
             _view.CloseButton.onClick.AddListener(OnCloseButtonClick);
             _view.SelectButton.onClick.AddListener(OnSelectButtonClick);
+            _view.WatchAdvButton.onClick.AddListener(OnWatchAdvButton);
         }
 
         protected override void Hide()
@@ -139,6 +141,7 @@ namespace Game.UI.Hud
             var isUnlocked = _gameManager.Player.Model.UnlockModel.IsUnlocked;
 
             _view.SelectButton.gameObject.SetActive(isClickedOther && isUnlocked);
+            _view.WatchAdvButton.gameObject.SetActive(isClickedOther && !isUnlocked);
         }
 
         private void OnSelectButtonClick()
@@ -160,6 +163,21 @@ namespace Game.UI.Hud
                     model.SetChanged();
                 }
             }
+        }
+
+        private void OnWatchAdvButton()
+        {
+            _adsManager.ON_REWARDED_WATCHED += OnRewardedWatched;
+            _adsManager.ShowRewarded();
+        }
+
+        private void OnRewardedWatched()
+        {
+            _adsManager.ON_REWARDED_WATCHED -= OnRewardedWatched;
+            
+            
+            
+            OnSelectButtonClick();
         }
 
         private void OnCloseButtonClick()

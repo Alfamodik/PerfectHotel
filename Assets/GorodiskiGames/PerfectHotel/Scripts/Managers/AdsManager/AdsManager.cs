@@ -113,7 +113,7 @@ namespace Game.Managers
 
         public void ShowRewarded()
         {
-            YG2.RewardedAdvShow("");
+            YG2.RewardedAdvShow("UniversalRewarded");
             /*try
             {
                 _adsProxy.ShowRewarded();

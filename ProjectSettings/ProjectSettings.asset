@@ -854,26 +854,26 @@ PlayerSettings:
   webWasm2023: 0
   webEnableSubmoduleStrippingCompatibility: 0
   scriptingDefineSymbols:
-    Android: gameanalytics_admob_enabled;DOTWEEN;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;NJSON_YG2;RU_YG2;InterstitialAdv_yg;RewardedAdv_yg;EnvirData_yg;Storage_yg;Leaderboards_yg;Localization_yg;AutoTranslateLangs_yg;Payments_yg;Fullscreen_yg
+    Android: gameanalytics_admob_enabled;DOTWEEN;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;NJSON_YG2;RU_YG2;InterstitialAdv_yg;RewardedAdv_yg;EnvirData_yg;Storage_yg;Leaderboards_yg;Localization_yg;AutoTranslateLangs_yg;Payments_yg;Fullscreen_yg;Authorization_yg;ServerTime_yg
     Bratwurst: DOTWEEN
     EmbeddedLinux: DOTWEEN
     GameCoreScarlett: DOTWEEN
     GameCoreXboxOne: DOTWEEN
     Kepler: DOTWEEN
-    LinuxHeadlessSimulation: DOTWEEN;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;NJSON_YG2;RU_YG2;InterstitialAdv_yg;RewardedAdv_yg;EnvirData_yg;Storage_yg;Leaderboards_yg;Localization_yg;AutoTranslateLangs_yg;Payments_yg;Fullscreen_yg
-    Nintendo Switch: DOTWEEN;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;NJSON_YG2;RU_YG2;InterstitialAdv_yg;RewardedAdv_yg;EnvirData_yg;Storage_yg;Leaderboards_yg;Localization_yg;AutoTranslateLangs_yg;Payments_yg;Fullscreen_yg
+    LinuxHeadlessSimulation: DOTWEEN;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;NJSON_YG2;RU_YG2;InterstitialAdv_yg;RewardedAdv_yg;EnvirData_yg;Storage_yg;Leaderboards_yg;Localization_yg;AutoTranslateLangs_yg;Payments_yg;Fullscreen_yg;Authorization_yg;ServerTime_yg
+    Nintendo Switch: DOTWEEN;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;NJSON_YG2;RU_YG2;InterstitialAdv_yg;RewardedAdv_yg;EnvirData_yg;Storage_yg;Leaderboards_yg;Localization_yg;AutoTranslateLangs_yg;Payments_yg;Fullscreen_yg;Authorization_yg;ServerTime_yg
     Nintendo Switch 2: DOTWEEN
-    PS4: DOTWEEN;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;NJSON_YG2;RU_YG2;InterstitialAdv_yg;RewardedAdv_yg;EnvirData_yg;Storage_yg;Leaderboards_yg;Localization_yg;AutoTranslateLangs_yg;Payments_yg;Fullscreen_yg
-    PS5: DOTWEEN;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;NJSON_YG2;RU_YG2;InterstitialAdv_yg;RewardedAdv_yg;EnvirData_yg;Storage_yg;Leaderboards_yg;Localization_yg;AutoTranslateLangs_yg;Payments_yg;Fullscreen_yg
+    PS4: DOTWEEN;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;NJSON_YG2;RU_YG2;InterstitialAdv_yg;RewardedAdv_yg;EnvirData_yg;Storage_yg;Leaderboards_yg;Localization_yg;AutoTranslateLangs_yg;Payments_yg;Fullscreen_yg;Authorization_yg;ServerTime_yg
+    PS5: DOTWEEN;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;NJSON_YG2;RU_YG2;InterstitialAdv_yg;RewardedAdv_yg;EnvirData_yg;Storage_yg;Leaderboards_yg;Localization_yg;AutoTranslateLangs_yg;Payments_yg;Fullscreen_yg;Authorization_yg;ServerTime_yg
     QNX: DOTWEEN
     Stadia: DOTWEEN
-    Standalone: DOTWEEN;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;NJSON_YG2;RU_YG2;InterstitialAdv_yg;RewardedAdv_yg;EnvirData_yg;Storage_yg;Leaderboards_yg;Localization_yg;AutoTranslateLangs_yg;Payments_yg;Fullscreen_yg
+    Standalone: DOTWEEN;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;NJSON_YG2;RU_YG2;InterstitialAdv_yg;RewardedAdv_yg;EnvirData_yg;Storage_yg;Leaderboards_yg;Localization_yg;AutoTranslateLangs_yg;Payments_yg;Fullscreen_yg;Authorization_yg;ServerTime_yg
     VisionOS: DOTWEEN
-    WebGL: DOTWEEN;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;NJSON_YG2;RU_YG2;InterstitialAdv_yg;RewardedAdv_yg;EnvirData_yg;Storage_yg;Leaderboards_yg;Localization_yg;AutoTranslateLangs_yg;Payments_yg;Fullscreen_yg
-    Windows Store Apps: DOTWEEN;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;NJSON_YG2;RU_YG2;InterstitialAdv_yg;RewardedAdv_yg;EnvirData_yg;Storage_yg;Leaderboards_yg;Localization_yg;AutoTranslateLangs_yg;Payments_yg;Fullscreen_yg
-    XboxOne: DOTWEEN;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;NJSON_YG2;RU_YG2;InterstitialAdv_yg;RewardedAdv_yg;EnvirData_yg;Storage_yg;Leaderboards_yg;Localization_yg;AutoTranslateLangs_yg;Payments_yg;Fullscreen_yg
-    iPhone: gameanalytics_admob_enabled;DOTWEEN;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;NJSON_YG2;RU_YG2;InterstitialAdv_yg;RewardedAdv_yg;EnvirData_yg;Storage_yg;Leaderboards_yg;Localization_yg;AutoTranslateLangs_yg;Payments_yg;Fullscreen_yg
-    tvOS: DOTWEEN;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;NJSON_YG2;RU_YG2;InterstitialAdv_yg;RewardedAdv_yg;EnvirData_yg;Storage_yg;Leaderboards_yg;Localization_yg;AutoTranslateLangs_yg;Payments_yg;Fullscreen_yg
+    WebGL: DOTWEEN;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;NJSON_YG2;RU_YG2;InterstitialAdv_yg;RewardedAdv_yg;EnvirData_yg;Storage_yg;Leaderboards_yg;Localization_yg;AutoTranslateLangs_yg;Payments_yg;Fullscreen_yg;Authorization_yg;ServerTime_yg
+    Windows Store Apps: DOTWEEN;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;NJSON_YG2;RU_YG2;InterstitialAdv_yg;RewardedAdv_yg;EnvirData_yg;Storage_yg;Leaderboards_yg;Localization_yg;AutoTranslateLangs_yg;Payments_yg;Fullscreen_yg;Authorization_yg;ServerTime_yg
+    XboxOne: DOTWEEN;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;NJSON_YG2;RU_YG2;InterstitialAdv_yg;RewardedAdv_yg;EnvirData_yg;Storage_yg;Leaderboards_yg;Localization_yg;AutoTranslateLangs_yg;Payments_yg;Fullscreen_yg;Authorization_yg;ServerTime_yg
+    iPhone: gameanalytics_admob_enabled;DOTWEEN;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;NJSON_YG2;RU_YG2;InterstitialAdv_yg;RewardedAdv_yg;EnvirData_yg;Storage_yg;Leaderboards_yg;Localization_yg;AutoTranslateLangs_yg;Payments_yg;Fullscreen_yg;Authorization_yg;ServerTime_yg
+    tvOS: DOTWEEN;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;NJSON_YG2;RU_YG2;InterstitialAdv_yg;RewardedAdv_yg;EnvirData_yg;Storage_yg;Leaderboards_yg;Localization_yg;AutoTranslateLangs_yg;Payments_yg;Fullscreen_yg;Authorization_yg;ServerTime_yg
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
