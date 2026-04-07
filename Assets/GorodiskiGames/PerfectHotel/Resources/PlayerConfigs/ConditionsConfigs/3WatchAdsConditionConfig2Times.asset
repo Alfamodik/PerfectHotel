@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 356c4697f63ab450aa7cbde9c81dac62, type: 3}
-  m_Name: 3WatchAdsConditionConfig
+  m_Name: 3WatchAdsConditionConfig2Times
   m_EditorClassIdentifier: 
   Type: 3
-  WatchAdsTimes: 30
+  WatchAdsTimes: 2

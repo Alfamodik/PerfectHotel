@@ -106,7 +106,7 @@ namespace Game.Level.Player
                 var conditionConfig = config as WatchAdsConditionConfig;
                 var watchAdsTimes = conditionConfig.WatchAdsTimes;
                 var targetTimes = LoadTargetValue(playerIndex, GameConstants.kTargetWatchAdsTimes, watchAdsTimes);
-                var times = gameManager.Model.LoadWatchAdsTimes();
+                var times = gameManager.Model.LoadWatchAdsTimes(playerIndex);
                 var timesLeft = targetTimes - times;
 
                 Color targetTimesLabelColor;

@@ -222,6 +222,19 @@ namespace Game.Domain
             return PlayerPrefs.GetInt(GameConstants.kWatchAdsTimes, 0);
         }
 
+        public void SaveWatchAdsTimes(int playerIndex)
+        {
+            var times = LoadWatchAdsTimes(playerIndex);
+            times++;
+            PlayerPrefs.SetInt(GameConstants.kWatchAdsTimes + playerIndex, times);
+            PlayerPrefs.Save();
+        }
+
+        public int LoadWatchAdsTimes(int playerIndex)
+        {
+            return PlayerPrefs.GetInt(GameConstants.kWatchAdsTimes + playerIndex, 0);
+        }
+
         public int LoadLoginDays()
         {
             return PlayerPrefs.GetInt(GameConstants.kLoginDays, 1);

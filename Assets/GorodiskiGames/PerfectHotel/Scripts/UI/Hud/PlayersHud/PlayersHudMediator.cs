@@ -182,6 +182,7 @@ namespace Game.UI.Hud
             _adsManager.ON_REWARDED_WATCHED -= OnRewardedWatched;
 
             var current = _gameManager.Player.Model.Index;
+            _gameManager.Model.SaveWatchAdsTimes(current);
             var config = _config.PlayersMap[current];
             var newModel = new PlayerModel(config, _config, _gameManager);
 
