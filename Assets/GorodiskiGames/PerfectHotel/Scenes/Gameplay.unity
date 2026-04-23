@@ -2757,8 +2757,8 @@ MonoBehaviour:
     PlayOnAwake: 0
     DontDestroyOnLoad: 0
     AudioType: 0
-    Clip: {fileID: 8300000, guid: 7b0fd9fbc4473ee459be18edd9f6fa44, type: 3}
-    Volume: 0.5
+    Clip: {fileID: 8300000, guid: 7410ba631b68ac64b980f26e8c0e1842, type: 3}
+    Volume: 1
     AlreadyPlaying: 0
     Source: {fileID: 0}
 --- !u!4 &1844739823

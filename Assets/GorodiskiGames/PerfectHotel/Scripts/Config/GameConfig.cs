@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using Game.Managers;
 using UnityEngine;
 
@@ -29,6 +30,9 @@ namespace Game.Config
         [Min(1)] public int PlayerInventoriesMax = 3;
         public float ElevatorItemRadius = 1f;
         public float EntityRadius = 3f;
+
+        [Header("Cash Fly Animation")]
+        public CashFlyToPlayerAnimationConfig CashFlyToPlayerAnimation = new CashFlyToPlayerAnimationConfig();
 
         [Header("Units")]
         public float CustomerRotationSpeed = 10f;
@@ -98,5 +102,17 @@ namespace Game.Config
         [Min(1)] public int SceneIndex;
         public Sprite Icon;
         public string Label;
+    }
+
+    [Serializable]
+    public sealed class CashFlyToPlayerAnimationConfig
+    {
+        [Min(0f)] public float BackMoveDistance = 0.3f;
+        [Min(0f)] public float BackMoveDuration = 0.08f;
+        [Min(0f)] public float FlyDuration = 0.32f;
+        [Min(0f)] public float ArcHeight = 0f;
+        public float ArcHorizontal = 1f;
+        public Ease BackMoveEase = Ease.OutSine;
+        public Ease FlyEase = Ease.InCubic;
     }
 }
