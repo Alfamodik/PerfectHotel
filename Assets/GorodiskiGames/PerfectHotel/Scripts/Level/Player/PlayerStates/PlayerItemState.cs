@@ -24,20 +24,14 @@ namespace Game.Level.Player
             _gameManager.RemoveItem(_item);
 
             _timer.TICK += OnTick;
-
-            SFXProvider.PlayOnce("broom-sweeping");
         }
 
         public override void Dispose()
         {
-            SFXProvider.Stop("broom-sweeping");
-            
             _timer.TICK -= OnTick;
 
             if (_item.Model.Duration > 0f)
                 _gameManager.AddItem(_item);
-
-            SFXProvider.Stop("broom-sweeping");
         }
 
         private void OnTick()
@@ -45,7 +39,6 @@ namespace Game.Level.Player
             if (_gameView.Joystick.HasInput)
             {
                 _player.SwitchToState(new PlayerWalkState());
-                SFXProvider.Stop("broom-sweeping");
             }
 
             PlayerOnItem();
@@ -64,7 +57,6 @@ namespace Game.Level.Player
         {
             _item.FireItemFinished();
             _player.SwitchToState(new PlayerIdleState());
-            SFXProvider.Stop("broom-sweeping");
         }
     }
 }

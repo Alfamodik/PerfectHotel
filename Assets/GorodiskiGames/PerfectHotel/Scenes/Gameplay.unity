@@ -2748,7 +2748,16 @@ MonoBehaviour:
     PlayOnAwake: 0
     DontDestroyOnLoad: 0
     AudioType: 0
-    Clip: {fileID: 8300000, guid: cc0223fe9ff63354da80b1dd5ef89c06, type: 3}
+    Clip: {fileID: 8300000, guid: 064a4805d5e05af4189a5e36da45c1ac, type: 3}
+    Volume: 0.5
+    AlreadyPlaying: 0
+    Source: {fileID: 0}
+  - Name: take-sound
+    Loop: 1
+    PlayOnAwake: 0
+    DontDestroyOnLoad: 0
+    AudioType: 0
+    Clip: {fileID: 8300000, guid: 7b0fd9fbc4473ee459be18edd9f6fa44, type: 3}
     Volume: 0.5
     AlreadyPlaying: 0
     Source: {fileID: 0}
