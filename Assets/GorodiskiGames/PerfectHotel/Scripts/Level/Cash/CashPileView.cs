@@ -9,7 +9,7 @@ namespace Game.Level.Cash
 {
     public sealed class CashPileView : BehaviourWithModel<EntityModel>
     {
-        private const int _dollarsPerPack = 2;
+        public const int DollarsPerPack = 2;
 
         private const float _packSizeX = 0.41f;
         private const float _packSizeY = 0.26f;
@@ -46,7 +46,7 @@ namespace Game.Level.Cash
 
             _cash = newCash;
 
-            float packsShouldBeFloat = (float)_cash / _dollarsPerPack;
+            float packsShouldBeFloat = (float)_cash / DollarsPerPack;
             int packsShouldBe = (int)packsShouldBeFloat;
 
             if (packsShouldBe > _packsPerPile)
@@ -81,6 +81,15 @@ namespace Game.Level.Cash
         public Vector3 GetPackPosition(int index)
         {
             return _packPositions[index];
+        }
+
+        public bool TryFlyCashToPlayer()
+        {
+            if (_cashes.Count <= 0)
+                return false;
+
+            CASH_FLY_TO_PLAYER.SafeInvoke(this, _cashes.Count - 1);
+            return true;
         }
 
         public Vector3 GeneratePackPosition(int packs)

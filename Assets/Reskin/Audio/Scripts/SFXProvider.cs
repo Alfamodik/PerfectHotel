@@ -76,6 +76,7 @@ public class SFXProvider : MonoBehaviour
             InitializeSound(sound);
         }
 
+        sound.AlreadyPlaying = true;
         sound.Source.Stop();
         sound.Source.Play();
     }
@@ -99,6 +100,7 @@ public class SFXProvider : MonoBehaviour
             InitializeSound(sound);
         }
 
+        sound.AlreadyPlaying = true;
         sound.Source.Stop();
         sound.Source.Play();
     }

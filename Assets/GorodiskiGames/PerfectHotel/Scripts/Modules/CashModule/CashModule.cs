@@ -16,6 +16,8 @@ namespace Game.Modules.CashModule
         private const float _heightAbovePlayer = 1.5f;
         private const float _cashFlyToRemoveRate = 0.1f;
         private const float _checkPlayerOnItemRate = 0.1f;
+        private const string _takeSoundName = "take-sound";
+        private const float _takeSoundStopDelay = 0.2f;
 
         [Inject] private GameManager _gameManager;
         [Inject] private Context _context;
@@ -25,16 +27,20 @@ namespace Game.Modules.CashModule
 
         private readonly Dictionary<CashPileView, CashPileController> _cashPilesMap;
         private readonly Dictionary<ItemController, CashPileView> _itemsMap;
+        private readonly HashSet<CashController> _takeSoundCashes;
         private List<CashController> _tempCashes;
 
         private float _cashFlyToRemoveTimer;
         private float _checkPlayerOnItemTime;
         private float _cashPileRadius;
+        private float _takeSoundLastActivityTime;
+        private bool _takeSoundPlaying;
 
         public CashModule(CashModuleView view) : base(view)
         {
             _cashPilesMap = new Dictionary<CashPileView, CashPileController>();
             _itemsMap = new Dictionary<ItemController, CashPileView>();
+            _takeSoundCashes = new HashSet<CashController>();
             _tempCashes = new List<CashController>();
         }
 
@@ -82,6 +88,8 @@ namespace Game.Modules.CashModule
                 cash.Dispose();
             }
             _tempCashes.Clear();
+            _takeSoundCashes.Clear();
+            StopTakeSound();
 
             _view.ReleaseAllInstances();
         }
@@ -101,6 +109,8 @@ namespace Game.Modules.CashModule
                     }
                 }
             }
+
+            TryStopTakeSound();
         }
 
         private void AddCashPile(CashPileView view, ItemController itemCashPile, EntityModel model)
@@ -137,6 +147,7 @@ namespace Game.Modules.CashModule
             cash.FlyToPlayer();
             cashPileView.Cashes.Remove(cash);
             _tempCashes.Add(cash);
+            RegisterTakeSoundCash(cash);
         }
 
         private void CashFlyToRemove(Vector3 endPosition)
@@ -149,11 +160,13 @@ namespace Game.Modules.CashModule
             CashController cash = Cash(_gameManager.Player.View.transform.position + (Vector3.up * _heightAbovePlayer));
             cash.FlyToRemove(endPosition);
             cash.REMOVE_CASH += OnRemoveCash;
+            RegisterTakeSoundCash(cash);
         }
 
         private void OnRemoveCash(CashController cash)
         {
             cash.REMOVE_CASH -= OnRemoveCash;
+            _takeSoundCashes.Remove(cash);
             _view.Release(cash.View);
             cash.Dispose();
             _tempCashes.Remove(cash);
@@ -166,12 +179,58 @@ namespace Game.Modules.CashModule
 
             if (cashPile.Model.Cash <= 0) return;
 
-            var amount = cashPile.Model.Cash;
+            cashPileView.TryFlyCashToPlayer();
+
+            var amount = cashPile.Model.Cash < CashPileView.DollarsPerPack
+                ? cashPile.Model.Cash
+                : CashPileView.DollarsPerPack;
+
             cashPile.Model.Cash -= amount;
             _gameManager.Model.SavePlaceCash(cashPile.Model.ID, cashPile.Model.Cash);
             cashPile.Model.SetChanged();
 
             _gameManager.Model.AddCash(amount);
+            StartTakeSound();
+        }
+
+        private void RegisterTakeSoundCash(CashController cash)
+        {
+            _takeSoundCashes.Add(cash);
+            StartTakeSound();
+        }
+
+        private void StartTakeSound()
+        {
+            _takeSoundLastActivityTime = Time.time;
+
+            if (_takeSoundPlaying)
+                return;
+
+            _takeSoundPlaying = true;
+            SFXProvider.PlayOnce(_takeSoundName);
+        }
+
+        private void TryStopTakeSound()
+        {
+            if (!_takeSoundPlaying)
+                return;
+
+            if (_takeSoundCashes.Count > 0)
+                return;
+
+            if (Time.time - _takeSoundLastActivityTime < _takeSoundStopDelay)
+                return;
+
+            StopTakeSound();
+        }
+
+        private void StopTakeSound()
+        {
+            if (!_takeSoundPlaying)
+                return;
+
+            _takeSoundPlaying = false;
+            SFXProvider.Stop(_takeSoundName);
         }
     }
 }
