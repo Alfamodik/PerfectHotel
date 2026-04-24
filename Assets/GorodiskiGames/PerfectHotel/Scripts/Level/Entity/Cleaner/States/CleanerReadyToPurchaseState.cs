@@ -51,6 +51,8 @@ namespace Game.Level.Cleaner
             _cleaner.Model.IsPurchased = _gameManager.Model.LoadPlaceIsPurchased(_cleaner.Model.ID);
             _cleaner.Model.SetChanged();
 
+            SFXProvider.Play("upgrade");
+
             _cleaner.UnitView.PlayUnitParticles();
 
             _gameView.CameraController.SetTarget(_cleaner.UnitView.transform);

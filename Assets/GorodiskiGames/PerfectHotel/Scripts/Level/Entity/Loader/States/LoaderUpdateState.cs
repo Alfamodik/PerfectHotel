@@ -55,6 +55,8 @@ namespace Game.Level.Loader.LoaderStates
                 _gameManager.Model.SavePlaceLvl(_loader.Model.ID, _loader.Model.Lvl);
                 _loader.Model.UpdateModel();
 
+                SFXProvider.Play("upgrade");
+
                 CheckIsUpdatable(_gameManager.Model.LoadProgress());
 
                 _loader.UnitView.PlayUnitParticles();

@@ -1457,7 +1457,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &608625560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2758,7 +2758,16 @@ MonoBehaviour:
     DontDestroyOnLoad: 0
     AudioType: 0
     Clip: {fileID: 8300000, guid: cbce1fd1f6c6a6440beccc75183e7f74, type: 3}
-    Volume: 0.4
+    Volume: 0.6
+    AlreadyPlaying: 0
+    Source: {fileID: 0}
+  - Name: upgrade
+    Loop: 0
+    PlayOnAwake: 0
+    DontDestroyOnLoad: 0
+    AudioType: 0
+    Clip: {fileID: 8300000, guid: 6d8ccfd35fc4666459347b124bc1f9e2, type: 3}
+    Volume: 0.5
     AlreadyPlaying: 0
     Source: {fileID: 0}
 --- !u!4 &1844739823

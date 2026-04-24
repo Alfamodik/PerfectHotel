@@ -73,6 +73,8 @@ namespace Game.Level.Elevator
             _elevator.Model.IsPurchased = _gameManager.Model.LoadPlaceIsPurchased(_elevator.Model.ID);
             _elevator.Model.SetChanged();
 
+            SFXProvider.Play("upgrade");
+
             _gameManager.FireElevatorPurchased();
 
             _elevator.SwitchToState(new ElevatorPurchasedState());

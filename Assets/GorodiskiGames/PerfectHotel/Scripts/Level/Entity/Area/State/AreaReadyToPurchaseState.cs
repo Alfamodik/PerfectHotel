@@ -58,6 +58,8 @@ namespace Game.Level.Area
             _area.Model.IsPurchased = _gameManager.Model.LoadPlaceIsPurchased(_area.Model.ID);
             _area.Model.SetChanged();
 
+            SFXProvider.Play("upgrade");
+
             _gameManager.FireAreaPurchased(_area);
 
             _area.SwitchToState(new AreaPurchasedState());

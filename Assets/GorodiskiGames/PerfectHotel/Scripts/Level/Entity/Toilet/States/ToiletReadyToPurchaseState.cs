@@ -64,6 +64,8 @@ namespace Game.Level.Toilet
             _toilet.Model.IsPurchased = _gameManager.Model.LoadPlaceIsPurchased(_toilet.Model.ID);
             _toilet.Model.SetChanged();
 
+            SFXProvider.Play("upgrade");
+
             _gameView.CameraController.SetTarget(_toilet.View.transform);
             _gameView.CameraController.ZoomIn(true);
 

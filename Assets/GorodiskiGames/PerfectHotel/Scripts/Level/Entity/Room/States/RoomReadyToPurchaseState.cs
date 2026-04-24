@@ -65,6 +65,8 @@ namespace Game.Level.Room
             _room.Model.IsPurchased = _gameManager.Model.LoadPlaceIsPurchased(_room.Model.ID);
             _room.Model.SetChanged();
 
+            SFXProvider.Play("upgrade");
+
             _gameView.CameraController.SetTarget(_room.View.transform);
             _gameView.CameraController.ZoomIn(true);
 

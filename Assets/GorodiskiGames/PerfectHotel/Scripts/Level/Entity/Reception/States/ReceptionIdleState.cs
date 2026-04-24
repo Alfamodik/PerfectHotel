@@ -60,6 +60,8 @@ namespace Game.Level.Reception
                 _gameManager.Model.SavePlaceLvl(_reception.Model.ID, _reception.Model.Lvl);
                 _reception.Model.UpdateModel();
 
+                SFXProvider.Play("upgrade");
+
                 CheckIsUpdatable(_gameManager.Model.LoadProgress());
 
                 _gameView.CameraController.SetTarget(_reception.View.transform);

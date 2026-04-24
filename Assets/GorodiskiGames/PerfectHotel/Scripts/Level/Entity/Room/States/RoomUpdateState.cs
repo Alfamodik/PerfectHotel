@@ -88,6 +88,8 @@ namespace Game.Level.Room
                 _gameManager.Model.SavePlaceLvl(_room.Model.ID, _room.Model.Lvl);
                 _room.Model.UpdateModel();
 
+                SFXProvider.Play("upgrade");
+
                 CheckIsUpdatable(_gameManager.Model.LoadProgress());
 
                 _hudManager.ShowAdditional<RoomUpgradeHudMediator>(new object[] { _room} );

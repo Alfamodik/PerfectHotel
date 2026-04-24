@@ -56,6 +56,8 @@ namespace Game.Level.Cleaner
                 _gameManager.Model.SavePlaceLvl(_cleaner.Model.ID, _cleaner.Model.Lvl);
                 _cleaner.Model.UpdateModel();
 
+                SFXProvider.Play("upgrade");
+
                 CheckIsUpdatable(_gameManager.Model.LoadProgress());
 
                 _cleaner.UnitView.PlayUnitParticles();

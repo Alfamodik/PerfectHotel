@@ -51,6 +51,8 @@ namespace Game.Level.Loader.LoaderStates
             _loader.Model.IsPurchased = _gameManager.Model.LoadPlaceIsPurchased(_loader.Model.ID);
             _loader.Model.SetChanged();
 
+            SFXProvider.Play("upgrade");
+
             _loader.UnitView.PlayUnitParticles();
 
             _gameView.CameraController.SetTarget(_loader.UnitView.transform);
