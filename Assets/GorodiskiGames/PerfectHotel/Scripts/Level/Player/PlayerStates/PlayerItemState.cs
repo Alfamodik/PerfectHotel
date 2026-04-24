@@ -37,7 +37,9 @@ namespace Game.Level.Player
         private void OnTick()
         {
             if (_gameView.Joystick.HasInput)
+            {
                 _player.SwitchToState(new PlayerWalkState());
+            }
 
             PlayerOnItem();
         }

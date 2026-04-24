@@ -16,6 +16,11 @@ namespace Game.Modules.CashModule
         private const float _heightAbovePlayer = 1.5f;
         private const float _cashFlyToRemoveRate = 0.1f;
         private const float _checkPlayerOnItemRate = 0.1f;
+        private const string _takeSoundName = "take-sound";
+        private const float _takeSoundStopDelay = 0.2f;
+        private const int _initialCashPacksPerCollect = 1;
+        private const int _maxCashPacksPerCollect = 20;
+        private const float _cashCollectAccelerationStepTime = 0.1f;
 
         [Inject] private GameManager _gameManager;
         [Inject] private Context _context;
@@ -25,16 +30,22 @@ namespace Game.Modules.CashModule
 
         private readonly Dictionary<CashPileView, CashPileController> _cashPilesMap;
         private readonly Dictionary<ItemController, CashPileView> _itemsMap;
+        private readonly Dictionary<ItemController, float> _cashCollectStartTimes;
+        private readonly HashSet<CashController> _takeSoundCashes;
         private List<CashController> _tempCashes;
 
         private float _cashFlyToRemoveTimer;
         private float _checkPlayerOnItemTime;
         private float _cashPileRadius;
+        private float _takeSoundLastActivityTime;
+        private bool _takeSoundPlaying;
 
         public CashModule(CashModuleView view) : base(view)
         {
             _cashPilesMap = new Dictionary<CashPileView, CashPileController>();
             _itemsMap = new Dictionary<ItemController, CashPileView>();
+            _cashCollectStartTimes = new Dictionary<ItemController, float>();
+            _takeSoundCashes = new HashSet<CashController>();
             _tempCashes = new List<CashController>();
         }
 
@@ -82,6 +93,9 @@ namespace Game.Modules.CashModule
                 cash.Dispose();
             }
             _tempCashes.Clear();
+            _cashCollectStartTimes.Clear();
+            _takeSoundCashes.Clear();
+            StopTakeSound();
 
             _view.ReleaseAllInstances();
         }
@@ -99,8 +113,14 @@ namespace Game.Modules.CashModule
                     {
                         PlayerOnItem(item);
                     }
+                    else
+                    {
+                        _cashCollectStartTimes.Remove(item);
+                    }
                 }
             }
+
+            TryStopTakeSound();
         }
 
         private void AddCashPile(CashPileView view, ItemController itemCashPile, EntityModel model)
@@ -137,6 +157,7 @@ namespace Game.Modules.CashModule
             cash.FlyToPlayer();
             cashPileView.Cashes.Remove(cash);
             _tempCashes.Add(cash);
+            RegisterTakeSoundCash(cash);
         }
 
         private void CashFlyToRemove(Vector3 endPosition)
@@ -149,11 +170,13 @@ namespace Game.Modules.CashModule
             CashController cash = Cash(_gameManager.Player.View.transform.position + (Vector3.up * _heightAbovePlayer));
             cash.FlyToRemove(endPosition);
             cash.REMOVE_CASH += OnRemoveCash;
+            RegisterTakeSoundCash(cash);
         }
 
         private void OnRemoveCash(CashController cash)
         {
             cash.REMOVE_CASH -= OnRemoveCash;
+            _takeSoundCashes.Remove(cash);
             _view.Release(cash.View);
             cash.Dispose();
             _tempCashes.Remove(cash);
@@ -166,12 +189,84 @@ namespace Game.Modules.CashModule
 
             if (cashPile.Model.Cash <= 0) return;
 
-            var amount = cashPile.Model.Cash;
+            int packsToCollect = GetCashPacksPerCollect(item);
+            long amount = 0;
+
+            for (int i = 0; i < packsToCollect; i++)
+            {
+                long remainingCash = cashPile.Model.Cash - amount;
+                if (remainingCash <= 0)
+                    break;
+
+                cashPileView.TryFlyCashToPlayer();
+                amount += remainingCash < CashPileView.DollarsPerPack
+                    ? remainingCash
+                    : CashPileView.DollarsPerPack;
+            }
+
+            if (amount <= 0) return;
+
             cashPile.Model.Cash -= amount;
             _gameManager.Model.SavePlaceCash(cashPile.Model.ID, cashPile.Model.Cash);
             cashPile.Model.SetChanged();
 
             _gameManager.Model.AddCash(amount);
+            StartTakeSound();
+
+            if (cashPile.Model.Cash <= 0)
+                _cashCollectStartTimes.Remove(item);
+        }
+
+        private int GetCashPacksPerCollect(ItemController item)
+        {
+            if (!_cashCollectStartTimes.ContainsKey(item))
+                _cashCollectStartTimes[item] = Time.time;
+
+            float collectDuration = Time.time - _cashCollectStartTimes[item];
+            int accelerationSteps = Mathf.FloorToInt(collectDuration / _cashCollectAccelerationStepTime);
+            int packsToCollect = _initialCashPacksPerCollect + accelerationSteps;
+
+            return Mathf.Clamp(packsToCollect, _initialCashPacksPerCollect, _maxCashPacksPerCollect);
+        }
+
+        private void RegisterTakeSoundCash(CashController cash)
+        {
+            _takeSoundCashes.Add(cash);
+            StartTakeSound();
+        }
+
+        private void StartTakeSound()
+        {
+            _takeSoundLastActivityTime = Time.time;
+
+            if (_takeSoundPlaying)
+                return;
+
+            _takeSoundPlaying = true;
+            SFXProvider.PlayOnce(_takeSoundName);
+        }
+
+        private void TryStopTakeSound()
+        {
+            if (!_takeSoundPlaying)
+                return;
+
+            if (_takeSoundCashes.Count > 0)
+                return;
+
+            if (Time.time - _takeSoundLastActivityTime < _takeSoundStopDelay)
+                return;
+
+            StopTakeSound();
+        }
+
+        private void StopTakeSound()
+        {
+            if (!_takeSoundPlaying)
+                return;
+
+            _takeSoundPlaying = false;
+            SFXProvider.Stop(_takeSoundName);
         }
     }
 }

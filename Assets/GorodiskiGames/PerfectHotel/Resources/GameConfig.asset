@@ -25,6 +25,14 @@ MonoBehaviour:
   PlayerInventoriesMax: 3
   ElevatorItemRadius: 1
   EntityRadius: 3
+  CashFlyToPlayerAnimation:
+    BackMoveDistance: 0.3
+    BackMoveDuration: 0.15
+    FlyDuration: 0.32
+    ArcHeight: 1
+    ArcHorizontal: 0.5
+    BackMoveEase: 3
+    FlyEase: 8
   CustomerRotationSpeed: 10
   CustomerWalkSpeed: 3
   SplashScreenDurationMobile: 1.5

@@ -1,41 +1,41 @@
-﻿using Injection;
-using Game.Core;
+using DG.Tweening;
+using Game.Config;
+using Injection;
 using UnityEngine;
 
 namespace Game.Level.Cash.States
 {
     public sealed class CashFlyToPlayerState : CashState
     {
-        private const float _flyTime = .2f;
-
         [Inject] private GameManager _gameManager;
-        [Inject] private Timer _timer;
+        [Inject] private GameConfig _config;
 
-        private float _timeElapsed;
-        private Vector3 _startPosition;
+        private Sequence _sequence;
 
         public override void Initialize()
         {
-            _startPosition = _cash.View.transform.position;
-
-            _timer.TICK += OnTICK;
-        }
-
-        private void OnTICK()
-        {
+            Vector3 startPosition = _cash.View.transform.position;
             Vector3 targetPosition = _gameManager.Player.View.AimPosition;
-            _cash.View.transform.position = Vector3.Lerp(_startPosition, targetPosition, _timeElapsed / _flyTime);
-            _timeElapsed += Time.deltaTime;
+            Vector3 directionFromPlayer = (startPosition - targetPosition).normalized;
 
-            float distance = Vector3.Distance(_cash.View.transform.position, targetPosition);
-            if (distance > 0.05f) return;
+            if (directionFromPlayer == Vector3.zero)
+                directionFromPlayer = -_gameManager.Player.View.transform.forward;
 
-            _cash.FireRemoveCash();
+            var flyConfig = _config.CashFlyToPlayerAnimation;
+            Vector3 backPosition = startPosition + directionFromPlayer * flyConfig.BackMoveDistance;
+            Vector3 horizontalOffset = flyConfig.ArcHorizontal * _gameManager.Player.View.transform.right;
+            Vector3 arcPosition = Vector3.Lerp(backPosition, targetPosition, 0.45f) + Vector3.up * flyConfig.ArcHeight + horizontalOffset;
+            Vector3[] path = { arcPosition, targetPosition };
+
+            _sequence = DOTween.Sequence();
+            _sequence.Append(_cash.View.transform.DOMove(backPosition, flyConfig.BackMoveDuration).SetEase(flyConfig.BackMoveEase));
+            _sequence.Append(_cash.View.transform.DOPath(path, flyConfig.FlyDuration, PathType.CatmullRom).SetEase(flyConfig.FlyEase));
+            _sequence.OnComplete(_cash.FireRemoveCash);
         }
 
         public override void Dispose()
         {
-            _timer.TICK -= OnTICK;
+            _sequence?.Kill();
         }
     }
 }
