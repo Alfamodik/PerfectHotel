@@ -43,14 +43,23 @@ namespace Game.Modules.UISpritesModule
                 Vector3 endPosition = _progressSprite.position;
 
                 sprite.DoIntroAnimation(endIntroPosition, endPosition);
+                sprite.ON_NEAR_FINISH += OnNearFinish;
                 sprite.ON_MOVE_COMPLETE += OnMoveComplete;
 
                 yield return wait;
             }
         }
 
+        private void OnNearFinish(SpriteView sprite)
+        {
+            sprite.ON_NEAR_FINISH -= OnNearFinish;
+
+            SFXProvider.Play("star-collect");
+        }
+
         private void OnMoveComplete(SpriteView sprite)
         {
+            sprite.ON_NEAR_FINISH -= OnNearFinish;
             sprite.ON_MOVE_COMPLETE -= OnMoveComplete;
 
             ON_ONE_FINISHED?.Invoke();

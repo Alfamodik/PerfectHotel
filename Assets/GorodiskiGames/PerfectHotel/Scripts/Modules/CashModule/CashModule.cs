@@ -17,9 +17,9 @@ namespace Game.Modules.CashModule
         private const float _cashFlyToRemoveRate = 0.1f;
         private const float _checkPlayerOnItemRate = 0.1f;
         private const string _takeSoundName = "take-sound";
-        private const float _takeSoundStopDelay = 0.2f;
+        private const float _takeSoundStopDelay = 0.1f;
         private const int _initialCashPacksPerCollect = 1;
-        private const int _maxCashPacksPerCollect = 20;
+        private const int _maxCashPacksPerCollect = 30;
         private const float _cashCollectAccelerationStepTime = 0.1f;
 
         [Inject] private GameManager _gameManager;

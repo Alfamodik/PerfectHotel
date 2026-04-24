@@ -2770,6 +2770,15 @@ MonoBehaviour:
     Volume: 0.5
     AlreadyPlaying: 0
     Source: {fileID: 0}
+  - Name: star-collect
+    Loop: 0
+    PlayOnAwake: 0
+    DontDestroyOnLoad: 0
+    AudioType: 0
+    Clip: {fileID: 8300000, guid: 84aa058375d5e004ba0141acd95ec307, type: 3}
+    Volume: 0.5
+    AlreadyPlaying: 0
+    Source: {fileID: 0}
 --- !u!4 &1844739823
 Transform:
   m_ObjectHideFlags: 0
