@@ -1,18 +1,24 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using YG;
 
 public class SFXProvider : MonoBehaviour
 {
+    private const string ButtonClickSoundName = "button-click";
+    private const float ButtonScanInterval = 0.25f;
+
     private static SFXProvider _instance;
     
     [SerializeField, Range(0, 1)] private float _globalMusicVolume = 0.5f;
     [SerializeField, Range(0, 1)] private float _globalEffectsVolume = 0.5f;
     [SerializeField] private List<Sound> _sounds;
 
+    private readonly HashSet<Button> _buttonsWithClickSound = new HashSet<Button>();
     private float _globalMusicVolumeBeforeMute;
     private float _globalEffectsVolumeBeforeMute;
+    private float _buttonScanTimer;
     private bool _isMute;
 
     public static float GlobalMusicVolume
@@ -50,6 +56,27 @@ public class SFXProvider : MonoBehaviour
 
         YG2.onOpenAnyAdv += MuteAll;
         YG2.onCloseAnyAdv += UnmuteAll;
+    }
+
+    private void Update()
+    {
+        _buttonScanTimer -= Time.unscaledDeltaTime;
+
+        if (_buttonScanTimer > 0f)
+            return;
+
+        _buttonScanTimer = ButtonScanInterval;
+        RegisterButtonClickSounds();
+    }
+
+    private void OnDestroy()
+    {
+        if (_instance != this)
+            return;
+
+        YG2.onOpenAnyAdv -= MuteAll;
+        YG2.onCloseAnyAdv -= UnmuteAll;
+        _instance = null;
     }
 
     public static void Play(string soundName)
@@ -140,6 +167,25 @@ public class SFXProvider : MonoBehaviour
             if (sound.PlayOnAwake && !sound.AlreadyPlaying)
                 Play(sound.Name);
         }
+    }
+
+    private void RegisterButtonClickSounds()
+    {
+        var buttons = FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+        foreach (var button in buttons)
+        {
+            if (button == null || _buttonsWithClickSound.Contains(button))
+                continue;
+
+            button.onClick.AddListener(PlayButtonClick);
+            _buttonsWithClickSound.Add(button);
+        }
+    }
+
+    private void PlayButtonClick()
+    {
+        Play(ButtonClickSoundName);
     }
 
     private void InitializeSound(Sound sound)

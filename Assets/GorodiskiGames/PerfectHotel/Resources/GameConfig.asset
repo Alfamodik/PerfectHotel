@@ -47,10 +47,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 507b14009b01542d7a1488255e8b992e, type: 2}
   _hotels:
   - SceneIndex: 1
-    Icon: {fileID: 21300000, guid: 800c98e5b79b244f3b55114c14b471fa, type: 3}
+    Icon: {fileID: 21300000, guid: 3de98a5341b2e6a4084274626069bafa, type: 3}
     Label: MARRION
   - SceneIndex: 2
-    Icon: {fileID: 21300000, guid: 7516700ca74eb4f0687070b13bbde867, type: 3}
+    Icon: {fileID: 21300000, guid: 3de98a5341b2e6a4084274626069bafa, type: 3}
     Label: CHILTON
   AdsProviderEditor: 0
   AdsProviderMobile: 1
