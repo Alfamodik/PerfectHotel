@@ -1,6 +1,6 @@
 using System;
 using Game.Domain;
-using UnityEngine;
+using YG;
 
 namespace Game.Managers
 {
@@ -32,7 +32,7 @@ namespace Game.Managers
 
         private DateTime LoadLastLoginDate()
         {
-            string date = PlayerPrefs.GetString(GameConstants.kLoginDate, string.Empty);
+            string date = YG2.saves.GetString(GameConstants.kLoginDate, string.Empty);
             if (string.IsNullOrEmpty(date))
             {
                 date = DateTime.Now.ToString();
@@ -43,8 +43,8 @@ namespace Game.Managers
 
         private void SaveLoginDate(string date)
         {
-            PlayerPrefs.SetString(GameConstants.kLoginDate, date);
-            PlayerPrefs.Save();
+            YG2.saves.SetString(GameConstants.kLoginDate, date);
+            YG2.SaveProgress();
         }
     }
 }

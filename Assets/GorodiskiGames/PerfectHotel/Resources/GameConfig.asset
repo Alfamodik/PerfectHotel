@@ -53,7 +53,7 @@ MonoBehaviour:
     Icon: {fileID: 21300000, guid: 3de98a5341b2e6a4084274626069bafa, type: 3}
     Label: CHILTON
   AdsProviderEditor: 0
-  AdsProviderMobile: 1
+  AdsProviderMobile: 0
   AllScenariosDurationHrs: 24
   NoScenarioDurationMinutes: 1
   _shopProductIAPConfigs:

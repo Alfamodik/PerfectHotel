@@ -8,6 +8,7 @@ using Game.Managers;
 using Injection;
 using UnityEngine;
 using Utilities;
+using YG;
 
 namespace Game.UI.Hud
 {
@@ -45,10 +46,9 @@ namespace Game.UI.Hud
 			_priceAds = string.Format(_priceAdsFormat, GameConstants.AdsIcon, _adsWord);
 			_clockIcon = GameConstants.ClockIcon;
 
-			NoAdsProductVisibility();
-
 			SetProductsForAds();
 			SetProductsIAP();
+			UpdateNoAdsProductVisibility();
 
 			_IAPManager.ON_INITIALIZED += OnInitialized;
 			_IAPManager.ON_PRODUCT_PURCHASED += OnProductPurchased;
@@ -92,8 +92,8 @@ namespace Game.UI.Hud
 
 		private void OnInitialized()
 		{
-			_IAPManager.ON_INITIALIZED -= OnInitialized;
 			SetProductsIAP();
+			UpdateNoAdsProductVisibility();
 		}
 
 		private void OnTick()
@@ -147,15 +147,21 @@ namespace Game.UI.Hud
 
 		private void OnProductPurchased(string productID)
 		{
-			var config = _productMap[productID].Config;
+			var product = GetProduct(productID);
+			if (product == null)
+			{
+				Log.Warning("Purchased product not found in shop: " + productID);
+				return;
+			}
+
+			var config = product.Config;
 			var reward = config.Reward;
 			if (reward == ShopProductReward.NoAds)
 			{
 				_gameManager.Model.IsNoAds = true;
-				_gameManager.Model.Save();
 				_adsManager.SetNoAds();
 
-				NoAdsProductVisibility();
+				UpdateNoAdsProductVisibility();
 			}
 			else if (reward == ShopProductReward.Cash)
 			{
@@ -172,13 +178,71 @@ namespace Game.UI.Hud
 			InternalHide();
 		}
 
-		private void NoAdsProductVisibility()
+		private void UpdateNoAdsProductVisibility()
 		{
 			foreach (var product in _view.ProductsIAP)
 			{
-				if(product.Config.Reward == ShopProductReward.NoAds && _gameManager.Model.IsNoAds)
-					product.gameObject.SetActive(false);
+				if (product.Config.Reward == ShopProductReward.NoAds)
+				{
+					var isPurchased = IsNoAdsPurchased(product);
+					ApplyNoAdsState(isPurchased);
+					SetProductVisibility(product, !isPurchased);
+				}
 			}
+		}
+
+		private bool IsNoAdsPurchased(ShopProductView product)
+		{
+			return _gameManager.Model.IsNoAds || _IAPManager.IsProductPurchased(product.Config.ID);
+		}
+
+		private void ApplyNoAdsState(bool isNoAds)
+		{
+			if (!isNoAds || _gameManager.Model.IsNoAds)
+				return;
+
+			_gameManager.Model.IsNoAds = true;
+			_adsManager.SetNoAds();
+		}
+
+		private ShopProductView GetProduct(string productID)
+		{
+			if (_productMap.TryGetValue(productID, out var product))
+				return product;
+
+			return _view.ProductsIAP.FirstOrDefault(item => item.Config.ID == productID);
+		}
+
+		private void SetProductVisibility(ShopProductView product, bool isVisible)
+		{
+			if (product.Config.Reward == ShopProductReward.NoAds)
+			{
+				foreach (var item in _view.GetComponentsInChildren<Transform>(true))
+				{
+					if (item.name == "NoAdsProductView")
+						item.gameObject.SetActive(isVisible);
+				}
+			}
+
+			var target = GetProductRoot(product);
+			target.SetActive(isVisible);
+
+			if (target != product.gameObject)
+				product.gameObject.SetActive(isVisible);
+		}
+
+		private GameObject GetProductRoot(ShopProductView product)
+		{
+			var current = product.transform;
+			while (current != null && current != _view.transform)
+			{
+				if (product.Config.Reward == ShopProductReward.NoAds && current.name == "NoAdsProductView")
+					return current.gameObject;
+
+				current = current.parent;
+			}
+
+			return product.gameObject;
 		}
 
 		private void OnRewardedWatched()
@@ -230,7 +294,7 @@ namespace Game.UI.Hud
 		DateTime LoadDate(string productID, string prefix)
 		{
 			var key = productID + prefix;
-			var dateString = PlayerPrefs.GetString(key, DateTime.Now.ToBinary().ToString());
+			var dateString = YG2.saves.GetString(key, DateTime.Now.ToBinary().ToString());
 			var dateLong = Convert.ToInt64(dateString);
 			return DateTime.FromBinary(dateLong);
 		}
@@ -256,21 +320,21 @@ namespace Game.UI.Hud
 		private void SaveDate(string productID, string prefix, DateTime date)
 		{
 			var key = productID + prefix;
-			PlayerPrefs.SetString(key, date.ToBinary().ToString());
-			PlayerPrefs.Save();
+			YG2.saves.SetString(key, date.ToBinary().ToString());
+			YG2.SaveProgress();
 		}
 
 		private int LoadScenarioIndex(string productID)
 		{
 			var key = productID + _scenarioIndexPrefix;
-			return PlayerPrefs.GetInt(key, 0);
+			return YG2.saves.GetInt(key, 0);
 		}
 
 		private void SaveScenarioIndex(string productID, int index)
 		{
 			var key = productID + _scenarioIndexPrefix;
-			PlayerPrefs.SetInt(key, index);
-			PlayerPrefs.Save();
+			YG2.saves.SetInt(key, index);
+			YG2.SaveProgress();
 		}
 
 		private float GetNewDuration(ShopProductView product)
@@ -296,6 +360,8 @@ namespace Game.UI.Hud
 
 		private void OnApplicationFocus()
 		{
+			UpdateNoAdsProductVisibility();
+
 			foreach (var product in _productDelayMap.Keys.ToList())
 			{
 				var delay = GetCurrentDelay(product.Config.ID);

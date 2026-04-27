@@ -1,7 +1,6 @@
 ﻿using System;
 using Game.Config;
 using Game.Core;
-using Injection;
 using Utilities;
 using YG;
 
@@ -32,65 +31,28 @@ namespace Game.Managers
 
         public Action ON_REWARDED_WATCHED;
 
-        [Inject] private Timer _timer;
-
-        private BaseAdsProxy _adsProxy;
-        private GameConfig _config;
-
         private bool _isNoAds;
 
         public void Initialize(bool isNoAds, GameConfig config)
         {
             _isNoAds = isNoAds;
-            _config = config;
-
-#if UNITY_EDITOR
-            var provider = _config.AdsProviderEditor;
-#elif UNITY_WEBGL || UNITY_STANDALONE
-            var provider = AdsProviderType.Fake;
-#else
-            var provider = _config.AdsProviderMobile;
-#endif
-
-            if (provider == AdsProviderType.AdMob)
-                _adsProxy = new GoogleAdMobProxy(_timer);
-            else
-                _adsProxy = new FakeAdsProxy(_timer);
 
             YG2.onOpenInterAdv += OnInterstitialShow;
             YG2.onCloseInterAdv += OnInterstitialWatched;
 
             YG2.onCloseRewardedAdv += OnRewardedWatched;
+            YG2.onGetSDKData += OnSDKDataReceived;
 
-            _adsProxy.ON_REWARDED_WATCHED += OnRewardedWatched;
-
-            _adsProxy.ON_INTERSTITIAL_WATCHED += OnInterstitialWatched;
-            _adsProxy.ON_INTERSTITIAL_SHOW += OnInterstitialShow;
-
-            _adsProxy.INITIALIZED += OnInitialized;
-            _adsProxy.Initialize();
+            if (YG2.saves.noAdsPurchased)
+                SetNoAds();
         }
 
         public void Dispose()
         {
-            _adsProxy.UnloadBanner();
-
-            _adsProxy.ON_REWARDED_WATCHED -= OnRewardedWatched;
-
-            _adsProxy.ON_INTERSTITIAL_WATCHED -= OnInterstitialWatched;
-            _adsProxy.ON_INTERSTITIAL_SHOW -= OnInterstitialShow;
-
-            _adsProxy.INITIALIZED -= OnInitialized;
-            _adsProxy.Dispose();
-        }
-
-        private void OnInitialized()
-        {
-            _adsProxy.LoadRewarded();
-            _adsProxy.LoadInterstitial();
-            _adsProxy.LoadBanner();
-
-            ShowBanner();
+            YG2.onOpenInterAdv -= OnInterstitialShow;
+            YG2.onCloseInterAdv -= OnInterstitialWatched;
+            YG2.onCloseRewardedAdv -= OnRewardedWatched;
+            YG2.onGetSDKData -= OnSDKDataReceived;
         }
 
         public void ShowInterstitial()
@@ -100,59 +62,19 @@ namespace Game.Managers
 
             if (YG2.isTimerAdvCompleted)
                 YG2.InterstitialAdvShow();
-
-            /*try
-            {
-                _adsProxy.ShowInterstitial();
-            }
-            catch (Exception exception)
-            {
-                Log.Exception(exception);
-            }*/
         }
 
         public void ShowRewarded()
         {
             YG2.RewardedAdvShow("UniversalRewarded");
-            /*try
-            {
-                _adsProxy.ShowRewarded();
-            }
-            catch (Exception exception)
-            {
-                Log.Exception(exception);
-            }*/
         }
 
         public void ShowBanner()
         {
-            return;
-
-            if (_isNoAds)
-                return;
-
-            try
-            {
-                _adsProxy.ShowBanner();
-            }
-            catch (Exception exception)
-            {
-                Log.Exception(exception);
-            }
         }
 
         public void HideBanner()
         {
-            return;
-
-            try
-            {
-                _adsProxy.HideBanner();
-            }
-            catch (Exception exception)
-            {
-                Log.Exception(exception);
-            }
         }
 
         private void OnRewardedWatched()
@@ -171,6 +93,12 @@ namespace Game.Managers
         {
             Log.Info($"Interstitial show");
             ON_INTERSTITIAL_SHOW.SafeInvoke();
+        }
+
+        private void OnSDKDataReceived()
+        {
+            if (YG2.saves.noAdsPurchased)
+                SetNoAds();
         }
 
         public void SetNoAds()

@@ -60,7 +60,6 @@ namespace Game.States
             InitLevelModules();
 
             _hudManager.ShowAdditional<GamePlayHudMediator>();
-            _hudManager.ShowAdditional<PurchaseHudMediator>();
 
             _gameView.Joystick.Visibility(_gameManager.Model.JoystickVisibility);
             _gameView.Joystick.gameObject.SetActive(true);
@@ -78,7 +77,6 @@ namespace Game.States
             DisposeLevelModules();
 
             _hudManager.HideAdditional<GamePlayHudMediator>();
-            _hudManager.HideAdditional<PurchaseHudMediator>();
 
             _gameView.Joystick.gameObject.SetActive(false);
 

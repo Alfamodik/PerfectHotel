@@ -10,6 +10,7 @@ using Game.UI.Hud;
 using Game.Level.Inventory;
 using Game.Level.Entity;
 using Game.Level.Place;
+using YG;
 
 namespace Game.Level.Player
 {
@@ -145,11 +146,12 @@ namespace Game.Level.Player
         public int LoadTargetValue(int playerIndex, string conditionKey, int defaultValue)
         {
             var key = conditionKey + playerIndex;
-            var result = PlayerPrefs.GetInt(key);
+            var result = YG2.saves.GetInt(key);
             if (result == 0)
             {
                 result = defaultValue;
-                PlayerPrefs.SetInt(key, result);
+                YG2.saves.SetInt(key, result);
+                YG2.SaveProgress();
             }
             return result;
         }

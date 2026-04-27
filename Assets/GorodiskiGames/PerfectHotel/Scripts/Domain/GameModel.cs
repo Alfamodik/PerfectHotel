@@ -5,6 +5,7 @@ using Game.Config;
 using Game.Level.Inventory;
 using Game.Level.Place;
 using UnityEngine;
+using YG;
 
 namespace Game.Domain
 {
@@ -15,23 +16,24 @@ namespace Game.Domain
         {
             try
             {
-                var data = PlayerPrefs.GetString("model");
+                var data = YG2.saves.gameModelJson;
                 if (string.IsNullOrEmpty(data))
-                {
-                    var model = new GameModel();
-                    model.Prepare(config);
-                    return model;
-                }
+                    return CreateDefault(config);
+
                 var result = JsonUtility.FromJson<GameModel>(data);
+                if (result == null)
+                    return CreateDefault(config);
+
+                result.EnsureRuntimeState();
+                result.ApplyCloudPurchases();
                 return result;
             }
             catch (Exception e)
             {
-                PlayerPrefs.DeleteAll();
                 Log.Exception(e);
-                var model = new GameModel();
-                model.Prepare(config);
-                return model;
+                YG2.saves.gameModelJson = string.Empty;
+                YG2.SaveProgress();
+                return CreateDefault(config);
             }
         }
 
@@ -53,8 +55,27 @@ namespace Game.Domain
             Cash = config.DefaultCash;
             TotalEarnedCash = 0;
             Hotel = config.DefaultHotel;
-            IsNoAds = false;
+            IsNoAds = YG2.saves.noAdsPurchased;
             JoystickVisibility = false;
+        }
+
+        private static GameModel CreateDefault(GameConfig config)
+        {
+            var model = new GameModel();
+            model.Prepare(config);
+            return model;
+        }
+
+        private void EnsureRuntimeState()
+        {
+            if (InventoryTypes == null)
+                InventoryTypes = new List<InventoryType>();
+        }
+
+        private void ApplyCloudPurchases()
+        {
+            if (YG2.saves.noAdsPurchased)
+                IsNoAds = true;
         }
 
         public void AddCash(long amount)
@@ -71,15 +92,18 @@ namespace Game.Domain
 
         public void Save()
         {
+            if (IsNoAds)
+                YG2.saves.noAdsPurchased = true;
+
             var data = JsonUtility.ToJson(this);
-            PlayerPrefs.SetString("model", data);
-            PlayerPrefs.Save();
+            YG2.saves.gameModelJson = data;
+            YG2.SaveProgress();
         }
 
         public void Remove()
         {
-            PlayerPrefs.DeleteKey("model");
-            PlayerPrefs.Save();
+            YG2.saves.gameModelJson = string.Empty;
+            YG2.SaveProgress();
         }
 
         public string GenerateEntityID(int hotel, EntityType type, int number)
@@ -91,35 +115,35 @@ namespace Game.Domain
         {
             string hotelLvlWord = "HotelLvl";
             string key = hotelLvlWord + Hotel;
-            return PlayerPrefs.GetInt(key, 1);
+            return YG2.saves.GetInt(key, 1);
         }
         public void SaveLvl(int lvl)
         {
             string hotelLvlWord = "HotelLvl";
             string key = hotelLvlWord + Hotel;
-            PlayerPrefs.SetInt(key, lvl);
-            PlayerPrefs.Save();
+            YG2.saves.SetInt(key, lvl);
+            YG2.SaveProgress();
         }
 
         public int LoadProgress()
         {
             string hotelProgressWord = "HotelProgress";
             string key = hotelProgressWord + Hotel;
-            return PlayerPrefs.GetInt(key, 0);
+            return YG2.saves.GetInt(key, 0);
         }
         public void SaveProgress(int progress)
         {
             string hotelProgressWord = "HotelProgress";
             string key = hotelProgressWord + Hotel;
-            PlayerPrefs.SetInt(key, progress);
-            PlayerPrefs.Save();
+            YG2.saves.SetInt(key, progress);
+            YG2.SaveProgress();
         }
 
         public bool LoadPlaceIsUsed(string id)
         {
             string isUsedWord = "IsUsed";
             string key = isUsedWord + id;
-            int value = PlayerPrefs.GetInt(key, 0);
+            int value = YG2.saves.GetInt(key, 0);
             if (value == 1) return true;
             else return false;
         }
@@ -127,8 +151,8 @@ namespace Game.Domain
         {
             string isUsedWord = "IsUsed";
             string key = isUsedWord + id;
-            PlayerPrefs.SetInt(key, isUsed);
-            PlayerPrefs.Save();
+            YG2.saves.SetInt(key, isUsed);
+            YG2.SaveProgress();
         }
 
         public bool LoadPlaceIsPurchased(string id)
@@ -138,7 +162,7 @@ namespace Game.Domain
 
             string isPurchasedWord = "IsPurchased";
             string key = isPurchasedWord + id;
-            int value = PlayerPrefs.GetInt(key, 0);
+            int value = YG2.saves.GetInt(key, 0);
             if (roomZeroID == id || areaOneID == id || value == 1) return true;
             else return false;
         }
@@ -146,22 +170,22 @@ namespace Game.Domain
         {
             string isPurchasedWord = "IsPurchased";
             string key = isPurchasedWord + id;
-            PlayerPrefs.SetInt(key, 1);
-            PlayerPrefs.Save();
+            YG2.saves.SetInt(key, 1);
+            YG2.SaveProgress();
         }
 
         public void SavePlaceLvl(string id, int lvl)
         {
             string lvlWord = "Lvl";
             string key = lvlWord + id;
-            PlayerPrefs.SetInt(key, lvl);
-            PlayerPrefs.Save();
+            YG2.saves.SetInt(key, lvl);
+            YG2.SaveProgress();
         }
         public int LoadPlaceLvl(string id)
         {
             string lvlWord = "Lvl";
             string key = lvlWord + id;
-            return PlayerPrefs.GetInt(key, 0);
+            return YG2.saves.GetInt(key, 0);
         }
 
 
@@ -169,43 +193,42 @@ namespace Game.Domain
         {
             string visualIndexWord = "VisualIndex";
             string key = visualIndexWord + id;
-            PlayerPrefs.SetInt(key, visualIndex);
-            PlayerPrefs.Save();
+            YG2.saves.SetInt(key, visualIndex);
+            YG2.SaveProgress();
         }
         public int LoadPlaceVisualIndex(string id)
         {
             string visualIndexWord = "VisualIndex";
             string key = visualIndexWord + id;
-            return PlayerPrefs.GetInt(key, 0);
+            return YG2.saves.GetInt(key, 0);
         }
 
         public void SavePlaceCash(string id, long cash)
         {
             string cashWord = "Cash";
             string key = cashWord + id;
-            PlayerPrefs.SetString(key, cash.ToString());
-            PlayerPrefs.Save();
+            YG2.saves.SetLong(key, cash);
+            YG2.SaveProgress();
         }
         public long LoadPlaceCash(string id)
         {
             string cashWord = "Cash";
             string key = cashWord + id;
-            var value = PlayerPrefs.GetString(key, "0");
-            return Convert.ToInt64(value);
+            return YG2.saves.GetLong(key, 0);
         }
 
         public void SaveVisitsCount(string id, int numberOfVisits)
         {
             string visitsCountWord = "VisitsCount";
             string key = visitsCountWord + id;
-            PlayerPrefs.SetInt(key, numberOfVisits);
-            PlayerPrefs.Save();
+            YG2.saves.SetInt(key, numberOfVisits);
+            YG2.SaveProgress();
         }
         public int LoadVisitsCount(string id)
         {
             string visitsCountWord = "VisitsCount";
             string key = visitsCountWord + id;
-            return PlayerPrefs.GetInt(key, 0);
+            return YG2.saves.GetInt(key, 0);
         }
 
 
@@ -213,45 +236,45 @@ namespace Game.Domain
         {
             var times = LoadWatchAdsTimes();
             times++;
-            PlayerPrefs.SetInt(GameConstants.kWatchAdsTimes, times);
-            PlayerPrefs.Save();
+            YG2.saves.SetInt(GameConstants.kWatchAdsTimes, times);
+            YG2.SaveProgress();
         }
 
         public int LoadWatchAdsTimes()
         {
-            return PlayerPrefs.GetInt(GameConstants.kWatchAdsTimes, 0);
+            return YG2.saves.GetInt(GameConstants.kWatchAdsTimes, 0);
         }
 
         public void SaveWatchAdsTimes(int playerIndex)
         {
             var times = LoadWatchAdsTimes(playerIndex);
             times++;
-            PlayerPrefs.SetInt(GameConstants.kWatchAdsTimes + playerIndex, times);
-            PlayerPrefs.Save();
+            YG2.saves.SetInt(GameConstants.kWatchAdsTimes + playerIndex, times);
+            YG2.SaveProgress();
         }
 
         public int LoadWatchAdsTimes(int playerIndex)
         {
-            return PlayerPrefs.GetInt(GameConstants.kWatchAdsTimes + playerIndex, 0);
+            return YG2.saves.GetInt(GameConstants.kWatchAdsTimes + playerIndex, 0);
         }
 
         public int LoadLoginDays()
         {
-            return PlayerPrefs.GetInt(GameConstants.kLoginDays, 1);
+            return YG2.saves.GetInt(GameConstants.kLoginDays, 1);
         }
 
         public void SaveLoginDay()
         {
             var days = LoadLoginDays();
             days++;
-            PlayerPrefs.SetInt(GameConstants.kLoginDays, days);
-            PlayerPrefs.Save();
+            YG2.saves.SetInt(GameConstants.kLoginDays, days);
+            YG2.SaveProgress();
         }
 
         public void ResetLoginDays()
         {
-            PlayerPrefs.SetInt(GameConstants.kLoginDays, 1);
-            PlayerPrefs.Save();
+            YG2.saves.SetInt(GameConstants.kLoginDays, 1);
+            YG2.SaveProgress();
         }
     }
 }

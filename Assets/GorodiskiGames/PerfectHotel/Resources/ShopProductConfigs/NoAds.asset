@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5965b133452a742aa8eb59051649164e, type: 3}
   m_Name: NoAds
   m_EditorClassIdentifier: 
-  ID: com.aleksandrgorodiski.stealthassassin.noads
+  ID: no_ads
   Title: NO ADS
   Reward: 0
-  Type: 1

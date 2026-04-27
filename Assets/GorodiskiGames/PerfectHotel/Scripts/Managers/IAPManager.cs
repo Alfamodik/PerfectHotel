@@ -1,53 +1,16 @@
-﻿using System;
-using System.Threading.Tasks;
+using System;
 using Game.Config;
-using Game.Core;
-using Unity.Services.Core;
-using Unity.Services.Core.Environments;
 using UnityEngine;
-using UnityEngine.Purchasing;
-using UnityEngine.Purchasing.Extension;
+using YG;
+using YG.Utils.Pay;
 
 namespace Game.Managers
 {
-    public sealed class Receipt
+    public sealed class IAPManager : IDisposable
     {
-        public string Store;
-        public string TransactionID;
-        public string Payload;
+        private const string _fallbackPrice = "BUY";
+        private const string _noAdsProductID = "no_ads";
 
-        public Receipt()
-        {
-            Store = TransactionID = Payload = "";
-        }
-
-        public Receipt(string store, string transactionID, string payload)
-        {
-            Store = store;
-            TransactionID = transactionID;
-            Payload = payload;
-        }
-    }
-
-    public sealed class PayloadAndroid
-    {
-        public string json;
-        public string signature;
-
-        public PayloadAndroid()
-        {
-            json = signature = "";
-        }
-
-        public PayloadAndroid(string _json, string _signature)
-        {
-            json = _json;
-            signature = _signature;
-        }
-    }
-
-    public sealed class IAPManager : IDetailedStoreListener
-    {
         public event Action ON_INITIALIZED;
         public event Action ON_PURCHASE_CLICKED;
         public event Action<string> ON_PURCHASE_FAILED;
@@ -56,179 +19,114 @@ namespace Game.Managers
         public event Action<string> ON_RESTORE_PURCHASES_END;
         public event Action<string> ON_PRODUCT_PURCHASED;
 
-        private const string kEnvironment = "production";
-
-        private IStoreController controller;
-        private IExtensionProvider extension;
-
-        async public void Initialize(GameConfig config)
+        public void Initialize(GameConfig config)
         {
-            try
-            {
-                var options = new InitializationOptions().SetEnvironmentName(kEnvironment);
-                await UnityServices.InitializeAsync(options);
-            }
-            catch (Exception exception)
-            {
-                Log.Info(exception.Message);
-            }
+            YG2.onGetPayments += OnPaymentsInitialized;
+            YG2.onPurchaseSuccess += OnPurchaseSuccess;
+            YG2.onPurchaseFailed += OnPurchaseFailed;
+            YG2.onGetSDKData += OnSDKDataReceived;
 
-            InitializePurchasing(config);
+            if (YG2.purchases != null && YG2.purchases.Length > 0)
+                OnPaymentsInitialized();
+        }
+
+        public void Dispose()
+        {
+            YG2.onGetPayments -= OnPaymentsInitialized;
+            YG2.onPurchaseSuccess -= OnPurchaseSuccess;
+            YG2.onPurchaseFailed -= OnPurchaseFailed;
+            YG2.onGetSDKData -= OnSDKDataReceived;
         }
 
         public string GetPrice(string productID)
         {
-            var result = "";
-            if (IsPurchaseInitialized())
-            {
-                Product product = controller.products.WithID(productID);
-                if (product != null && product.availableToPurchase)
-                    result = controller.products.WithID(productID).metadata.localizedPriceString;
-            }
-            return result;
+            var product = YG2.PurchaseByID(productID);
+            if (product == null)
+                return _fallbackPrice;
+
+            if (!string.IsNullOrEmpty(product.price))
+                return product.price;
+
+            if (!string.IsNullOrEmpty(product.priceValue))
+                return product.priceValue;
+
+            return _fallbackPrice;
         }
 
         public string GetTitle(string productID)
         {
-            return controller.products.WithID(productID).metadata.localizedTitle;
+            var product = YG2.PurchaseByID(productID);
+            return product != null ? product.title : string.Empty;
         }
 
-        public void OnPurchaseClicked(string productId)
+        public void OnPurchaseClicked(string productID)
         {
-            if (IsPurchaseInitialized())
+            if (string.IsNullOrEmpty(productID))
             {
-                Product product = controller.products.WithID(productId);
-
-                if (product != null && product.availableToPurchase)
-                {
-                    ON_PURCHASE_CLICKED?.Invoke();
-
-                    Debug.Log(string.Format("Purchasing product asychronously: '{0}'", product.definition.id));
-                    controller.InitiatePurchase(product);
-                }
-                else
-                {
-                    Debug.Log("BuyProductID: FAIL. Not purchasing product, either is not found or is not available for purchase");
-                }
+                OnPurchaseFailed(productID);
+                return;
             }
-            else
-            {
-                Debug.Log("BuyProductID FAIL. Not initialized.");
-            }
+
+            ON_PURCHASE_CLICKED?.Invoke();
+            Debug.Log($"YG2 purchase started. Product ID: {productID}");
+            YG2.BuyPayments(productID);
         }
 
         public void RestorePurchases()
         {
-            if (!IsPurchaseInitialized())
-            {
-                Debug.Log("RestorePurchases FAIL. Not initialized.");
-                return;
-            }
-
-            if (Application.platform == RuntimePlatform.IPhonePlayer)
-            {
-                Debug.Log("RestorePurchases started ...");
-                ON_RESTORE_PURCHASES?.Invoke();
-
-                var apple = extension.GetExtension<IAppleExtensions>();
-
-                apple.RestoreTransactions((result, info) =>
-                {
-                    ON_RESTORE_PURCHASES_END?.Invoke(info);
-                    Debug.Log("RestorePurchases continuing: " + result + ". If no further messages, no purchases available to restore.");
-                });
-            }
-            else
-            {
-                Debug.Log("RestorePurchases FAIL. Not supported on this platform. Current = " + Application.platform);
-            }
+            ON_RESTORE_PURCHASES?.Invoke();
+            YG2.ConsumePurchases();
+            ON_RESTORE_PURCHASES_END?.Invoke("RESTORE PURCHASES REQUESTED");
         }
 
-        private bool IsPurchaseInitialized()
+        public bool IsProductPurchased(string productID)
         {
-            return controller != null && extension != null;
+            return IsNoAdsProduct(productID) && YG2.saves.noAdsPurchased;
         }
 
-        public void OnInitialized(IStoreController controller, IExtensionProvider extensions)
+        public Purchase GetMetaDataById(string id)
         {
-            Debug.Log("IAP. Initialize success!");
+            return YG2.PurchaseByID(id);
+        }
 
-            this.controller = controller;
-            this.extension = extensions;
-
+        private void OnPaymentsInitialized()
+        {
             ON_INITIALIZED?.Invoke();
         }
 
-        private void InitializePurchasing(GameConfig config)
+        private void OnSDKDataReceived()
         {
-            if (IsPurchaseInitialized())
-            {
-                return;
-            }
-
-            var purchasing = StandardPurchasingModule.Instance();
-            var builder = ConfigurationBuilder.Instance(purchasing);
-
-#if UNITY_EDITOR
-            purchasing.useFakeStoreAlways = true;
-            purchasing.useFakeStoreUIMode = FakeStoreUIMode.Default;
-#endif
-
-            foreach (var product in config.ShopProductIAPMap.Values)
-            {
-                builder.AddProduct(product.ID, product.Type);
-            }
-
-            UnityPurchasing.Initialize(this, builder);
+            ON_INITIALIZED?.Invoke();
         }
 
-        public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args)
+        private void OnPurchaseSuccess(string productID)
         {
-            var id = args.purchasedProduct.definition.id;
-            ON_PRODUCT_PURCHASED?.Invoke(id);
-
-            Log.Info("OnProductPurchased. ProductID: " + id);
-
+            SaveProductPurchased(productID);
+            Debug.Log($"YG2 purchase success. Product ID: {productID}");
+            ON_PRODUCT_PURCHASED?.Invoke(productID);
             ON_PURCHASE_PROCESS_COMPLETE?.Invoke();
-
-            return PurchaseProcessingResult.Complete;
         }
 
-        public void OnPurchaseFailed(Product product, PurchaseFailureReason failureReason)
+        private void OnPurchaseFailed(string productID)
         {
-            string info = $"Purchase {product.metadata.localizedTitle} Failed. Reason: {failureReason}";
-            ON_PURCHASE_FAILED.Invoke(info);
-            Log.Info(info);
+            var info = $"Purchase failed. Product ID: {productID}";
+            Debug.Log(info);
+            ON_PURCHASE_FAILED?.Invoke(info);
+            ON_PURCHASE_PROCESS_COMPLETE?.Invoke();
         }
 
-        public void OnPurchaseFailed(Product product, PurchaseFailureDescription failureDescription)
+        private void SaveProductPurchased(string productID)
         {
-            string info = $"Purchase {product.metadata.localizedTitle} Failed. Reason: {failureDescription}";
-            ON_PURCHASE_FAILED.Invoke(info);
-            Log.Info(info);
+            if (!IsNoAdsProduct(productID))
+                return;
+
+            YG2.saves.noAdsPurchased = true;
+            YG2.SaveProgress();
         }
 
-        public void OnInitializeFailed(InitializationFailureReason error)
+        private bool IsNoAdsProduct(string productID)
         {
-            Debug.Log("Initialize failed due to: " + error);
-        }
-
-        public void OnInitializeFailed(InitializationFailureReason error, string message)
-        {
-            Debug.Log("Initialize failed due to: " + error);
-        }
-
-        public Product GetMetaDataById(string id)
-        {
-            foreach (var product in controller.products.all)
-            {
-                if (product.definition.id == id)
-                    return product;
-            }
-
-            return null;
+            return string.Equals(productID, _noAdsProductID, StringComparison.Ordinal);
         }
     }
 }
-
-

@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.Purchasing;
 
 namespace Game.Config
 {
@@ -8,6 +7,5 @@ namespace Game.Config
     [CreateAssetMenu(menuName = "Config/ShopProductIAPConfig")]
     public sealed class ShopProductIAPConfig : ShopProductConfig
     {
-        public ProductType Type;
     }
 }

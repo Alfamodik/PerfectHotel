@@ -4,6 +4,7 @@ using Game.Managers;
 using Injection;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using YG;
 
 namespace Game.UI.Hud
 {
@@ -86,8 +87,8 @@ namespace Game.UI.Hud
 
         private void OnResetButtonClick()
         {
-            PlayerPrefs.DeleteAll();
-            PlayerPrefs.Save();
+            YG2.SetDefaultSaves();
+            YG2.SaveProgress();
 
             OnLoadGameplayButtonClick();
         }

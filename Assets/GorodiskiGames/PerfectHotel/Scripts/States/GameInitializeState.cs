@@ -2,6 +2,7 @@
 using Game.Domain;
 using Game.Managers;
 using Injection;
+using YG;
 
 namespace Game.States
 {
@@ -21,9 +22,10 @@ namespace Game.States
             _context.Install(config);
             _context.ApplyInstall();
 
-#if !UNITY_WEBGL
             _IAPManager.Initialize(config);
-#endif
+            if (YG2.saves.noAdsPurchased)
+                model.IsNoAds = true;
+
             _loginManager.Initialize(model);
             _adsManager.Initialize(model.IsNoAds, config);
 
