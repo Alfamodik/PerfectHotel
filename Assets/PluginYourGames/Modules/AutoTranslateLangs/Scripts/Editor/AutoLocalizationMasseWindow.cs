@@ -158,7 +158,9 @@ namespace YG.LanguageLegacy
             if (GUI.changed && objectsTranlate.Count > 0)
             {
                 EditorUtility.SetDirty(objectsTranlate[0].gameObject);
-                EditorSceneManager.MarkSceneDirty(objectsTranlate[0].gameObject.scene);
+
+                if (!EditorApplication.isPlayingOrWillChangePlaymode)
+                    EditorSceneManager.MarkSceneDirty(objectsTranlate[0].gameObject.scene);
             }
         }
     }

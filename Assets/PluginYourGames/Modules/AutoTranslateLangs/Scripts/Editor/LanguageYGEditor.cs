@@ -232,7 +232,9 @@ namespace YG.LanguageLegacy
             if (GUI.changed)
             {
                 EditorUtility.SetDirty(scr.gameObject);
-                EditorSceneManager.MarkSceneDirty(scr.gameObject.scene);
+
+                if (!EditorApplication.isPlayingOrWillChangePlaymode)
+                    EditorSceneManager.MarkSceneDirty(scr.gameObject.scene);
             }
         }
 
