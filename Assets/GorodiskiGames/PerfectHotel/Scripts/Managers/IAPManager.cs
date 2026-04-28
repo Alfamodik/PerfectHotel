@@ -1,5 +1,6 @@
 using System;
 using Game.Config;
+using Game.Localization;
 using UnityEngine;
 using YG;
 using YG.Utils.Pay;
@@ -8,7 +9,6 @@ namespace Game.Managers
 {
     public sealed class IAPManager : IDisposable
     {
-        private const string _fallbackPrice = "BUY";
         private const string _noAdsProductID = "no_ads";
 
         public event Action ON_INITIALIZED;
@@ -42,7 +42,7 @@ namespace Game.Managers
         {
             var product = YG2.PurchaseByID(productID);
             if (product == null)
-                return _fallbackPrice;
+                return LocalizedText.Key("BUY");
 
             if (!string.IsNullOrEmpty(product.price))
                 return product.price;
@@ -50,7 +50,7 @@ namespace Game.Managers
             if (!string.IsNullOrEmpty(product.priceValue))
                 return product.priceValue;
 
-            return _fallbackPrice;
+            return LocalizedText.Key("BUY");
         }
 
         public string GetTitle(string productID)
@@ -76,7 +76,7 @@ namespace Game.Managers
         {
             ON_RESTORE_PURCHASES?.Invoke();
             YG2.ConsumePurchases();
-            ON_RESTORE_PURCHASES_END?.Invoke("RESTORE PURCHASES REQUESTED");
+            ON_RESTORE_PURCHASES_END?.Invoke(LocalizedText.RestorePurchasesRequested());
         }
 
         public bool IsProductPurchased(string productID)
@@ -109,7 +109,7 @@ namespace Game.Managers
 
         private void OnPurchaseFailed(string productID)
         {
-            var info = $"Purchase failed. Product ID: {productID}";
+            var info = LocalizedText.PurchaseFailed(productID);
             Debug.Log(info);
             ON_PURCHASE_FAILED?.Invoke(info);
             ON_PURCHASE_PROCESS_COMPLETE?.Invoke();

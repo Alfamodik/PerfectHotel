@@ -4,6 +4,7 @@ using System.Linq;
 using Game.Config;
 using Game.Core;
 using Game.Core.UI;
+using Game.Localization;
 using Game.Managers;
 using Injection;
 using UnityEngine;
@@ -20,8 +21,6 @@ namespace Game.UI.Hud
 
 		private const string _priceAdsFormat = "{0} {1}";
 		private const string _priceTimerFormat = "{0} {1}";
-		private const string _adsWord = "FREE";
-
 		[Inject] private IAPManager _IAPManager;
 		[Inject] private GameManager _gameManager;
 		[Inject] private GameConfig _config;
@@ -43,7 +42,7 @@ namespace Game.UI.Hud
 
 		protected override void Show()
 		{
-			_priceAds = string.Format(_priceAdsFormat, GameConstants.AdsIcon, _adsWord);
+			_priceAds = string.Format(_priceAdsFormat, GameConstants.AdsIcon, LocalizedText.Key("FREE"));
 			_clockIcon = GameConstants.ClockIcon;
 
 			SetProductsForAds();
@@ -67,6 +66,7 @@ namespace Game.UI.Hud
 
 			_view.ON_APPLICATION_FOCUS += OnApplicationFocus;
 			_timer.TICK += OnTick;
+			YG2.onSwitchLang += OnSwitchLanguage;
 		}
 
 		protected override void Hide()
@@ -88,6 +88,7 @@ namespace Game.UI.Hud
 
 			_view.ON_APPLICATION_FOCUS -= OnApplicationFocus;
 			_timer.TICK -= OnTick;
+			YG2.onSwitchLang -= OnSwitchLanguage;
 		}
 
 		private void OnInitialized()
@@ -381,6 +382,23 @@ namespace Game.UI.Hud
 				product.SetInteractable(true);
 			}
 			product.PriceText.text = price;
+		}
+
+		private void OnSwitchLanguage(string language)
+		{
+			_priceAds = string.Format(_priceAdsFormat, GameConstants.AdsIcon, LocalizedText.Key("FREE"));
+
+			foreach (var product in _view.ProductForAds)
+			{
+				if (!_productDelayMap.ContainsKey(product))
+					product.PriceText.text = _priceAds;
+			}
+
+			foreach (var product in _productDelayMap.Keys.ToList())
+			{
+				var delay = GetCurrentDelay(product.Config.ID);
+				UpdateProductDelay(product, delay);
+			}
 		}
 	}
 }

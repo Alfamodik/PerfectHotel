@@ -3,7 +3,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Core;
+using Game.Localization;
 using Utilities;
+using YG;
 
 namespace Game.UI.Hud
 {
@@ -39,16 +41,18 @@ namespace Game.UI.Hud
 
         protected override void OnEnable()
         {
+            YG2.onSwitchLang += OnSwitchLanguage;
         }
 
         protected override void OnDisable()
         {
+            YG2.onSwitchLang -= OnSwitchLanguage;
         }
 
         protected override void OnModelChanged(AttributeModel model)
         {
             _icon.sprite = model.Icon;
-            _labelText.text = model.Label;
+            _labelText.text = LocalizedText.Key(model.Label);
 
             var addValue = model.AddValue;
             var addValueString = ColorUtil.ColorString(string.Format(_addValueFormat, addValue), Color.green);
@@ -58,6 +62,12 @@ namespace Game.UI.Hud
                 valueresult = string.Format(_valueFormat, model.Value);
 
             _valueText.text = valueresult;
+        }
+
+        private void OnSwitchLanguage(string language)
+        {
+            if (Model != null)
+                OnModelChanged(Model);
         }
     }
 }

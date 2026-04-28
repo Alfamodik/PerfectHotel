@@ -1,4 +1,5 @@
 ﻿using Game.Level;
+using Game.Localization;
 using Game.UI;
 using Injection;
 using UnityEngine;
@@ -7,9 +8,6 @@ namespace Game.Modules.UINotificationModule
 {
     public sealed class UINotificationModule : Module<UINotificationModuleView>
     {
-        private const string _areaUnlockMessage01 = "Reach Level";
-        private const string _areaUnlockMessage02 = "To Unlock";
-
         private const float _areaLockedOffset = 1.5f;
 
         [Inject] private GameManager _gameManager;
@@ -33,7 +31,7 @@ namespace Game.Modules.UINotificationModule
         void OnAreaLockedNotification(Vector3 itemPosition, int lvl)
         {
             Vector3 screenPosition = _gameView.CameraController.Camera.WorldToScreenPoint(itemPosition + new Vector3(0f, _areaLockedOffset, 0f));
-            string message = _areaUnlockMessage01 + " " + lvl + " " + _areaUnlockMessage02;
+            string message = LocalizedText.ReachLevelToUnlock(lvl);
 
             var view = _view.UINotification.Get<UINotificationView>();
             view.Initialize(screenPosition, message, lvl);

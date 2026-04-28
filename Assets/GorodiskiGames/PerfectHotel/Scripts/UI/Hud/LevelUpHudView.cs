@@ -1,7 +1,9 @@
 using Game.Domain;
+using Game.Localization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 namespace Game.UI.Hud
 {
@@ -15,10 +17,13 @@ namespace Game.UI.Hud
 
         protected override void OnEnable()
         {
+            LocalizedStaticText.Apply(this);
+            YG2.onSwitchLang += OnSwitchLanguage;
         }
 
         protected override void OnDisable()
         {
+            YG2.onSwitchLang -= OnSwitchLanguage;
         }
 
         internal void SetLvl(int lvl)
@@ -29,6 +34,11 @@ namespace Game.UI.Hud
         internal void SetReward(int reward)
         {
             _rewardText.text = GameConstants.CashIcon + " " + reward.ToString();
+        }
+
+        private void OnSwitchLanguage(string language)
+        {
+            LocalizedStaticText.Apply(this);
         }
     }
 }

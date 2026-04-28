@@ -1,16 +1,15 @@
 ﻿using System;
+using Game.Localization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 namespace Game.UI.Hud
 {
     public sealed class DeveloperHudView : BaseHud
     {
         public Action SAVE;
-
-        private const string _progressWord = "PROGRESS ";
-        private const string _lvlWord = "LEVEL ";
 
         [SerializeField] private Button _closeButton;
         [SerializeField] private Button _addCashButton;
@@ -49,11 +48,13 @@ namespace Game.UI.Hud
         {
             _progressSlider.onValueChanged.AddListener(OnProgressSlider);
             _lvlSlider.onValueChanged.AddListener(OnLvlSlider);
+            YG2.onSwitchLang += OnSwitchLanguage;
         }
         protected override void OnDisable()
         {
             _progressSlider.onValueChanged.RemoveListener(OnProgressSlider);
             _lvlSlider.onValueChanged.RemoveListener(OnLvlSlider);
+            YG2.onSwitchLang -= OnSwitchLanguage;
         }
 
         public void LoadProgress(int value)
@@ -88,13 +89,19 @@ namespace Game.UI.Hud
         private void OnProgressSlider(float value)
         {
             _progress = (int)value;
-            _progressText.text = _progressWord + _progress;
+            _progressText.text = LocalizedText.DeveloperProgress(_progress);
         }
 
         private void OnLvlSlider(float value)
         {
             _lvl = (int)value;
-            _lvlText.text = _lvlWord + _lvl;
+            _lvlText.text = LocalizedText.DeveloperLevel(_lvl);
+        }
+
+        private void OnSwitchLanguage(string language)
+        {
+            _progressText.text = LocalizedText.DeveloperProgress(_progress);
+            _lvlText.text = LocalizedText.DeveloperLevel(_lvl);
         }
     }
 }

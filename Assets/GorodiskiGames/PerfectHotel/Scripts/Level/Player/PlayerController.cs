@@ -10,6 +10,7 @@ using Game.UI.Hud;
 using Game.Level.Inventory;
 using Game.Level.Entity;
 using Game.Level.Place;
+using Game.Localization;
 using YG;
 
 namespace Game.Level.Player
@@ -68,14 +69,6 @@ namespace Game.Level.Player
 
     public sealed class UnlockConditionModel
     {
-        private const string _hotelPurchasePattern = "OPEN {0} HOTEL";
-
-        private const string _watchAdsLeftPattern = "WATCH ADS {0} TIMES\n{1} LEFT";
-        private const string _watchAdsPattern = "WATCH ADS {0} TIMES";
-
-        private const string _straightWord = "STRAIGHT";
-        private const string _loginDaysLeftPattern = "LOGIN TO THE GAME {0} DAYS {1}\n{2} DAYS LEFT";
-
         public bool IsUnlocked;
         public string Message;
 
@@ -99,7 +92,7 @@ namespace Game.Level.Player
                 var hotelConfig = gameConfig.HotelConfigMap[targetHotelIndex];
                 var hotelLabel = ColorUtil.ColorString(hotelConfig.Label, Color.green);
 
-                messageResult = string.Format(_hotelPurchasePattern, hotelLabel);
+                messageResult = LocalizedText.OpenHotel(hotelLabel);
                 isUnlockedResult = isPurchased;
             }
             else if (type == UnlockConditionType.WatchAds)
@@ -116,9 +109,9 @@ namespace Game.Level.Player
                 var timesLeftLabel = ColorUtil.ColorString(timesLeft.ToString(), Color.green);
 
                 isUnlockedResult = times >= targetTimes;
-                messageResult = string.Format(_watchAdsLeftPattern, targetTimesLabel, timesLeftLabel);
+                messageResult = LocalizedText.WatchAdsTimesLeft(targetTimesLabel, timesLeftLabel);
                 if (targetTimes == timesLeft)
-                    messageResult = string.Format(_watchAdsPattern, targetTimesLabel);
+                    messageResult = LocalizedText.WatchAdsTimes(targetTimesLabel);
             }
 
             else if (type == UnlockConditionType.GameLogin)
@@ -135,8 +128,8 @@ namespace Game.Level.Player
                 var daysLeftLabel = ColorUtil.ColorString(daysLeft.ToString(), Color.green);
 
                 isUnlockedResult = days >= targetDays;
-                var straightWord = ColorUtil.ColorString(_straightWord, Color.red);
-                messageResult = string.Format(_loginDaysLeftPattern, targetDaysLabel, straightWord, daysLeftLabel);
+                var straightWord = ColorUtil.ColorString(LocalizedText.Straight(), Color.red);
+                messageResult = LocalizedText.LoginDaysLeft(targetDaysLabel, straightWord, daysLeftLabel);
             }
 
             Message = messageResult;

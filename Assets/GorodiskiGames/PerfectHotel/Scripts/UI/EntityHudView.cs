@@ -1,9 +1,11 @@
 using Game;
 using Game.Level.Place;
+using Game.Localization;
 using Game.UI.Hud;
 using TMPro;
 using UnityEngine;
 using Utilities;
+using YG;
 
 namespace Game.Level.Entity
 {
@@ -20,10 +22,12 @@ namespace Game.Level.Entity
 
         protected override void OnEnable()
         {
+            YG2.onSwitchLang += OnSwitchLanguage;
         }
 
         protected override void OnDisable()
         {
+            YG2.onSwitchLang -= OnSwitchLanguage;
         }
 
         public void Locked()
@@ -54,22 +58,22 @@ namespace Game.Level.Entity
 
         protected override void OnModelChanged(EntityModel model)
         {
-            _info = model.Type.ToString().ToUpper();
+            _info = LocalizedText.Key(model.Type.ToString().ToUpper());
             _price = GameConstants.CashIcon + " " + MathUtil.NiceCash(model.PricePurchase);
 
             if (model.Type == EntityType.Area || model.Type == EntityType.Elevator)
             {
                 if (model.IsLocked)
                 {
-                    _info = "LEVEL " + model.TargetPurchaseValue;
+                    _info = LocalizedText.Key("LEVEL") + " " + model.TargetPurchaseValue;
                     _price = "";
                 }
                 else
                 {
                     if (model.Type == EntityType.Area)
-                        _info = "NEW AREA";
+                        _info = LocalizedText.Key("NEW AREA");
                     else if (model.Type == EntityType.Elevator)
-                        _info = "NEW HOTEL";
+                        _info = LocalizedText.Key("NEW HOTEL");
                 }
             }
 
@@ -78,16 +82,22 @@ namespace Game.Level.Entity
                 _price = GameConstants.CashIcon + " " + MathUtil.NiceCash(model.PriceUpdate);
 
                 int lvl = model.LvlNext + 1;
-                _info = "LVL " + lvl;
+                _info = LocalizedText.Key("LVL") + " " + lvl;
 
                 if (model.Type == EntityType.Reception)
-                    _info = "RECEPTIONIST";
+                    _info = LocalizedText.Key("RECEPTIONIST");
                 else if (model.Type == EntityType.Cleaner)
-                    _info = "SPEED";
+                    _info = LocalizedText.Key("SPEED");
             }
 
             _infoText.text = _info;
             _priceText.text = _price;
+        }
+
+        private void OnSwitchLanguage(string language)
+        {
+            if (Model != null)
+                OnModelChanged(Model);
         }
     }
 }

@@ -263,6 +263,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1966517957}
     m_Modifications:
+    - target: {fileID: 194020627835478965, guid: 9744e6c84669647fe9889ece783a651b,
+        type: 3}
+      propertyPath: en
+      value: WATCH ADS
+      objectReference: {fileID: 0}
+    - target: {fileID: 194020627835478965, guid: 9744e6c84669647fe9889ece783a651b,
+        type: 3}
+      propertyPath: ru
+      value: "\u0421\u041C\u041E\u0422\u0420\u0415\u0422\u042C \u0420\u0415\u041A\u041B\u0410\u041C\u0423"
+      objectReference: {fileID: 0}
+    - target: {fileID: 194020627835478965, guid: 9744e6c84669647fe9889ece783a651b,
+        type: 3}
+      propertyPath: countLang
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 194020627835478965, guid: 9744e6c84669647fe9889ece783a651b,
+        type: 3}
+      propertyPath: info.languages.tr
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 194020627835478965, guid: 9744e6c84669647fe9889ece783a651b,
+        type: 3}
+      propertyPath: componentTextField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 194020627835478965, guid: 9744e6c84669647fe9889ece783a651b,
+        type: 3}
+      propertyPath: processTranslateLabel
+      value: 2/2 completed
+      objectReference: {fileID: 0}
     - target: {fileID: 2488701994609810464, guid: 9744e6c84669647fe9889ece783a651b,
         type: 3}
       propertyPath: m_text
@@ -398,6 +428,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonWatchAdv
       objectReference: {fileID: 0}
+    - target: {fileID: 5627264015360881489, guid: 9744e6c84669647fe9889ece783a651b,
+        type: 3}
+      propertyPath: en
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5627264015360881489, guid: 9744e6c84669647fe9889ece783a651b,
+        type: 3}
+      propertyPath: ru
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5627264015360881489, guid: 9744e6c84669647fe9889ece783a651b,
+        type: 3}
+      propertyPath: countLang
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5627264015360881489, guid: 9744e6c84669647fe9889ece783a651b,
+        type: 3}
+      propertyPath: info.languages.tr
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5627264015360881489, guid: 9744e6c84669647fe9889ece783a651b,
+        type: 3}
+      propertyPath: componentTextField
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -498,6 +553,36 @@ PrefabInstance:
         type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
+      objectReference: {fileID: 0}
+    - target: {fileID: 783260869160989176, guid: 882b3986a22d04d46b73c5d1874cddb7,
+        type: 3}
+      propertyPath: en
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 783260869160989176, guid: 882b3986a22d04d46b73c5d1874cddb7,
+        type: 3}
+      propertyPath: ru
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 783260869160989176, guid: 882b3986a22d04d46b73c5d1874cddb7,
+        type: 3}
+      propertyPath: countLang
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 783260869160989176, guid: 882b3986a22d04d46b73c5d1874cddb7,
+        type: 3}
+      propertyPath: info.languages.tr
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 783260869160989176, guid: 882b3986a22d04d46b73c5d1874cddb7,
+        type: 3}
+      propertyPath: componentTextField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 783260869160989176, guid: 882b3986a22d04d46b73c5d1874cddb7,
+        type: 3}
+      propertyPath: processTranslateLabel
+      value: 2/2 completed
       objectReference: {fileID: 0}
     - target: {fileID: 1324942228167382032, guid: 882b3986a22d04d46b73c5d1874cddb7,
         type: 3}
@@ -633,6 +718,37 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -220
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739535114976194401, guid: 882b3986a22d04d46b73c5d1874cddb7,
+        type: 3}
+      propertyPath: en
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739535114976194401, guid: 882b3986a22d04d46b73c5d1874cddb7,
+        type: 3}
+      propertyPath: ru
+      value: "\u041E\u0422\u041A\u041B\u042E\u0427\u0410\u0415\u0422 \u041F\u0420\u0418\u041D\u0423\u0414\u0418\u0422\u0415\u041B\u042C\u041D\u0423\u042E
+        \u0420\u0415\u041A\u041B\u0410\u041C\u0423 \u0418 \u0411\u0410\u041D\u041D\u0415\u0420\u042B"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739535114976194401, guid: 882b3986a22d04d46b73c5d1874cddb7,
+        type: 3}
+      propertyPath: countLang
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739535114976194401, guid: 882b3986a22d04d46b73c5d1874cddb7,
+        type: 3}
+      propertyPath: info.languages.tr
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739535114976194401, guid: 882b3986a22d04d46b73c5d1874cddb7,
+        type: 3}
+      propertyPath: componentTextField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739535114976194401, guid: 882b3986a22d04d46b73c5d1874cddb7,
+        type: 3}
+      propertyPath: processTranslateLabel
+      value: 2/2 completed
       objectReference: {fileID: 0}
     - target: {fileID: 5886741498398483894, guid: 882b3986a22d04d46b73c5d1874cddb7,
         type: 3}
@@ -770,7 +886,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6481479998527277758, guid: 882b3986a22d04d46b73c5d1874cddb7, type: 3}
+    - {fileID: 849119249610537789, guid: 882b3986a22d04d46b73c5d1874cddb7, type: 3}
+    - {fileID: 3371319444870240619, guid: 882b3986a22d04d46b73c5d1874cddb7, type: 3}
+    - {fileID: 886293755249790319, guid: 882b3986a22d04d46b73c5d1874cddb7, type: 3}
+    - {fileID: 6806845294029864172, guid: 882b3986a22d04d46b73c5d1874cddb7, type: 3}
+    - {fileID: 0}
+    - {fileID: 7560842811796649871, guid: 882b3986a22d04d46b73c5d1874cddb7, type: 3}
+    - {fileID: 188630663267771657, guid: 882b3986a22d04d46b73c5d1874cddb7, type: 3}
+    - {fileID: 3606997484025282255, guid: 882b3986a22d04d46b73c5d1874cddb7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -801,6 +926,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 518619417}
     m_Modifications:
+    - target: {fileID: 4416538769674741562, guid: 5588cbcf87975477383a24a2a9a9d7e1,
+        type: 3}
+      propertyPath: en
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416538769674741562, guid: 5588cbcf87975477383a24a2a9a9d7e1,
+        type: 3}
+      propertyPath: ru
+      value: "\u0412\u041E\u0421\u0421\u0422\u0410\u041D\u041E\u0412\u041B\u0415\u041D\u0418\u0415
+        \u041F\u041E\u041A\u0423\u041F\u041E\u041A"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416538769674741562, guid: 5588cbcf87975477383a24a2a9a9d7e1,
+        type: 3}
+      propertyPath: countLang
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416538769674741562, guid: 5588cbcf87975477383a24a2a9a9d7e1,
+        type: 3}
+      propertyPath: info.languages.tr
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416538769674741562, guid: 5588cbcf87975477383a24a2a9a9d7e1,
+        type: 3}
+      propertyPath: componentTextField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416538769674741562, guid: 5588cbcf87975477383a24a2a9a9d7e1,
+        type: 3}
+      propertyPath: processTranslateLabel
+      value: 2/2 completed
+      objectReference: {fileID: 0}
     - target: {fileID: 4475760032241189454, guid: 5588cbcf87975477383a24a2a9a9d7e1,
         type: 3}
       propertyPath: m_Name
@@ -931,10 +1087,25 @@ PrefabInstance:
       propertyPath: m_TargetGraphic
       value: 
       objectReference: {fileID: 1434921719}
+    - target: {fileID: 6452470921666674073, guid: 5588cbcf87975477383a24a2a9a9d7e1,
+        type: 3}
+      propertyPath: info.languages.tr
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7723011492946742900, guid: 5588cbcf87975477383a24a2a9a9d7e1,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993906516947109249, guid: 5588cbcf87975477383a24a2a9a9d7e1,
+        type: 3}
+      propertyPath: info.languages.tr
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993906516947109249, guid: 5588cbcf87975477383a24a2a9a9d7e1,
+        type: 3}
+      propertyPath: componentTextField
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8104379750621605517, guid: 5588cbcf87975477383a24a2a9a9d7e1,
         type: 3}
@@ -946,7 +1117,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5782731379541676312, guid: 5588cbcf87975477383a24a2a9a9d7e1, type: 3}
+    - {fileID: 2111013331574557772, guid: 5588cbcf87975477383a24a2a9a9d7e1, type: 3}
+    - {fileID: 6412681614199197643, guid: 5588cbcf87975477383a24a2a9a9d7e1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1398,6 +1572,36 @@ PrefabInstance:
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
       objectReference: {fileID: 0}
+    - target: {fileID: 1400290200872800443, guid: c5f1b15343be744d09704d9958570b0c,
+        type: 3}
+      propertyPath: en
+      value: LOAD GAMEPLAY
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400290200872800443, guid: c5f1b15343be744d09704d9958570b0c,
+        type: 3}
+      propertyPath: ru
+      value: "\u0417\u0410\u0413\u0420\u0423\u0417\u0418\u0422\u042C \u0418\u0413\u0420\u0423"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400290200872800443, guid: c5f1b15343be744d09704d9958570b0c,
+        type: 3}
+      propertyPath: countLang
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400290200872800443, guid: c5f1b15343be744d09704d9958570b0c,
+        type: 3}
+      propertyPath: info.languages.tr
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400290200872800443, guid: c5f1b15343be744d09704d9958570b0c,
+        type: 3}
+      propertyPath: componentTextField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400290200872800443, guid: c5f1b15343be744d09704d9958570b0c,
+        type: 3}
+      propertyPath: processTranslateLabel
+      value: 2/2 completed
+      objectReference: {fileID: 0}
     - target: {fileID: 1997779199429392623, guid: c5f1b15343be744d09704d9958570b0c,
         type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -1432,6 +1636,36 @@ PrefabInstance:
         type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287814303049467770, guid: c5f1b15343be744d09704d9958570b0c,
+        type: 3}
+      propertyPath: en
+      value: RESET
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287814303049467770, guid: c5f1b15343be744d09704d9958570b0c,
+        type: 3}
+      propertyPath: ru
+      value: "\u041F\u0415\u0420\u0415\u0417\u0410\u0413\u0420\u0423\u0417\u0418\u0422\u042C"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287814303049467770, guid: c5f1b15343be744d09704d9958570b0c,
+        type: 3}
+      propertyPath: countLang
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287814303049467770, guid: c5f1b15343be744d09704d9958570b0c,
+        type: 3}
+      propertyPath: info.languages.tr
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287814303049467770, guid: c5f1b15343be744d09704d9958570b0c,
+        type: 3}
+      propertyPath: componentTextField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287814303049467770, guid: c5f1b15343be744d09704d9958570b0c,
+        type: 3}
+      propertyPath: processTranslateLabel
+      value: 2/2 completed
       objectReference: {fileID: 0}
     - target: {fileID: 4714178570393039230, guid: c5f1b15343be744d09704d9958570b0c,
         type: 3}
@@ -1478,10 +1712,71 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 7013452149526122219, guid: c5f1b15343be744d09704d9958570b0c,
+        type: 3}
+      propertyPath: en
+      value: ADD CASH
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013452149526122219, guid: c5f1b15343be744d09704d9958570b0c,
+        type: 3}
+      propertyPath: ru
+      value: "\u0414\u041E\u0411\u0410\u0412\u0418\u0422\u042C \u041D\u0410\u041B\u0418\u0427\u041D\u042B\u0415"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013452149526122219, guid: c5f1b15343be744d09704d9958570b0c,
+        type: 3}
+      propertyPath: countLang
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013452149526122219, guid: c5f1b15343be744d09704d9958570b0c,
+        type: 3}
+      propertyPath: info.languages.tr
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013452149526122219, guid: c5f1b15343be744d09704d9958570b0c,
+        type: 3}
+      propertyPath: componentTextField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013452149526122219, guid: c5f1b15343be744d09704d9958570b0c,
+        type: 3}
+      propertyPath: processTranslateLabel
+      value: 2/2 completed
+      objectReference: {fileID: 0}
     - target: {fileID: 7725784028923267640, guid: c5f1b15343be744d09704d9958570b0c,
         type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
+      objectReference: {fileID: 0}
+    - target: {fileID: 8212999929604434540, guid: c5f1b15343be744d09704d9958570b0c,
+        type: 3}
+      propertyPath: en
+      value: REW ADS
+      objectReference: {fileID: 0}
+    - target: {fileID: 8212999929604434540, guid: c5f1b15343be744d09704d9958570b0c,
+        type: 3}
+      propertyPath: ru
+      value: "\u041F\u0420\u041E\u0421\u041C\u041E\u0422\u0420\u0415\u0422\u042C
+        \u041E\u0411\u042A\u042F\u0412\u041B\u0415\u041D\u0418\u042F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8212999929604434540, guid: c5f1b15343be744d09704d9958570b0c,
+        type: 3}
+      propertyPath: countLang
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8212999929604434540, guid: c5f1b15343be744d09704d9958570b0c,
+        type: 3}
+      propertyPath: info.languages.tr
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8212999929604434540, guid: c5f1b15343be744d09704d9958570b0c,
+        type: 3}
+      propertyPath: componentTextField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8212999929604434540, guid: c5f1b15343be744d09704d9958570b0c,
+        type: 3}
+      propertyPath: processTranslateLabel
+      value: 2/2 completed
       objectReference: {fileID: 0}
     - target: {fileID: 8249719176376888687, guid: c5f1b15343be744d09704d9958570b0c,
         type: 3}
@@ -1508,7 +1803,9 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 50
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7606025526819507115, guid: c5f1b15343be744d09704d9958570b0c, type: 3}
+    - {fileID: 3716151195298599448, guid: c5f1b15343be744d09704d9958570b0c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1743,6 +2040,36 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 45
       objectReference: {fileID: 0}
+    - target: {fileID: 3394528692216510963, guid: d9e3cd3d89e8446bd9dbdc04f03636f8,
+        type: 3}
+      propertyPath: en
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394528692216510963, guid: d9e3cd3d89e8446bd9dbdc04f03636f8,
+        type: 3}
+      propertyPath: ru
+      value: "\u041D\u0430\u0433\u0440\u0430\u0434\u0430"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394528692216510963, guid: d9e3cd3d89e8446bd9dbdc04f03636f8,
+        type: 3}
+      propertyPath: tr
+      value: "\xD6d\xFCl"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394528692216510963, guid: d9e3cd3d89e8446bd9dbdc04f03636f8,
+        type: 3}
+      propertyPath: countLang
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394528692216510963, guid: d9e3cd3d89e8446bd9dbdc04f03636f8,
+        type: 3}
+      propertyPath: componentTextField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394528692216510963, guid: d9e3cd3d89e8446bd9dbdc04f03636f8,
+        type: 3}
+      propertyPath: processTranslateLabel
+      value: 2/2 completed
+      objectReference: {fileID: 0}
     - target: {fileID: 4819788187911686268, guid: d9e3cd3d89e8446bd9dbdc04f03636f8,
         type: 3}
       propertyPath: m_Name
@@ -1762,6 +2089,36 @@ PrefabInstance:
         type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871041437657301236, guid: d9e3cd3d89e8446bd9dbdc04f03636f8,
+        type: 3}
+      propertyPath: en
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871041437657301236, guid: d9e3cd3d89e8446bd9dbdc04f03636f8,
+        type: 3}
+      propertyPath: ru
+      value: "\u041F\u043E\u0432\u044B\u0448\u0435\u043D\u0438\u0435 \u0443\u0440\u043E\u0432\u043D\u044F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871041437657301236, guid: d9e3cd3d89e8446bd9dbdc04f03636f8,
+        type: 3}
+      propertyPath: tr
+      value: Seviye Atlama
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871041437657301236, guid: d9e3cd3d89e8446bd9dbdc04f03636f8,
+        type: 3}
+      propertyPath: countLang
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871041437657301236, guid: d9e3cd3d89e8446bd9dbdc04f03636f8,
+        type: 3}
+      propertyPath: componentTextField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871041437657301236, guid: d9e3cd3d89e8446bd9dbdc04f03636f8,
+        type: 3}
+      propertyPath: processTranslateLabel
+      value: 2/2 completed
       objectReference: {fileID: 0}
     - target: {fileID: 8944194850424430815, guid: d9e3cd3d89e8446bd9dbdc04f03636f8,
         type: 3}
@@ -2125,6 +2482,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 145
       objectReference: {fileID: 0}
+    - target: {fileID: 5232694576384421597, guid: 24892083b3f044edf981387b2adf27cf,
+        type: 3}
+      propertyPath: info.languages.tr
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232694576384421597, guid: 24892083b3f044edf981387b2adf27cf,
+        type: 3}
+      propertyPath: componentTextField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5864852490852615122, guid: 24892083b3f044edf981387b2adf27cf,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2240,7 +2607,9 @@ PrefabInstance:
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3704555326530619515, guid: 24892083b3f044edf981387b2adf27cf, type: 3}
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4057986353009087591, guid: 24892083b3f044edf981387b2adf27cf,
@@ -2387,7 +2756,8 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7300712111737109125, guid: c2b2b1a1d8a52403480bdf5d1c455a3c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2448,6 +2818,191 @@ Transform:
   m_Children: []
   m_Father: {fileID: 176993368}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1162973624 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6652327812618678885, guid: 1b649e210842a40a4b0ddd57104ad6cb,
+    type: 3}
+  m_PrefabInstance: {fileID: 3773510449905318572}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1162973626 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7039519604597471749, guid: 1b649e210842a40a4b0ddd57104ad6cb,
+    type: 3}
+  m_PrefabInstance: {fileID: 3773510449905318572}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162973624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1162973628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162973624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::YG.LanguageLegacy.LanguageYG
+  textMPComponent: {fileID: 1162973626}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  info:
+    domainAutoLocalization: com
+    languages:
+      ru: 1
+      en: 1
+      tr: 0
+      az: 0
+      be: 0
+      he: 0
+      hy: 0
+      ka: 0
+      et: 0
+      fr: 0
+      kk: 0
+      ky: 0
+      lt: 0
+      lv: 0
+      ro: 0
+      tg: 0
+      tk: 0
+      uk: 0
+      uz: 0
+      es: 0
+      pt: 0
+      ar: 0
+      id: 0
+      ja: 0
+      it: 0
+      de: 0
+      hi: 0
+    fonts:
+      defaultFont: []
+      ru: []
+      en: []
+      tr: []
+      az: []
+      be: []
+      he: []
+      hy: []
+      ka: []
+      et: []
+      fr: []
+      kk: []
+      ky: []
+      lt: []
+      lv: []
+      ro: []
+      tg: []
+      tk: []
+      uk: []
+      uz: []
+      es: []
+      pt: []
+      ar: []
+      id: []
+      ja: []
+      it: []
+      de: []
+      hi: []
+    fontsTMP:
+      defaultFont: []
+      ru: []
+      en: []
+      tr: []
+      az: []
+      be: []
+      he: []
+      hy: []
+      ka: []
+      et: []
+      fr: []
+      kk: []
+      ky: []
+      lt: []
+      lv: []
+      ro: []
+      tg: []
+      tk: []
+      uk: []
+      uz: []
+      es: []
+      pt: []
+      ar: []
+      id: []
+      ja: []
+      it: []
+      de: []
+      hi: []
+    fontsSizeCorrect:
+      ru: 
+      en: 
+      tr: 
+      az: 
+      be: 
+      he: 
+      hy: 
+      ka: 
+      et: 
+      fr: 
+      kk: 
+      ky: 
+      lt: 
+      lv: 
+      ro: 
+      tg: 
+      tk: 
+      uk: 
+      uz: 
+      es: 
+      pt: 
+      ar: 
+      id: 
+      ja: 
+      it: 
+      de: 
+      hi: 
+  text: 
+  ru: "\u041E\u0442\u0435\u043B\u0438"
+  en: Hotels
+  tr: 
+  az: 
+  be: 
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: 
+  kk: 
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: 
+  es: 
+  pt: 
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: 
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 2/2 completed
+  componentTextField: 1
+  countLang: 2
 --- !u!1001 &1304633731
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2867,7 +3422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 0
-  m_AspectRatio: 1.7777778
+  m_AspectRatio: 0.5625
 --- !u!1 &1844739821
 GameObject:
   m_ObjectHideFlags: 0
@@ -3504,6 +4059,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721639642880797631, guid: 2120ee002ff61447ab9405d378606766,
+        type: 3}
+      propertyPath: en
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721639642880797631, guid: 2120ee002ff61447ab9405d378606766,
+        type: 3}
+      propertyPath: ru
+      value: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 \u043D\u043E\u043C\u0435\u0440\u0430"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721639642880797631, guid: 2120ee002ff61447ab9405d378606766,
+        type: 3}
+      propertyPath: countLang
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721639642880797631, guid: 2120ee002ff61447ab9405d378606766,
+        type: 3}
+      propertyPath: info.languages.tr
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721639642880797631, guid: 2120ee002ff61447ab9405d378606766,
+        type: 3}
+      propertyPath: componentTextField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721639642880797631, guid: 2120ee002ff61447ab9405d378606766,
+        type: 3}
+      propertyPath: processTranslateLabel
+      value: 2/2 completed
       objectReference: {fileID: 0}
     - target: {fileID: 4819788187911686268, guid: 2120ee002ff61447ab9405d378606766,
         type: 3}
@@ -4301,7 +4886,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6652327812618678885, guid: 1b649e210842a40a4b0ddd57104ad6cb,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1162973628}
   m_SourcePrefab: {fileID: 100100000, guid: 1b649e210842a40a4b0ddd57104ad6cb, type: 3}
 --- !u!4 &7223775736421729044 stripped
 Transform:
@@ -4661,12 +5250,12 @@ PrefabInstance:
     - target: {fileID: 7013329968468002982, guid: 6d55829aeffdb40ba887b07295ff3a3f,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -91.38
+      value: -91.37988
       objectReference: {fileID: 0}
     - target: {fileID: 7013329968468002982, guid: 6d55829aeffdb40ba887b07295ff3a3f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -76.005
+      value: -76.00488
       objectReference: {fileID: 0}
     - target: {fileID: 7124627760271639562, guid: 6d55829aeffdb40ba887b07295ff3a3f,
         type: 3}
@@ -4708,7 +5297,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7333731185359345504, guid: 6d55829aeffdb40ba887b07295ff3a3f, type: 3}
+    - {fileID: 2207049882133350100, guid: 6d55829aeffdb40ba887b07295ff3a3f, type: 3}
+    - {fileID: 5093936616548614921, guid: 6d55829aeffdb40ba887b07295ff3a3f, type: 3}
+    - {fileID: 3653393082281041033, guid: 6d55829aeffdb40ba887b07295ff3a3f, type: 3}
+    - {fileID: 2454116508965810959, guid: 6d55829aeffdb40ba887b07295ff3a3f, type: 3}
+    - {fileID: 2969666618260926073, guid: 6d55829aeffdb40ba887b07295ff3a3f, type: 3}
+    - {fileID: 5643412110117875386, guid: 6d55829aeffdb40ba887b07295ff3a3f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

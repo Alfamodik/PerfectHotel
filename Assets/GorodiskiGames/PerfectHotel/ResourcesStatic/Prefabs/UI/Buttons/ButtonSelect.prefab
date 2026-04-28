@@ -128,10 +128,30 @@ PrefabInstance:
       propertyPath: m_fontSizeMax
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 596711128945580278, guid: dc4624c5abe63461586d6923bd4ea419,
+        type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 1374404812516374543, guid: dc4624c5abe63461586d6923bd4ea419,
         type: 3}
       propertyPath: m_Name
       value: ButtonSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 2918077887778105187, guid: dc4624c5abe63461586d6923bd4ea419,
+        type: 3}
+      propertyPath: en
+      value: SELECT
+      objectReference: {fileID: 0}
+    - target: {fileID: 2918077887778105187, guid: dc4624c5abe63461586d6923bd4ea419,
+        type: 3}
+      propertyPath: ru
+      value: "\u0412\u042B\u0411\u0420\u0410\u0422\u042C"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2918077887778105187, guid: dc4624c5abe63461586d6923bd4ea419,
+        type: 3}
+      propertyPath: text
+      value: SELECT
       objectReference: {fileID: 0}
     - target: {fileID: 3753875527106462161, guid: dc4624c5abe63461586d6923bd4ea419,
         type: 3}

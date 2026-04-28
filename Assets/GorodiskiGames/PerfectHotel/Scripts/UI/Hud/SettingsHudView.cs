@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+using Game.Localization;
+using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 namespace Game.UI.Hud
 {
@@ -18,10 +20,18 @@ namespace Game.UI.Hud
 
         protected override void OnEnable()
         {
+            LocalizedStaticText.Apply(this);
+            YG2.onSwitchLang += OnSwitchLanguage;
         }
 
         protected override void OnDisable()
         {
+            YG2.onSwitchLang -= OnSwitchLanguage;
+        }
+
+        private void OnSwitchLanguage(string language)
+        {
+            LocalizedStaticText.Apply(this);
         }
     }
 }

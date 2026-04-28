@@ -245,6 +245,11 @@ PrefabInstance:
       propertyPath: m_fontSizeMax
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 4909066349928121802, guid: 415912a086b8745cd87bf52b80448590,
+        type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 8773070327223831978, guid: 415912a086b8745cd87bf52b80448590,
         type: 3}
       propertyPath: m_Name

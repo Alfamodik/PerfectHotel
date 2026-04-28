@@ -1,5 +1,6 @@
 using System;
 using Game.Config;
+using Game.Localization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -39,7 +40,7 @@ namespace Game.UI.Hud
 
         public void Initialize(string price)
         {
-            _titleText.text = _config.Title;
+            _titleText.text = LocalizedText.Key(_config.Title);
 
             _priceText.text = price;
 
@@ -54,16 +55,23 @@ namespace Game.UI.Hud
         protected override void OnEnable()
         {
             _button.onClick.AddListener(OnButtonClick);
+            YG.YG2.onSwitchLang += OnSwitchLanguage;
         }
 
         protected override void OnDisable()
         {
             _button.onClick.RemoveListener(OnButtonClick);
+            YG.YG2.onSwitchLang -= OnSwitchLanguage;
         }
 
         private void OnButtonClick()
         {
             ON_CLICK?.Invoke(_config.ID);
+        }
+
+        private void OnSwitchLanguage(string language)
+        {
+            _titleText.text = LocalizedText.Key(_config.Title);
         }
 
         internal void SetInteractable(bool isInteractable)

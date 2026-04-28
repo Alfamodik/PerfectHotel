@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Game.Core.UI;
 using Game.Level;
 using Game.Level.Room;
+using Game.Localization;
 using Injection;
 using UnityEngine;
 
@@ -83,6 +84,8 @@ namespace Game.UI.Hud
                 _slots.Add(slot);
                 slot.ON_SLOT_CLICK += OnSlotClick;
             }
+
+            LocalizedStaticText.Apply(_view.Container);
         }
 
         private void OnApplicationQuit()

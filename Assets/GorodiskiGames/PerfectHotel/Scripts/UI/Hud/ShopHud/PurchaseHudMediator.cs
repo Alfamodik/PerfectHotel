@@ -1,5 +1,6 @@
 ﻿using Game.Core;
 using Game.Core.UI;
+using Game.Localization;
 using Game.Managers;
 using Injection;
 using UnityEngine;
@@ -9,9 +10,6 @@ namespace Game.UI.Hud
     public sealed class PurchaseHudMediator : Mediator<PurchaseHudView>
     {
         private const float _delay = 1f;
-
-        private const string _purchaseProcessingWord = "PURCHASE PROCESSING...";
-        private const string _purchaseRestoringWord = "RESTORING PURCHASES...";
 
         [Inject] private IAPManager _IAPManager;
         [Inject] private Timer _timer;
@@ -61,7 +59,7 @@ namespace Game.UI.Hud
 
         private void OnPurchaseClicked()
         {
-            _view.InfoText.text = _purchaseProcessingWord;
+            _view.InfoText.text = LocalizedText.PurchaseProcessing();
             _view.BackgroundImage.SetActive(true);
         }
 
@@ -78,7 +76,7 @@ namespace Game.UI.Hud
 
         private void OnRestorePurchases()
         {
-            _view.InfoText.text = _purchaseRestoringWord;
+            _view.InfoText.text = LocalizedText.RestoringPurchases();
             _view.BackgroundImage.SetActive(true);
         }
 

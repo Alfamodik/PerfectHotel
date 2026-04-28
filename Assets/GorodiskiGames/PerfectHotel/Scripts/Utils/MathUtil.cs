@@ -1,3 +1,4 @@
+using Game.Localization;
 using UnityEngine;
 using System;
 
@@ -83,10 +84,10 @@ namespace Utilities
             string timerFormatted;
             if (timeSpan.Days == 0)
             {
-                timerFormatted = $"{timeSpan.Hours:D1}h {timeSpan.Minutes:D1}m {timeSpan.Seconds:D1}s";
+                timerFormatted = $"{timeSpan.Hours:D1}{LocalizedText.Get("h", "ч")} {timeSpan.Minutes:D1}{LocalizedText.Get("m", "м")} {timeSpan.Seconds:D1}{LocalizedText.Get("s", "с")}";
             }
             else timerFormatted =
-                $"{timeSpan.Days:D1}d {timeSpan.Hours:D1}h {timeSpan.Minutes:D1}m {timeSpan.Seconds:D1}s";
+                $"{timeSpan.Days:D1}{LocalizedText.Get("d", "д")} {timeSpan.Hours:D1}{LocalizedText.Get("h", "ч")} {timeSpan.Minutes:D1}{LocalizedText.Get("m", "м")} {timeSpan.Seconds:D1}{LocalizedText.Get("s", "с")}";
             return timerFormatted;
         }
 
@@ -94,8 +95,8 @@ namespace Utilities
         {
             TimeSpan timeSpan = TimeSpan.FromSeconds(value);
             string timerFormatted;
-            string _minutes = "min";
-            string _seconds = "s";
+            string _minutes = LocalizedText.TimeUnitMinutes();
+            string _seconds = LocalizedText.Get("s", "с");
 
             if (timeSpan.Minutes == 0)
             {
@@ -247,9 +248,9 @@ namespace Utilities
         {
             TimeSpan timeSpan = TimeSpan.FromSeconds(value);
 
-            string hrsWord = "hr";
-            string minWord = "min";
-            string secWord = "sec";
+            string hrsWord = LocalizedText.TimeUnitHours();
+            string minWord = LocalizedText.TimeUnitMinutes();
+            string secWord = LocalizedText.TimeUnitSeconds();
             string resultHrs = timeSpan.Hours + hrsWord + " ";
             string resultMin = timeSpan.Minutes + minWord + " ";
             string resultSec = timeSpan.Seconds + secWord;
