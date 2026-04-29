@@ -263,6 +263,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1966517957}
     m_Modifications:
+    - target: {fileID: 9728112986775159, guid: 9744e6c84669647fe9889ece783a651b, type: 3}
+      propertyPath: info.languages.tr
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 194020627835478965, guid: 9744e6c84669647fe9889ece783a651b,
         type: 3}
       propertyPath: en
@@ -453,7 +457,8 @@ PrefabInstance:
       propertyPath: componentTextField
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9728112986775159, guid: 9744e6c84669647fe9889ece783a651b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3452,7 +3457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 0
-  m_AspectRatio: 0.5625
+  m_AspectRatio: 1.7777778
 --- !u!1 &1844739821
 GameObject:
   m_ObjectHideFlags: 0
