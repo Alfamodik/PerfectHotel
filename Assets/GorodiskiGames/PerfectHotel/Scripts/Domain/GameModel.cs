@@ -12,6 +12,8 @@ namespace Game.Domain
     [Serializable]
     public sealed class GameModel : Observable
     {
+        private const string JoystickVisibilityPrefsKey = "JoystickVisibility";
+
         public static GameModel Load(GameConfig config)
         {
             try
@@ -26,6 +28,7 @@ namespace Game.Domain
 
                 result.EnsureRuntimeState();
                 result.ApplyCloudPurchases();
+                result.JoystickVisibility = LoadJoystickVisibilityPreference();
                 return result;
             }
             catch (Exception e)
@@ -56,7 +59,7 @@ namespace Game.Domain
             TotalEarnedCash = 0;
             Hotel = config.DefaultHotel;
             IsNoAds = YG2.saves.noAdsPurchased;
-            JoystickVisibility = false;
+            JoystickVisibility = LoadJoystickVisibilityPreference();
         }
 
         private static GameModel CreateDefault(GameConfig config)
@@ -78,6 +81,17 @@ namespace Game.Domain
                 IsNoAds = true;
         }
 
+        private static bool LoadJoystickVisibilityPreference()
+        {
+            if (!PlayerPrefs.HasKey(JoystickVisibilityPrefsKey))
+            {
+                PlayerPrefs.SetInt(JoystickVisibilityPrefsKey, 1);
+                PlayerPrefs.Save();
+            }
+
+            return PlayerPrefs.GetInt(JoystickVisibilityPrefsKey, 1) == 1;
+        }
+
         public void AddCash(long amount)
         {
             if (amount <= 0)
@@ -94,6 +108,9 @@ namespace Game.Domain
         {
             if (IsNoAds)
                 YG2.saves.noAdsPurchased = true;
+
+            PlayerPrefs.SetInt(JoystickVisibilityPrefsKey, JoystickVisibility ? 1 : 0);
+            PlayerPrefs.Save();
 
             var data = JsonUtility.ToJson(this);
             YG2.saves.gameModelJson = data;

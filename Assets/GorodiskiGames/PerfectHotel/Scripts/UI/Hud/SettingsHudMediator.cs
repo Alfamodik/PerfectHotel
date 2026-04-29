@@ -85,7 +85,7 @@ namespace Game.UI.Hud
 
         private void JoystickVisibilityToggleVisibility()
         {
-            _view.JoystickVisibilityToggle.isOn = _gameManager.Model.JoystickVisibility;
+            _view.JoystickVisibilityToggle.SetIsOnWithoutNotify(_gameManager.Model.JoystickVisibility);
         }
     }
 }

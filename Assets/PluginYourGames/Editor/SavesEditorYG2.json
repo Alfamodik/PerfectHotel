@@ -7,9 +7,9 @@
     false,
     false
   ],
-  "idSave": 3078,
+  "idSave": 138,
   "noAdsPurchased": true,
-  "gameModelJson": "{\"Player\":0,\"Cash\":82251,\"TotalEarnedCash\":1361,\"Hotel\":1,\"IsNoAds\":true,\"InventoryTypes\":[],\"JoystickVisibility\":false}",
+  "gameModelJson": "{\"Player\":0,\"Cash\":94,\"TotalEarnedCash\":46,\"Hotel\":1,\"IsNoAds\":true,\"InventoryTypes\":[],\"JoystickVisibility\":false}",
   "intValues": [
     {
       "key": "IsUsedHotel1Room0",
@@ -21,11 +21,11 @@
     },
     {
       "key": "IsUsedHotel1Room1",
-      "value": 1
+      "value": 0
     },
     {
       "key": "HotelProgress1",
-      "value": 89
+      "value": 12
     },
     {
       "key": "IsPurchasedHotel1Room2",
@@ -37,14 +37,10 @@
     },
     {
       "key": "watch_ads_times",
-      "value": 7
+      "value": 1
     },
     {
       "key": "product_cash_for_adsscenarioIndex",
-      "value": 3
-    },
-    {
-      "key": "IsPurchasedHotel1WC0",
       "value": 1
     },
     {
@@ -52,228 +48,48 @@
       "value": 1
     },
     {
-      "key": "LvlHotel1Room0",
-      "value": 2
-    },
-    {
-      "key": "VisualIndexHotel1Room0",
-      "value": 2
-    },
-    {
-      "key": "LvlHotel1Room1",
-      "value": 2
-    },
-    {
-      "key": "VisualIndexHotel1Room1",
-      "value": 0
-    },
-    {
-      "key": "LvlHotel1Room2",
-      "value": 2
-    },
-    {
-      "key": "VisualIndexHotel1Room2",
-      "value": 1
-    },
-    {
-      "key": "HotelLvl1",
-      "value": 4
-    },
-    {
-      "key": "target_watch_ads_times1",
-      "value": 1
-    },
-    {
-      "key": "target_watch_ads_times2",
-      "value": 2
-    },
-    {
-      "key": "watch_ads_times2",
-      "value": 2
-    },
-    {
-      "key": "watch_ads_times1",
+      "key": "IsPurchasedHotel1WC0",
       "value": 1
     },
     {
       "key": "LvlHotel1Reception0",
-      "value": 3
-    },
-    {
-      "key": "VisitsCountHotel1WC0DropInventory0",
       "value": 1
     },
     {
-      "key": "VisitsCountHotel1WC0DropInventory1",
-      "value": 0
-    },
-    {
-      "key": "VisitsCountHotel1WC0DropInventory2",
+      "key": "LvlHotel1Room0",
       "value": 1
     },
     {
-      "key": "IsPurchasedHotel1Area2",
+      "key": "VisualIndexHotel1Room0",
       "value": 1
-    },
-    {
-      "key": "IsPurchasedHotel1Room3",
-      "value": 1
-    },
-    {
-      "key": "IsUsedHotel1Room3",
-      "value": 1
-    },
-    {
-      "key": "IsPurchasedHotel1Loader0",
-      "value": 1
-    },
-    {
-      "key": "IsPurchasedHotel1Loader1",
-      "value": 1
-    },
-    {
-      "key": "LvlHotel1Loader1",
-      "value": 1
-    },
-    {
-      "key": "LvlHotel1Loader0",
-      "value": 1
-    },
-    {
-      "key": "LvlHotel1Cleaner0",
-      "value": 3
-    },
-    {
-      "key": "LvlHotel1Room3",
-      "value": 2
-    },
-    {
-      "key": "VisualIndexHotel1Room3",
-      "value": 1
-    },
-    {
-      "key": "IsPurchasedHotel1Room4",
-      "value": 1
-    },
-    {
-      "key": "IsUsedHotel1Room4",
-      "value": 0
-    },
-    {
-      "key": "LvlHotel1Room4",
-      "value": 2
-    },
-    {
-      "key": "VisualIndexHotel1Room4",
-      "value": 2
-    },
-    {
-      "key": "IsPurchasedHotel1Cleaner1",
-      "value": 1
-    },
-    {
-      "key": "LvlHotel1Cleaner1",
-      "value": 3
-    },
-    {
-      "key": "IsPurchasedHotel1Room5",
-      "value": 1
-    },
-    {
-      "key": "IsUsedHotel1Room5",
-      "value": 1
-    },
-    {
-      "key": "IsPurchasedHotel1Area3",
-      "value": 1
-    },
-    {
-      "key": "LvlHotel1Room5",
-      "value": 2
-    },
-    {
-      "key": "VisualIndexHotel1Room5",
-      "value": 2
-    },
-    {
-      "key": "IsPurchasedHotel1WC1",
-      "value": 1
-    },
-    {
-      "key": "VisitsCountHotel1WC1DropInventory0",
-      "value": 2
-    },
-    {
-      "key": "VisitsCountHotel1WC1DropInventory1",
-      "value": 2
-    },
-    {
-      "key": "VisitsCountHotel1WC1DropInventory2",
-      "value": 2
-    },
-    {
-      "key": "IsPurchasedHotel1Cleaner2",
-      "value": 1
-    },
-    {
-      "key": "IsPurchasedHotel1Room6",
-      "value": 1
-    },
-    {
-      "key": "IsUsedHotel1Room6",
-      "value": 0
     }
   ],
   "longValues": [
     {
       "key": "CashHotel1Reception0",
-      "value": 2690
+      "value": 20
     },
     {
       "key": "CashHotel1Room0",
-      "value": 64
+      "value": 0
     },
     {
       "key": "CashHotel1Room1",
-      "value": 40
-    },
-    {
-      "key": "CashHotel1Room2",
-      "value": 24
-    },
-    {
-      "key": "CashHotel1WC0",
-      "value": 360
-    },
-    {
-      "key": "CashHotel1Room3",
-      "value": 54
-    },
-    {
-      "key": "CashHotel1Room4",
-      "value": 16
-    },
-    {
-      "key": "CashHotel1Room5",
-      "value": 24
-    },
-    {
-      "key": "CashHotel1WC1",
-      "value": 60
+      "value": 0
     }
   ],
   "stringValues": [
     {
       "key": "login_date",
-      "value": "28.04.2026 17:12:20"
+      "value": "29.04.2026 10:55:45"
     },
     {
       "key": "product_cash_for_adsallScenariosDate",
-      "value": "-8584241421303018779"
+      "value": "-8584240782370716683"
     },
     {
       "key": "product_cash_for_adsscenarioDate",
-      "value": "-8584242216168585643"
+      "value": "-8584241645770506690"
     }
   ]
 }

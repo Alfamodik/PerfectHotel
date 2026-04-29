@@ -629,6 +629,11 @@ PrefabInstance:
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
       objectReference: {fileID: 0}
+    - target: {fileID: 1983643117758300791, guid: 882b3986a22d04d46b73c5d1874cddb7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2872003854943595567, guid: 882b3986a22d04d46b73c5d1874cddb7,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -765,6 +770,11 @@ PrefabInstance:
         type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
+      objectReference: {fileID: 0}
+    - target: {fileID: 7025875239405860253, guid: 882b3986a22d04d46b73c5d1874cddb7,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 29.25
       objectReference: {fileID: 0}
     - target: {fileID: 7025875239405860253, guid: 882b3986a22d04d46b73c5d1874cddb7,
         type: 3}
@@ -2631,41 +2641,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 518619417}
     m_Modifications:
-    - target: {fileID: 424597722974050125, guid: c2b2b1a1d8a52403480bdf5d1c455a3c,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 424597722974050125, guid: c2b2b1a1d8a52403480bdf5d1c455a3c,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 424597722974050125, guid: c2b2b1a1d8a52403480bdf5d1c455a3c,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 424597722974050125, guid: c2b2b1a1d8a52403480bdf5d1c455a3c,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 424597722974050125, guid: c2b2b1a1d8a52403480bdf5d1c455a3c,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 424597722974050125, guid: c2b2b1a1d8a52403480bdf5d1c455a3c,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3620160150684784255, guid: c2b2b1a1d8a52403480bdf5d1c455a3c,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4475760032241189454, guid: c2b2b1a1d8a52403480bdf5d1c455a3c,
         type: 3}
       propertyPath: m_Name
@@ -2775,21 +2750,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7273104947779396552, guid: c2b2b1a1d8a52403480bdf5d1c455a3c,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7273104947779396552, guid: c2b2b1a1d8a52403480bdf5d1c455a3c,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7273104947779396552, guid: c2b2b1a1d8a52403480bdf5d1c455a3c,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7300712111737109125, guid: c2b2b1a1d8a52403480bdf5d1c455a3c, type: 3}
@@ -3487,8 +3447,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad35d38d10fc9bd47a85c7584bb6dc92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SFXProvider
-  _globalMusicVolume: 0.5
-  _globalEffectsVolume: 0.5
+  _globalMusicVolume: 0.7
+  _globalEffectsVolume: 0.7
   _sounds:
   - Name: broom-sweeping
     Loop: 1
@@ -3505,7 +3465,7 @@ MonoBehaviour:
     DontDestroyOnLoad: 0
     AudioType: 0
     Clip: {fileID: 8300000, guid: cbce1fd1f6c6a6440beccc75183e7f74, type: 3}
-    Volume: 0.6
+    Volume: 0.7
     AlreadyPlaying: 0
     Source: {fileID: 0}
   - Name: upgrade
