@@ -7,7 +7,7 @@
     false,
     false
   ],
-  "idSave": 138,
+  "idSave": 143,
   "noAdsPurchased": true,
   "gameModelJson": "{\"Player\":0,\"Cash\":94,\"TotalEarnedCash\":46,\"Hotel\":1,\"IsNoAds\":true,\"InventoryTypes\":[],\"JoystickVisibility\":false}",
   "intValues": [
@@ -67,7 +67,7 @@
   "longValues": [
     {
       "key": "CashHotel1Reception0",
-      "value": 20
+      "value": 30
     },
     {
       "key": "CashHotel1Room0",

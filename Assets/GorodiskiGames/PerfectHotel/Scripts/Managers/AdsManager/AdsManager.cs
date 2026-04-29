@@ -81,6 +81,7 @@ namespace Game.Managers
         {
             Log.Info($"Rewarded watched");
             ON_REWARDED_WATCHED.SafeInvoke();
+            YG2.SaveProgress();
         }
 
         private void OnInterstitialWatched()

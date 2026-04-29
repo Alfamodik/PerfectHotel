@@ -21,7 +21,7 @@ namespace Game.UI.Hud
         protected override void OnEnable()
         {
             SetDeviceID();
-            SetAspectMode();
+            //SetAspectMode();
             ResetTransform();
         }
 
