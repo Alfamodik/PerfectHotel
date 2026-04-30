@@ -128,6 +128,21 @@ PrefabInstance:
       propertyPath: m_fontSizeMax
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 786851744491074048, guid: dc4624c5abe63461586d6923bd4ea419,
+        type: 3}
+      propertyPath: en
+      value: GET
+      objectReference: {fileID: 0}
+    - target: {fileID: 786851744491074048, guid: dc4624c5abe63461586d6923bd4ea419,
+        type: 3}
+      propertyPath: ru
+      value: "\u0412\u042B\u0411\u0420\u0410\u0422\u042C"
+      objectReference: {fileID: 0}
+    - target: {fileID: 786851744491074048, guid: dc4624c5abe63461586d6923bd4ea419,
+        type: 3}
+      propertyPath: text
+      value: GET
+      objectReference: {fileID: 0}
     - target: {fileID: 1374404812516374543, guid: dc4624c5abe63461586d6923bd4ea419,
         type: 3}
       propertyPath: m_Name

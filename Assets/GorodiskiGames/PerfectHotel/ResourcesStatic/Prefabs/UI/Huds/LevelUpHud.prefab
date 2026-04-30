@@ -385,6 +385,21 @@ PrefabInstance:
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
       objectReference: {fileID: 0}
+    - target: {fileID: 5083443817023123260, guid: 415912a086b8745cd87bf52b80448590,
+        type: 3}
+      propertyPath: en
+      value: Level Up
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083443817023123260, guid: 415912a086b8745cd87bf52b80448590,
+        type: 3}
+      propertyPath: ru
+      value: "\u041D\u041E\u0412\u042B\u0419 \u0423\u0420\u041E\u0412\u0415\u041D\u042C"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083443817023123260, guid: 415912a086b8745cd87bf52b80448590,
+        type: 3}
+      propertyPath: text
+      value: Level Up
+      objectReference: {fileID: 0}
     - target: {fileID: 8773070327223831978, guid: 415912a086b8745cd87bf52b80448590,
         type: 3}
       propertyPath: m_Name
@@ -883,6 +898,21 @@ PrefabInstance:
         type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083443817023123260, guid: 415912a086b8745cd87bf52b80448590,
+        type: 3}
+      propertyPath: en
+      value: Reward
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083443817023123260, guid: 415912a086b8745cd87bf52b80448590,
+        type: 3}
+      propertyPath: ru
+      value: "\u041D\u0410\u0413\u0420\u0410\u0414\u0410"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083443817023123260, guid: 415912a086b8745cd87bf52b80448590,
+        type: 3}
+      propertyPath: text
+      value: Reward
       objectReference: {fileID: 0}
     - target: {fileID: 8773070327223831978, guid: 415912a086b8745cd87bf52b80448590,
         type: 3}

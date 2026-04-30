@@ -474,6 +474,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: bfeddf12b861c4e238e44405659fa772,
         type: 3}
+    - target: {fileID: 3611551909860914466, guid: 929133a2f45e540f1aa686ddbcd33e94,
+        type: 3}
+      propertyPath: en
+      value: DISABLES FORCED ADS AND BANNERS
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611551909860914466, guid: 929133a2f45e540f1aa686ddbcd33e94,
+        type: 3}
+      propertyPath: ru
+      value: "\u041E\u0422\u041A\u041B\u042E\u0427\u0410\u0415\u0422 \u0420\u0415\u041A\u041B\u0410\u041C\u041D\u042B\u0415
+        \u041F\u0410\u0423\u0417\u042B \u0418 \u0411\u0410\u041D\u041D\u0415\u0420\u042B"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611551909860914466, guid: 929133a2f45e540f1aa686ddbcd33e94,
+        type: 3}
+      propertyPath: text
+      value: DISABLES FORCED ADS AND BANNERS
+      objectReference: {fileID: 0}
     - target: {fileID: 4359939494647498402, guid: 929133a2f45e540f1aa686ddbcd33e94,
         type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -500,6 +516,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d932bb7082d0a496ab62f7f7e2446e4d,
         type: 2}
+    - target: {fileID: 6177436206649277080, guid: 929133a2f45e540f1aa686ddbcd33e94,
+        type: 3}
+      propertyPath: en
+      value: DISABLES FORCED ADS AND BANNERS
+      objectReference: {fileID: 0}
+    - target: {fileID: 6177436206649277080, guid: 929133a2f45e540f1aa686ddbcd33e94,
+        type: 3}
+      propertyPath: ru
+      value: "\u041E\u0422\u041A\u041B\u042E\u0427\u0410\u0415\u0422 \u0420\u0415\u041A\u041B\u0410\u041C\u041D\u042B\u0415
+        \u041F\u0410\u0423\u0417\u042B \u0418 \u0411\u0410\u041D\u041D\u0415\u0420\u042B"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6177436206649277080, guid: 929133a2f45e540f1aa686ddbcd33e94,
+        type: 3}
+      propertyPath: text
+      value: DISABLES FORCED ADS AND BANNERS
+      objectReference: {fileID: 0}
     - target: {fileID: 6275253029800038510, guid: 929133a2f45e540f1aa686ddbcd33e94,
         type: 3}
       propertyPath: m_text

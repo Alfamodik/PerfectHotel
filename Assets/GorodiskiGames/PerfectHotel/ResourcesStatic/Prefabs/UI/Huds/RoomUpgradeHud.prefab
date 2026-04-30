@@ -699,6 +699,21 @@ PrefabInstance:
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
       objectReference: {fileID: 0}
+    - target: {fileID: 5083443817023123260, guid: 415912a086b8745cd87bf52b80448590,
+        type: 3}
+      propertyPath: en
+      value: Upgrade Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083443817023123260, guid: 415912a086b8745cd87bf52b80448590,
+        type: 3}
+      propertyPath: ru
+      value: "\u0423\u041B\u0423\u0427\u0428\u0415\u041D\u0418\u0415 \u041D\u041E\u041C\u0415\u0420\u0410"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083443817023123260, guid: 415912a086b8745cd87bf52b80448590,
+        type: 3}
+      propertyPath: text
+      value: Upgrade Room
+      objectReference: {fileID: 0}
     - target: {fileID: 8773070327223831978, guid: 415912a086b8745cd87bf52b80448590,
         type: 3}
       propertyPath: m_Name

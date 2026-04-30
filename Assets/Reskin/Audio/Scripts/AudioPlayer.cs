@@ -15,6 +15,7 @@ public sealed class AudioPlayer : MonoBehaviour
     private AudioSource audioSource;
     private bool isPaused;
     private bool isStoppedManually;
+    private float lastPlaybackPosition;
 
     public int CurrentTrackIndex => currentTrackIndex;
     public AudioClip CurrentTrack => HasTracks() ? playlist[currentTrackIndex] : null;
@@ -45,6 +46,9 @@ public sealed class AudioPlayer : MonoBehaviour
 
     private void Update()
     {
+        if (audioSource.isPlaying)
+            lastPlaybackPosition = audioSource.time;
+
         if (ShouldPlayNextTrackAutomatically() == false)
             return;
 
@@ -167,6 +171,7 @@ public sealed class AudioPlayer : MonoBehaviour
 
         audioSource.loop = loopCurrentTrack;
         audioSource.clip = audioClip;
+        lastPlaybackPosition = 0f;
         audioSource.Play();
     }
 
@@ -187,10 +192,26 @@ public sealed class AudioPlayer : MonoBehaviour
         if (audioSource.clip == null)
             return false;
 
+        if (AudioListener.pause)
+            return false;
+
         if (audioSource.isPlaying)
             return false;
 
-        return audioSource.timeSamples > 0;
+        return IsCurrentTrackFinished();
+    }
+
+    private bool IsCurrentTrackFinished()
+    {
+        const float FinishTolerance = 0.25f;
+
+        if (audioSource.clip == null)
+            return false;
+
+        if (audioSource.timeSamples > 0 || audioSource.time > 0f)
+            return true;
+
+        return lastPlaybackPosition >= audioSource.clip.length - FinishTolerance;
     }
 
     private int GetNextPlayableTrackIndex(int startIndex, int step)

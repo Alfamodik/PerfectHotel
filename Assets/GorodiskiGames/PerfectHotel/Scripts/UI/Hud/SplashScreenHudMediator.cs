@@ -61,6 +61,7 @@ namespace Game.UI.Hud
                 if (config.SceneIndex == model.Hotel)
                 {
                     _view.Icon.sprite = config.Icon;
+                    _view.RefreshImageLayout();
                     break;
                 }
             }

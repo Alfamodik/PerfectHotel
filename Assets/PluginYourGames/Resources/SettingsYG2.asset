@@ -323,7 +323,7 @@ MonoBehaviour:
     minute: 30
     second: 30
   Storage:
-    saveLocal: 0
+    saveLocal: 1
     saveCloud: 1
     flush: 0
   Basic:

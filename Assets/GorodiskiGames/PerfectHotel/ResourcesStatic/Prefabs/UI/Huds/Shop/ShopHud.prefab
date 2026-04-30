@@ -929,6 +929,21 @@ PrefabInstance:
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
       objectReference: {fileID: 0}
+    - target: {fileID: 5083443817023123260, guid: 415912a086b8745cd87bf52b80448590,
+        type: 3}
+      propertyPath: en
+      value: SHOP
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083443817023123260, guid: 415912a086b8745cd87bf52b80448590,
+        type: 3}
+      propertyPath: ru
+      value: "\u041C\u0410\u0413\u0410\u0417\u0418\u041D"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083443817023123260, guid: 415912a086b8745cd87bf52b80448590,
+        type: 3}
+      propertyPath: text
+      value: SHOP
+      objectReference: {fileID: 0}
     - target: {fileID: 8773070327223831978, guid: 415912a086b8745cd87bf52b80448590,
         type: 3}
       propertyPath: m_Name

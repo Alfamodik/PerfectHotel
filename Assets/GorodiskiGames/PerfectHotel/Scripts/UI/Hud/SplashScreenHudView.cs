@@ -21,8 +21,7 @@ namespace Game.UI.Hud
         protected override void OnEnable()
         {
             SetDeviceID();
-            //SetAspectMode();
-            ResetTransform();
+            RefreshImageLayout();
         }
 
         protected override void OnDisable()
@@ -36,20 +35,27 @@ namespace Game.UI.Hud
             _deviceIDText.text = deviceID;
         }
 
-        private void SetAspectMode()
+        public void RefreshImageLayout()
         {
-            var mode = AspectMode.HeightControlsWidth;
+            if (_icon != null)
+                _icon.preserveAspect = false;
 
-            if (Screen.width > Screen.height)
-                mode = AspectMode.WidthControlsHeight;
+            if (_aspectRatioTransform == null || _aspectRatio == null)
+                return;
 
-            _aspectRatio.aspectMode = mode;
+            ResetTransform();
+
+            var sprite = _icon != null ? _icon.sprite : null;
+            _aspectRatio.aspectRatio = sprite != null ? sprite.rect.width / sprite.rect.height : 1f;
+            _aspectRatio.aspectMode = AspectMode.EnvelopeParent;
         }
 
         private void ResetTransform()
         {
-            _aspectRatioTransform.offsetMin = Vector2.zero;
-            _aspectRatioTransform.offsetMax = Vector2.zero;
+            _aspectRatioTransform.anchorMin = Vector2.zero;
+            _aspectRatioTransform.anchorMax = Vector2.one;
+            _aspectRatioTransform.anchoredPosition = Vector2.zero;
+            _aspectRatioTransform.sizeDelta = Vector2.zero;
         }
     }
 }
