@@ -7,13 +7,13 @@
     false,
     false
   ],
-  "idSave": 15586,
+  "idSave": 15856,
   "noAdsPurchased": true,
-  "gameModelJson": "{\"Player\":1,\"Cash\":15727,\"TotalEarnedCash\":16997,\"Hotel\":1,\"IsNoAds\":true,\"InventoryTypes\":[],\"JoystickVisibility\":false}",
+  "gameModelJson": "{\"Player\":0,\"Cash\":16709,\"TotalEarnedCash\":17979,\"Hotel\":1,\"IsNoAds\":true,\"InventoryTypes\":[],\"JoystickVisibility\":true}",
   "intValues": [
     {
       "key": "IsUsedHotel1Room0",
-      "value": 0
+      "value": 1
     },
     {
       "key": "IsPurchasedHotel1Room1",
@@ -21,7 +21,7 @@
     },
     {
       "key": "IsUsedHotel1Room1",
-      "value": 1
+      "value": 0
     },
     {
       "key": "HotelProgress1",
@@ -113,7 +113,7 @@
     },
     {
       "key": "IsUsedHotel1Room3",
-      "value": 1
+      "value": 0
     },
     {
       "key": "LvlHotel1Loader0",
@@ -125,7 +125,7 @@
     },
     {
       "key": "IsUsedHotel1Room4",
-      "value": 0
+      "value": 1
     },
     {
       "key": "IsPurchasedHotel1Room5",
@@ -201,7 +201,7 @@
     },
     {
       "key": "IsUsedHotel1Room7",
-      "value": 1
+      "value": 0
     },
     {
       "key": "IsPurchasedHotel1Room8",
@@ -451,11 +451,11 @@
   "longValues": [
     {
       "key": "CashHotel1Reception0",
-      "value": 0
+      "value": 1566
     },
     {
       "key": "CashHotel1Room0",
-      "value": 40
+      "value": 0
     },
     {
       "key": "CashHotel1Room1",
@@ -475,7 +475,7 @@
     },
     {
       "key": "CashHotel1Room4",
-      "value": 40
+      "value": 48
     },
     {
       "key": "CashHotel1Room5",
