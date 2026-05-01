@@ -61,7 +61,7 @@ namespace Game.Managers
                 return;
 
             if (YG2.isTimerAdvCompleted)
-                YG2.InterstitialAdvShow();
+                ManualTimerBeforeAdsYG.ShowInterstitial();
         }
 
         public void ShowRewarded()

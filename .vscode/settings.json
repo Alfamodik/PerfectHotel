@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "TestHotel.slnx"
+    "dotnet.defaultSolution": "PerfectHotel.slnx"
 }
