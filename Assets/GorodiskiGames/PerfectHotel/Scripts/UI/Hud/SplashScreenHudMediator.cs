@@ -5,6 +5,7 @@ using Game.Domain;
 using Game.Managers;
 using Injection;
 using UnityEngine;
+using YG;
 
 namespace Game.UI.Hud
 {
@@ -44,7 +45,10 @@ namespace Game.UI.Hud
             _elapsed += Time.deltaTime;
 
             if (_elapsed >= _duration)
+            {
+                YG2.GameReadyAPI();
                 InternalHide();
+            }
         }
 
         private void UpdateBar()

@@ -7,7 +7,6 @@ using Game.UI;
 using Injection;
 using UnityEngine;
 using Game.Level.Player;
-using YG;
 using Game.UI.Hud;
 using Game.Level.Reception;
 using Game.Modules.CashModule;
@@ -69,8 +68,6 @@ namespace Game.States
 
             _gameManager.ON_TRY_SHOW_INTERSTITIAL += OnTryShowInterstitial;
             _adsManager.ON_REWARDED_WATCHED += OnRewardedWatched;
-
-            YG2.GameReadyAPI();
         }
 
         public override void Dispose()
