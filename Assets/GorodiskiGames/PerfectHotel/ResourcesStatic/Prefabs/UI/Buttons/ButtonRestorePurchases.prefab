@@ -139,6 +139,22 @@ PrefabInstance:
       propertyPath: text
       value: RESTORE PURCHASES
       objectReference: {fileID: 0}
+    - target: {fileID: 1058054932871458878, guid: dc4624c5abe63461586d6923bd4ea419,
+        type: 3}
+      propertyPath: en
+      value: RESTORE PURCHASES
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058054932871458878, guid: dc4624c5abe63461586d6923bd4ea419,
+        type: 3}
+      propertyPath: ru
+      value: "\u0412\u041E\u0421\u0421\u0422\u0410\u041D\u041E\u0412\u0418\u0422\u042C
+        \u041F\u041E\u041A\u0423\u041F\u041A\u0418"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058054932871458878, guid: dc4624c5abe63461586d6923bd4ea419,
+        type: 3}
+      propertyPath: text
+      value: RESTORE PURCHASES
+      objectReference: {fileID: 0}
     - target: {fileID: 1374404812516374543, guid: dc4624c5abe63461586d6923bd4ea419,
         type: 3}
       propertyPath: m_Name

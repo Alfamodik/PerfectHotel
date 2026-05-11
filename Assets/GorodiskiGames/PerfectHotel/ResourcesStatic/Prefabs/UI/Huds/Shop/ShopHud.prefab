@@ -914,6 +914,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4812526191669931266, guid: 415912a086b8745cd87bf52b80448590,
+        type: 3}
+      propertyPath: en
+      value: SHOP
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812526191669931266, guid: 415912a086b8745cd87bf52b80448590,
+        type: 3}
+      propertyPath: ru
+      value: "\u041C\u0410\u0413\u0410\u0417\u0418\u041D"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812526191669931266, guid: 415912a086b8745cd87bf52b80448590,
+        type: 3}
+      propertyPath: text
+      value: SHOP
+      objectReference: {fileID: 0}
     - target: {fileID: 4909066349928121802, guid: 415912a086b8745cd87bf52b80448590,
         type: 3}
       propertyPath: m_text

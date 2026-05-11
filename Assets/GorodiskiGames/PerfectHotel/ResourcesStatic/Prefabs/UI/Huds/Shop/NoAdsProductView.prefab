@@ -510,6 +510,22 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5908489224677046438, guid: 929133a2f45e540f1aa686ddbcd33e94,
+        type: 3}
+      propertyPath: en
+      value: DISABLES FORCED ADS AND BANNERS
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908489224677046438, guid: 929133a2f45e540f1aa686ddbcd33e94,
+        type: 3}
+      propertyPath: ru
+      value: "\u041E\u0422\u041A\u041B\u042E\u0427\u0410\u0415\u0422 \u0420\u0415\u041A\u041B\u0410\u041C\u041D\u042B\u0415
+        \u041F\u0410\u0423\u0417\u042B \u0418 \u0411\u0410\u041D\u041D\u0415\u0420\u042B"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908489224677046438, guid: 929133a2f45e540f1aa686ddbcd33e94,
+        type: 3}
+      propertyPath: text
+      value: DISABLES FORCED ADS AND BANNERS
+      objectReference: {fileID: 0}
     - target: {fileID: 6155691940537887238, guid: 929133a2f45e540f1aa686ddbcd33e94,
         type: 3}
       propertyPath: _config
