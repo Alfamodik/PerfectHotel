@@ -7,9 +7,9 @@
     false,
     false
   ],
-  "idSave": 1059,
+  "idSave": 1813,
   "noAdsPurchased": false,
-  "gameModelJson": "{\"Player\":2,\"Cash\":94221,\"TotalEarnedCash\":361,\"Hotel\":1,\"IsNoAds\":false,\"InventoryTypes\":[],\"JoystickVisibility\":false}",
+  "gameModelJson": "{\"Player\":2,\"Cash\":93900,\"TotalEarnedCash\":2630,\"Hotel\":1,\"IsNoAds\":false,\"InventoryTypes\":[],\"JoystickVisibility\":true}",
   "intValues": [
     {
       "key": "IsUsedHotel1Room0",
@@ -45,7 +45,7 @@
     },
     {
       "key": "LvlHotel1Reception0",
-      "value": 2
+      "value": 3
     },
     {
       "key": "IsPurchasedHotel1Loader0",
@@ -61,11 +61,11 @@
     },
     {
       "key": "VisitsCountHotel1WC0DropInventory0",
-      "value": 0
+      "value": 2
     },
     {
       "key": "LvlHotel1Cleaner0",
-      "value": 2
+      "value": 3
     },
     {
       "key": "VisitsCountHotel1WC0DropInventory1",
@@ -77,7 +77,7 @@
     },
     {
       "key": "VisitsCountHotel1WC0DropInventory2",
-      "value": 1
+      "value": 2
     },
     {
       "key": "VisualIndexHotel1Room1",
@@ -121,7 +121,7 @@
     },
     {
       "key": "IsUsedHotel1Room5",
-      "value": 1
+      "value": 0
     },
     {
       "key": "IsPurchasedHotel1Cleaner1",
@@ -162,24 +162,28 @@
     {
       "key": "VisitsCountHotel1WC1DropInventory2",
       "value": 2
+    },
+    {
+      "key": "login_days",
+      "value": 1
     }
   ],
   "longValues": [
     {
       "key": "CashHotel1Reception0",
-      "value": 1120
+      "value": 730
     },
     {
       "key": "CashHotel1Room0",
-      "value": 8
-    },
-    {
-      "key": "CashHotel1Room1",
       "value": 0
     },
     {
+      "key": "CashHotel1Room1",
+      "value": 24
+    },
+    {
       "key": "CashHotel1Room2",
-      "value": 34
+      "value": 24
     },
     {
       "key": "CashHotel1WC0",
@@ -187,25 +191,25 @@
     },
     {
       "key": "CashHotel1Room3",
-      "value": 12
+      "value": 0
     },
     {
       "key": "CashHotel1Room4",
-      "value": 6
+      "value": 8
     },
     {
       "key": "CashHotel1WC1",
-      "value": 120
+      "value": 0
     },
     {
       "key": "CashHotel1Room5",
-      "value": 6
+      "value": 0
     }
   ],
   "stringValues": [
     {
       "key": "login_date",
-      "value": "01.05.2026 10:27:55"
+      "value": "12.05.2026 14:40:36"
     }
   ]
 }
