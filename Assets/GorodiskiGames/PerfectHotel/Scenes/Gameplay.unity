@@ -1964,11 +1964,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Timer Before Ads Manual
       objectReference: {fileID: 0}
+    - target: {fileID: 8275278890968826827, guid: 868c947a4f9a41a8940df529f3ed9737,
+        type: 3}
+      propertyPath: secondObjects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8275278890968826827, guid: 868c947a4f9a41a8940df529f3ed9737,
+        type: 3}
+      propertyPath: 'secondObjects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 652847785}
+    - target: {fileID: 8275278890968826827, guid: 868c947a4f9a41a8940df529f3ed9737,
+        type: 3}
+      propertyPath: 'secondObjects.Array.data[1]'
+      value: 
+      objectReference: {fileID: 652847784}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 868c947a4f9a41a8940df529f3ed9737, type: 3}
+--- !u!1 &652847784 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8275278891352812731, guid: 868c947a4f9a41a8940df529f3ed9737,
+    type: 3}
+  m_PrefabInstance: {fileID: 652847783}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &652847785 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8275278891031627906, guid: 868c947a4f9a41a8940df529f3ed9737,
+    type: 3}
+  m_PrefabInstance: {fileID: 652847783}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &706225597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3495,7 +3522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 0
-  m_AspectRatio: 1.7777778
+  m_AspectRatio: 0.5625
 --- !u!1 &1844739821
 GameObject:
   m_ObjectHideFlags: 0
