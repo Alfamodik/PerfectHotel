@@ -25,9 +25,10 @@ namespace Game.Managers
             YG2.onPurchaseSuccess += OnPurchaseSuccess;
             YG2.onPurchaseFailed += OnPurchaseFailed;
             YG2.onGetSDKData += OnSDKDataReceived;
-
             if (YG2.purchases != null && YG2.purchases.Length > 0)
                 OnPaymentsInitialized();
+
+            YG2.ConsumePurchases();
         }
 
         public void Dispose()

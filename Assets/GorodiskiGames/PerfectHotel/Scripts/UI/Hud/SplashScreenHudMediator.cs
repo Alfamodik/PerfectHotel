@@ -36,6 +36,7 @@ namespace Game.UI.Hud
         protected override void Hide()
         {
             _timer.TICK -= OnTICK;
+            YG2.GameReadyAPI();
         }
 
         private void OnTICK()
@@ -45,10 +46,7 @@ namespace Game.UI.Hud
             _elapsed += Time.deltaTime;
 
             if (_elapsed >= _duration)
-            {
-                YG2.GameReadyAPI();
                 InternalHide();
-            }
         }
 
         private void UpdateBar()

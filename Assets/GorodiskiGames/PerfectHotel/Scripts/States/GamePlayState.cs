@@ -7,6 +7,7 @@ using Game.UI;
 using Injection;
 using UnityEngine;
 using Game.Level.Player;
+using YG;
 using Game.UI.Hud;
 using Game.Level.Reception;
 using Game.Modules.CashModule;

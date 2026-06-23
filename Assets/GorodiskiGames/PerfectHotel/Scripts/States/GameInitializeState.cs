@@ -14,26 +14,42 @@ namespace Game.States
         [Inject] private IAPManager _IAPManager;
         [Inject] private LoginManager _loginManager;
 
+        private GameConfig _config;
+        private GameModel _model;
+
         public override void Initialize()
         {
-            var config = GameConfig.Load();
-            var model = GameModel.Load(config);
+            _config = GameConfig.Load();
+            _model = GameModel.Load(_config);
 
-            _context.Install(config);
+            _context.Install(_config);
             _context.ApplyInstall();
 
-            _IAPManager.Initialize(config);
-            if (YG2.saves.noAdsPurchased)
-                model.IsNoAds = true;
+            _IAPManager.ON_PRODUCT_PURCHASED += OnProductPurchased;
+            _IAPManager.Initialize(_config);
 
-            _loginManager.Initialize(model);
-            _adsManager.Initialize(model.IsNoAds, config);
+            if (YG2.saves.noAdsPurchased)
+                _model.IsNoAds = true;
+
+            _loginManager.Initialize(_model);
+            _adsManager.Initialize(_model.IsNoAds, _config);
 
             _gameStateManager.SwitchToState(new GameLoadLevelState());
         }
 
         public override void Dispose()
         {
+            _IAPManager.ON_PRODUCT_PURCHASED -= OnProductPurchased;
+        }
+
+        private void OnProductPurchased(string productID)
+        {
+            if (productID == "no_ads")
+            {
+                _model.IsNoAds = true;
+                _model.Save();
+                _adsManager.SetNoAds();
+            }
         }
     }
 }

@@ -32,6 +32,7 @@ namespace Game.Managers
         public Action ON_REWARDED_WATCHED;
 
         private bool _isNoAds;
+        private Action<string> _onRewardAdv;
 
         public void Initialize(bool isNoAds, GameConfig config)
         {
@@ -40,7 +41,8 @@ namespace Game.Managers
             YG2.onOpenInterAdv += OnInterstitialShow;
             YG2.onCloseInterAdv += OnInterstitialWatched;
 
-            YG2.onCloseRewardedAdv += OnRewardedWatched;
+            _onRewardAdv = _ => OnRewardedWatched();
+            YG2.onRewardAdv += _onRewardAdv;
             YG2.onGetSDKData += OnSDKDataReceived;
 
             if (YG2.saves.noAdsPurchased)
@@ -51,7 +53,7 @@ namespace Game.Managers
         {
             YG2.onOpenInterAdv -= OnInterstitialShow;
             YG2.onCloseInterAdv -= OnInterstitialWatched;
-            YG2.onCloseRewardedAdv -= OnRewardedWatched;
+            YG2.onRewardAdv -= _onRewardAdv;
             YG2.onGetSDKData -= OnSDKDataReceived;
         }
 
