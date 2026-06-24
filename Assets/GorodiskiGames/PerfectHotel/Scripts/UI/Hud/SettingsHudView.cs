@@ -10,11 +10,13 @@ namespace Game.UI.Hud
         [SerializeField] private Button _closeButton;
         [SerializeField] private Button _developerButton;
         [SerializeField] private Button _restorePurchasesButton;
+        [SerializeField] private Button _resetProgressButton;
         [SerializeField] private Toggle _joystickVisibilityToggle;
 
         public Button CloseButton => _closeButton;
         public Button DeveloperButton => _developerButton;
         public Button RestorePurchasesButton => _restorePurchasesButton;
+        public Button ResetProgressButton => _resetProgressButton;
 
         public Toggle JoystickVisibilityToggle => _joystickVisibilityToggle;
 

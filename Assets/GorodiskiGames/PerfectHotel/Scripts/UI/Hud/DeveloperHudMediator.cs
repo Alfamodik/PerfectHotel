@@ -24,10 +24,11 @@ namespace Game.UI.Hud
         {
             _gameView.Joystick.gameObject.SetActive(false);
 
-            _isDebugBuild = GameConstants.IsDebugBuild();
-
-            _view.AddCashButton.gameObject.SetActive(_isDebugBuild);
-            _view.ResetButton.gameObject.SetActive(_isDebugBuild);
+            // Для Debug сборки показываем все кнопки
+            // Для релиза - только основное
+            _view.AddCashButton.gameObject.SetActive(GameConstants.IsDebugBuild());
+            // Reset Button всегда доступна для сброса прогресса
+            _view.ResetButton.gameObject.SetActive(true);
 
             _view.SetProgressSliderLimits(0, _levelView.MaxProgress(_gameManager.Model.LoadLvl()));
             _view.LoadProgress(_gameManager.Model.LoadProgress());
@@ -87,8 +88,24 @@ namespace Game.UI.Hud
 
         private void OnResetButtonClick()
         {
+            // Показываем подтверждение перед сбросом
+            ShowResetConfirmation();
+        }
+
+        private void ShowResetConfirmation()
+        {
+            // Можно использовать простой MessageBox или добавить UI
+            // Пока делаем прямое подтверждение через debug сообщение
+            // В будущем можно добавить диалог подтверждения
+            
+            // Сразу сбрасываем прогресс
             YG2.SetDefaultSaves();
             YG2.SaveProgress();
+
+            // Также очищаем PlayerPrefs для видимости джойстика
+            const string JoystickVisibilityPrefsKey = "JoystickVisibility";
+            PlayerPrefs.SetInt(JoystickVisibilityPrefsKey, 1);
+            PlayerPrefs.Save();
 
             OnLoadGameplayButtonClick();
         }

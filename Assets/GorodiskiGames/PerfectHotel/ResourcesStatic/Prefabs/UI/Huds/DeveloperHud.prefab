@@ -459,6 +459,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4812526191669931266, guid: 415912a086b8745cd87bf52b80448590,
+        type: 3}
+      propertyPath: info.languages.tr
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4909066349928121802, guid: 415912a086b8745cd87bf52b80448590,
         type: 3}
       propertyPath: m_fontSize
@@ -527,7 +532,7 @@ MonoBehaviour:
     languages:
       ru: 1
       en: 1
-      tr: 1
+      tr: 0
       az: 0
       be: 0
       he: 0
@@ -966,7 +971,7 @@ PrefabInstance:
     - target: {fileID: 3006010792589716356, guid: 3c1d1416fe91e4428bff519f139c4ec0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3006010792589716356, guid: 3c1d1416fe91e4428bff519f139c4ec0,
         type: 3}
@@ -1866,10 +1871,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 464803359885794558}
     m_Modifications:
+    - target: {fileID: 194020627835478965, guid: 04dd9baed928e45828218d75d980085e,
+        type: 3}
+      propertyPath: info.languages.tr
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488701994609810464, guid: 04dd9baed928e45828218d75d980085e,
+        type: 3}
+      propertyPath: m_text
+      value: RESET PROGRESS
+      objectReference: {fileID: 0}
     - target: {fileID: 2488701994609810464, guid: 04dd9baed928e45828218d75d980085e,
         type: 3}
       propertyPath: m_fontSize
-      value: 45
+      value: 30.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621274755234526440, guid: 04dd9baed928e45828218d75d980085e,
+        type: 3}
+      propertyPath: info.languages.tr
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3006010792589716356, guid: 04dd9baed928e45828218d75d980085e,
         type: 3}
@@ -1959,7 +1979,7 @@ PrefabInstance:
     - target: {fileID: 3006010792589716356, guid: 04dd9baed928e45828218d75d980085e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: 3006010792589716356, guid: 04dd9baed928e45828218d75d980085e,
         type: 3}
@@ -2117,6 +2137,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4812526191669931266, guid: 415912a086b8745cd87bf52b80448590,
+        type: 3}
+      propertyPath: info.languages.tr
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4909066349928121802, guid: 415912a086b8745cd87bf52b80448590,
         type: 3}
       propertyPath: m_fontSize
@@ -2179,7 +2204,7 @@ MonoBehaviour:
     languages:
       ru: 1
       en: 1
-      tr: 1
+      tr: 0
       az: 0
       be: 0
       he: 0
@@ -2756,7 +2781,7 @@ PrefabInstance:
     - target: {fileID: 3006010792589716356, guid: d0aefa8abb37b4264b0a7edafe717d31,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 3006010792589716356, guid: d0aefa8abb37b4264b0a7edafe717d31,
         type: 3}
@@ -2914,6 +2939,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4812526191669931266, guid: 415912a086b8745cd87bf52b80448590,
+        type: 3}
+      propertyPath: info.languages.tr
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4909066349928121802, guid: 415912a086b8745cd87bf52b80448590,
         type: 3}
       propertyPath: m_fontSize
@@ -2964,7 +2994,7 @@ MonoBehaviour:
     languages:
       ru: 1
       en: 1
-      tr: 1
+      tr: 0
       az: 0
       be: 0
       he: 0

@@ -17,6 +17,7 @@ namespace Game.UI.Hud
         protected override void Show()
         {
             _view.DeveloperButton.gameObject.SetActive(GameConstants.IsDebugBuild());
+            _view.ResetProgressButton.gameObject.SetActive(Game.Utils.WebBuildHelper.ShowResetProgressButton());
 
 #if UNITY_ANDROID
             _view.RestorePurchasesButton.gameObject.SetActive(false);
@@ -27,6 +28,7 @@ namespace Game.UI.Hud
             _view.CloseButton.onClick.AddListener(OnCloseButtonClick);
             _view.DeveloperButton.onClick.AddListener(OnDeveloperButtonClick);
             _view.RestorePurchasesButton.onClick.AddListener(OnRestoreButtonClick);
+            _view.ResetProgressButton.onClick.AddListener(OnResetProgressButtonClick);
 
             _view.JoystickVisibilityToggle.onValueChanged.AddListener(OnJoystickVisibilityToggleClick);
 
@@ -38,6 +40,7 @@ namespace Game.UI.Hud
             _view.CloseButton.onClick.RemoveListener(OnCloseButtonClick);
             _view.DeveloperButton.onClick.RemoveListener(OnDeveloperButtonClick);
             _view.RestorePurchasesButton.onClick.RemoveListener(OnRestoreButtonClick);
+            _view.ResetProgressButton.onClick.RemoveListener(OnResetProgressButtonClick);
 
             _view.JoystickVisibilityToggle.onValueChanged.RemoveListener(OnJoystickVisibilityToggleClick);
 
@@ -51,6 +54,12 @@ namespace Game.UI.Hud
 
         private void OnDeveloperButtonClick()
         {
+            _hudManager.ShowAdditional<DeveloperHudMediator>();
+        }
+
+        private void OnResetProgressButtonClick()
+        {
+            // Прямой переход в DeveloperHud, где есть Reset кнопка
             _hudManager.ShowAdditional<DeveloperHudMediator>();
         }
 

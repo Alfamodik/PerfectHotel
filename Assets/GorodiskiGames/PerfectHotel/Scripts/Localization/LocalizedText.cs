@@ -70,6 +70,18 @@ namespace Game.Localization
                 case "SHOW JOYSTICK":
                 case "ПОКАЗЫВАТЬ ДЖОЙСТИК":
                     return Get("SHOW JOYSTICK", "ПОКАЗЫВАТЬ ДЖОЙСТИК");
+                case "RESET PROGRESS":
+                case "СБРОС ПРОГРЕССА":
+                    return Get("RESET PROGRESS", "СБРОС ПРОГРЕССА");
+                case "RESET PROGRESS DESCRIPTION":
+                case "ОПИСАНИЕ СБРОСА ПРОГРЕССА":
+                    return Get("Are you sure you want to reset all progress? All game data will be deleted.", "Вы уверены, что хотите сбросить весь прогресс? Все игровые данные будут удалены.");
+                case "RESET":
+                case "СБРОСИТЬ":
+                    return Get("RESET", "СБРОСИТЬ");
+                case "CANCEL":
+                case "ОТМЕНА":
+                    return Get("CANCEL", "ОТМЕНА");
                 case "SOME TEXT":
                 case "SPECIAL":
                 case "АКЦИЯ":

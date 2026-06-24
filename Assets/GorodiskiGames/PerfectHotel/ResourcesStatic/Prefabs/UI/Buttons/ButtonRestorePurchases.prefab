@@ -31,7 +31,7 @@ PrefabInstance:
     - target: {fileID: 250277677885828946, guid: dc4624c5abe63461586d6923bd4ea419,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 250277677885828946, guid: dc4624c5abe63461586d6923bd4ea419,
         type: 3}
@@ -41,7 +41,7 @@ PrefabInstance:
     - target: {fileID: 250277677885828946, guid: dc4624c5abe63461586d6923bd4ea419,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 250277677885828946, guid: dc4624c5abe63461586d6923bd4ea419,
         type: 3}
@@ -106,12 +106,14 @@ PrefabInstance:
     - target: {fileID: 596711128945580278, guid: dc4624c5abe63461586d6923bd4ea419,
         type: 3}
       propertyPath: m_text
-      value: RESTORE PURCHASES
+      value: 'Reset Progress
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 596711128945580278, guid: dc4624c5abe63461586d6923bd4ea419,
         type: 3}
       propertyPath: m_fontSize
-      value: 37.3
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 596711128945580278, guid: dc4624c5abe63461586d6923bd4ea419,
         type: 3}
@@ -155,6 +157,11 @@ PrefabInstance:
       propertyPath: text
       value: RESTORE PURCHASES
       objectReference: {fileID: 0}
+    - target: {fileID: 1058054932871458878, guid: dc4624c5abe63461586d6923bd4ea419,
+        type: 3}
+      propertyPath: info.languages.tr
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1374404812516374543, guid: dc4624c5abe63461586d6923bd4ea419,
         type: 3}
       propertyPath: m_Name
@@ -175,6 +182,11 @@ PrefabInstance:
         type: 3}
       propertyPath: text
       value: RESTORE PURCHASES
+      objectReference: {fileID: 0}
+    - target: {fileID: 2918077887778105187, guid: dc4624c5abe63461586d6923bd4ea419,
+        type: 3}
+      propertyPath: info.languages.tr
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3753875527106462161, guid: dc4624c5abe63461586d6923bd4ea419,
         type: 3}
@@ -231,7 +243,7 @@ MonoBehaviour:
     languages:
       ru: 1
       en: 1
-      tr: 1
+      tr: 0
       az: 0
       be: 0
       he: 0
